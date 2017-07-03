@@ -16,7 +16,7 @@ class Goals extends Component {
   handleSubmit = () => {
     this.props.navigation.navigate('GoalAdd')
   }
-
+  
 
   render() {
     return (

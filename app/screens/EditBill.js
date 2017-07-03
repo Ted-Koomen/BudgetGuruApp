@@ -7,7 +7,7 @@ import { PrimaryButton } from '../components/Buttons'
 
 
 
-class EditIncome extends Component{
+class EditBill extends Component{
     constructor(props){
       super(props);
 
@@ -29,9 +29,12 @@ class EditIncome extends Component{
               <TextInput
                 placeholder="Company"
               />
-
               <TextInput
-                placeholder="Yearly Pay After Tax"
+                placeholder="Target Date"
+                keyboardType='numeric'
+              />
+              <TextInput
+                placeholder="Amount"
                 keyboardType='numeric'
               />
               <PrimaryButton
@@ -43,4 +46,4 @@ class EditIncome extends Component{
     }
 }
 
-export default EditIncome;
+export default EditBill;

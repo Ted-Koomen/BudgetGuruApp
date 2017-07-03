@@ -13,7 +13,8 @@ import Incomes from '../screens/Incomes';
 import NewIncome from '../screens/Incomes';
 import IncomeDetails from '../screens/IncomeDetails';
 import EditIncome from '../screens/EditIncome';
-
+import EditBill from '../screens/EditBill';
+import EditGoal from '../screens/EditGoal';
 export const IncomeStack = StackNavigator({
   Incomes:{
     screen: Incomes,
@@ -65,6 +66,12 @@ export const GoalsStack = StackNavigator({
         title:'Details',
       },
     },
+    EditGoal:{
+      screen: EditGoal,
+      navigationOptions:{
+        title: 'Edit Goal'
+      }
+    }
 
 })
 
@@ -81,7 +88,7 @@ export const BillsStack = StackNavigator({
   Details:{
       screen: BillDetails,
       navigationOptions:{
-        title: 'Details',
+        title: 'Bill Details',
       }
   },
   NewBill:{
@@ -90,6 +97,12 @@ export const BillsStack = StackNavigator({
       title: 'New Bill'
     },
   },
+  EditBill:{
+    screen: EditBill,
+    navigationOptions:{
+      title: "Edit Bill"
+    }
+  }
 });
 
 
@@ -116,7 +129,7 @@ export const Tabs = TabNavigator({
     screen: BillsStack,
     navigationOptions:{
       tabBarLabel:'Bills',
-      tabBarIcon: ({ tintColor }) => <Icon name='ion-clipboard' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
     },
   },
   Goals:{
