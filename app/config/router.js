@@ -65,6 +65,13 @@ export const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
     },
   },
+  Stuff:{
+    screen: NewContactStack,
+    navigationOptions:{
+      tabBarLabel:'Shit',
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
+    },
+  },
   Me:{
     screen: MeStack,
     navigationOptions:{
