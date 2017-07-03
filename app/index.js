@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Contacts from './screens/Contacts';
 import { Tabs, Drawer } from './config/router.js'
 import { Platform, View } from 'react-native';
@@ -14,16 +14,5 @@ class App extends React.Component {
   }
 }
 
-/*const App = () =>{
-  if (Platform.OS === 'ios'){
-    return <Root />
-
-  }
-  return 
-  <View>
-    <Drawer />
-    <Root />
-  </View>
-};*/
 
 export default App;
