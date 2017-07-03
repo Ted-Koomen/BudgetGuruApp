@@ -10,10 +10,10 @@ import { capitalizeFirstLetter } from '../../helpers/string';
 const Info = ({ login, dob, location, registered }) =>{
   return (
     <View style={styles.infoContainer}>
-      <Row
+      {/* <Row
         label="city"
         body={capitalizeFirstLetter(location.city)}
-      />
+      /> */}
     </View>
   )
 };
