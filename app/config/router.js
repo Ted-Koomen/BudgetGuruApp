@@ -1,17 +1,19 @@
 import React from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Button, Platform } from 'react-native';
 import Bills from '../screens/Bills';
-import Contacts from '../screens/Contacts'
+import Contacts from '../screens/Contacts';
 import BillDetails from '../screens/BillDetails';
 import NewContact from '../screens/NewContact';
-import Me from '../screens/Me'
-import NewBill from '../screens/NewBill'
-import NewGoal from '../screens/NewGoal'
-import Goals from '../screens/Goals'
-import GoalDetails from '../screens/GoalDetails'
-import Incomes from '../screens/Incomes'
+import Me from '../screens/Me';
+import NewBill from '../screens/NewBill';
+import NewGoal from '../screens/NewGoal';
+import Goals from '../screens/Goals';
+import GoalDetails from '../screens/GoalDetails';
+import Incomes from '../screens/Incomes';
+import Root from '../screens/Root'
+
 
 export const ContactsStack = StackNavigator({
   Bills:{
