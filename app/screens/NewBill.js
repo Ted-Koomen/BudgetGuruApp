@@ -7,7 +7,7 @@ import { PrimaryButton } from '../components/Buttons'
 
 const fields = [
   { placeholder: 'Bill', stateKey: 'billName' },
-  { placeholder: 'Amount', stateKey: 'billAmount' },
+  { placeholder: 'Amount', stateKey: 'billAmount' }
 ]
 
 class NewContact extends Component{
@@ -28,6 +28,7 @@ class NewContact extends Component{
     handleSubmit = () => {
       alert("Submit");
     }
+    
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>

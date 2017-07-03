@@ -3,9 +3,12 @@ import { View, Text, ScrollView } from 'react-native';
 import { Header, Actions, Info } from '../components/UserDetails';
 import colors from '../config/colors';
 
+
+//want amount and name of bill in this screen
 class Details extends Component{
     render(){
       const contact = this.props.navigation.state.params;
+      
 
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>

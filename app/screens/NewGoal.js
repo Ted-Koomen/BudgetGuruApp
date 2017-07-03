@@ -10,7 +10,7 @@ const fields = [
   { placeholder: 'Amount', stateKey: 'billAmount' },
 ]
 
-class NewContact extends Component{
+class NewGoal extends Component{
     constructor(props){
       super(props);
 
@@ -49,4 +49,4 @@ class NewContact extends Component{
     }
 }
 
-export default NewContact;
+export default NewGoal;
