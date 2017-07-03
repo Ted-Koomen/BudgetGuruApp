@@ -1,3 +1,4 @@
+import Contacts from '../screens/Contacts'
 export const me = {
   gender: 'male',
   name: {
