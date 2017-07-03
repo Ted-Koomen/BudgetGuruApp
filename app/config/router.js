@@ -10,9 +10,9 @@ import Me from '../screens/Me'
 export const ContactsStack = StackNavigator({
   Contacts:{
       screen: Contacts,
-      navigationOptions:(props) => ({
+      navigationOptions:( { navigation }) => ({
         title: 'Contacts',
-        headerLeft: <LeftDrawerButton {...props} />,
+        headerLeft: <LeftDrawerButton />,
       }),
   },
   Details:{
@@ -33,9 +33,9 @@ const LeftDrawerButton = ({ navigation }) => {
 export const NewContactStack = StackNavigator({
   NewContact: {
     screen: NewContact,
-    navigationOptions:(props) => ({
+    navigationOptions:( { navigation }) => ({
       title: 'New Contact',
-      headerLeft: <LeftDrawerButton {...props} />,
+      headerLeft: <Button title="Open" onPress={() => navigation.navigate('DrawerOpen')} />
     }),
 
   },
@@ -44,9 +44,9 @@ export const NewContactStack = StackNavigator({
 export const MeStack = StackNavigator({
   Me:{
     screen: Me,
-    navigationOptions:(props) => ({
+    navigationOptions:( { navigation }) => ({
       title: 'Me',
-      headerLeft: <LeftDrawerButton {...props} />,
+      headerLeft: <Button title="Open" onPress={() => navigation.navigate('DrawerOpen')} />
     }),
   },
 })
@@ -62,13 +62,6 @@ export const Tabs = TabNavigator({
     screen: NewContactStack,
     navigationOptions:{
       tabBarLabel:'New Contact',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
-    },
-  },
-  Stuff:{
-    screen: NewContactStack,
-    navigationOptions:{
-      tabBarLabel:'Shit',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
     },
   },
