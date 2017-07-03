@@ -27,7 +27,7 @@ class NewGoal extends Component{
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder="Goal"
+                placeholder="Company"
               />
               <TextInput
                 placeholder="Target Date"

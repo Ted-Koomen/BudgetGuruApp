@@ -28,19 +28,24 @@ class NewContact extends Component{
     handleSubmit = () => {
       alert("Submit");
     }
-    
+
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
-              {
-                fields.map((field) =>(
-                  <TextInput
-                    key={field.stateKey}
-                    onChangeText={(text) => this.onInputChange(text, field.stateKey)}
-                    {...field}
-                  />
-                ))
-              }
+              <TextInput
+                placeholder="Name"
+              />
+              <TextInput
+                placeholder="Due Date"
+                keyboardType="numeric"
+              />
+              <TextInput
+                placeholder="Company"
+              />
+              <TextInput
+                placeholder="Amount"
+                keyboardType='numeric'
+              />
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
                 label="Save"

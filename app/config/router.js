@@ -4,13 +4,15 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { Button, Platform } from 'react-native';
 import Bills from '../screens/Bills';
 import BillDetails from '../screens/BillDetails';
-import Me from '../screens/Me'
-import NewBill from '../screens/NewBill'
-import NewGoal from '../screens/NewGoal'
-import Goals from '../screens/Goals'
-import GoalDetails from '../screens/GoalDetails'
-import Incomes from '../screens/Incomes'
-
+import Me from '../screens/Me';
+import NewBill from '../screens/NewBill';
+import NewGoal from '../screens/NewGoal';
+import Goals from '../screens/Goals';
+import GoalDetails from '../screens/GoalDetails';
+import Incomes from '../screens/Incomes';
+import NewIncome from '../screens/Incomes';
+import IncomeDetails from '../screens/IncomeDetails';
+import EditIncome from '../screens/EditIncome';
 
 export const IncomeStack = StackNavigator({
   Incomes:{
@@ -18,8 +20,29 @@ export const IncomeStack = StackNavigator({
     navigationOptions:( { navigation }) => ({
       title: 'Incomes',
       headerLeft: <LeftDrawerButton />,
-    })
-  }
+    }),
+  },
+  NewIncome:{
+    screen:NewIncome,
+    navigationOptions: ( { navigation }) => ({
+      title: 'New Income',
+      headerLeft: <LeftDrawerButton />
+    }),
+  },
+  IncomeDetails:{
+    screen: IncomeDetails,
+    navigationOptions: ( { navigation }) => ({
+      title: 'Income Details',
+      headerLeft: <LeftDrawerButton />
+    }),
+  },
+  EditIncome:{
+    screen: EditIncome,
+    navigationOptions: ( { navigation }) => ({
+      title: 'Edit Income',
+      headerLeft: <LeftDrawerButton />
+    }),
+  },
 })
 
 export const GoalsStack = StackNavigator({
