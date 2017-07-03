@@ -25,9 +25,7 @@ class NewGoal extends Component{
       this.setState(mod);
     }
 
-    handleSubmit = () => {
-      alert("Submit");
-    }
+
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
