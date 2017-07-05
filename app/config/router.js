@@ -1,9 +1,11 @@
 import React from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Button, Platform } from 'react-native';
 import Bills from '../screens/Bills';
+import Contacts from '../screens/Contacts';
 import BillDetails from '../screens/BillDetails';
+// import NewContact from '../screens/NewContact';
 import Me from '../screens/Me';
 import NewBill from '../screens/NewBill';
 import NewGoal from '../screens/NewGoal';
@@ -15,6 +17,8 @@ import IncomeDetails from '../screens/IncomeDetails';
 import EditIncome from '../screens/EditIncome';
 import EditBill from '../screens/EditBill';
 import EditGoal from '../screens/EditGoal';
+import Root from '../screens/Root'
+
 export const IncomeStack = StackNavigator({
   Incomes:{
     screen: Incomes,

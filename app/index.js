@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Contacts from './screens/Contacts';
 import { Tabs, Drawer } from './config/router.js'
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
+import Root from './screens/Root';
 
-const App = () =>{
-  if (Platform.OS === 'ios'){
-    return <Tabs />
-
+class App extends React.Component {
+  render () {
+    let logged_in = false;
+    let test = logged_in ? <Tabs /> : <Root />
+    return (
+      test
+    )
   }
-  return <Drawer />
-};
+}
+
 
 export default App;
