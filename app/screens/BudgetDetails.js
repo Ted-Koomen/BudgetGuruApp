@@ -13,7 +13,7 @@ class BudgetDetails extends Component{
      }
 
      handleSubmit = () => {
-       this.props.navigation.navigate('EditIncome')
+       this.props.navigation.navigate('BudgetEdit')
      }
 
      handleDelete = () => {
@@ -34,12 +34,12 @@ class BudgetDetails extends Component{
             </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
-              label="Edit Bill"
+              label="Edit Budget"
             />
             <View>
               <PrimaryButton
                 onPress={()=> this.handleDelete()}
-                label="Delete Bill"
+                label="Delete Budget"
               />
             </View>
 

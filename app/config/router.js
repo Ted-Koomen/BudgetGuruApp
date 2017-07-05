@@ -19,6 +19,8 @@ import EditBill from '../screens/EditBill';
 import EditGoal from '../screens/EditGoal';
 import Budgets from '../screens/Budgets';
 import BudgetDetails from '../screens/BudgetDetails';
+import EditBudget from '../screens/EditBudget';
+import AddBudget from '../screens/AddBudget';
 import Root from '../screens/Root'
 
 export const IncomeStack = StackNavigator({
@@ -95,7 +97,21 @@ export const BudgetStack = StackNavigator({
       title: 'Budget Details',
       headerLeft: <LeftDrawerButton />,
     }),
-  }
+  },
+  BudgetEdit:{
+    screen: EditBudget,
+    navigationOptions:( { navigation }) => ({
+      title: 'Edit Budget',
+      headerLeft: <LeftDrawerButton />,
+    }),
+  },
+  BudgetAdd:{
+    screen: AddBudget,
+    navigationOptions:( { navigation }) => ({
+      title: "Add Budget",
+      headerLeft: <LeftDrawerButton />,
+    }),
+  },
 })
 
 

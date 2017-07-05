@@ -31,6 +31,12 @@ class Bills extends Component {
         onPress={()=> this.handleSubmit()}
         label="Add Bill"
       />
+      <View>
+        <PrimaryButton
+          onPress={()=> this.handleDelete()}
+          label="Delete Bill"
+        />
+      </View>
     </View>
     );
   }
