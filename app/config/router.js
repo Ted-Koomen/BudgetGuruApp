@@ -26,31 +26,28 @@ import Root from '../screens/Root'
 export const IncomeStack = StackNavigator({
   Incomes:{
     screen: Incomes,
-    navigationOptions:( { navigation }) => ({
+    navigationOptions:{
       title: 'Incomes',
-      headerLeft: <LeftDrawerButton />,
-    }),
+    },
   },
   NewIncome:{
     screen:NewIncome,
-    navigationOptions: ( { navigation }) => ({
+    navigationOptions: {
       title: 'New Income',
-      headerLeft: <LeftDrawerButton />
-    }),
+    },
   },
   IncomeDetails:{
     screen: IncomeDetails,
-    navigationOptions: ( { navigation }) => ({
+    navigationOptions: {
       title: 'Income Details',
-      headerLeft: <LeftDrawerButton />
-    }),
+    },
   },
   EditIncome:{
     screen: EditIncome,
-    navigationOptions: ( { navigation }) => ({
+    navigationOptions:{
       title: 'Edit Income',
       headerLeft: <LeftDrawerButton />
-    }),
+    },
   },
 })
 
@@ -93,24 +90,21 @@ export const BudgetStack = StackNavigator({
   },
   BudgetDetails:{
     screen: BudgetDetails,
-    navigationOptions:( { navigation }) => ({
+    navigationOptions:{
       title: 'Budget Details',
-      headerLeft: <LeftDrawerButton />,
-    }),
+    },
   },
   BudgetEdit:{
     screen: EditBudget,
-    navigationOptions:( { navigation }) => ({
+    navigationOptions:{
       title: 'Edit Budget',
-      headerLeft: <LeftDrawerButton />,
-    }),
+    },
   },
   BudgetAdd:{
     screen: AddBudget,
-    navigationOptions:( { navigation }) => ({
+    navigationOptions:{
       title: "Add Budget",
-      headerLeft: <LeftDrawerButton />,
-    }),
+    },
   },
 })
 
