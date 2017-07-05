@@ -6,8 +6,10 @@ import styles, { CHEVRON_SIZE } from './styles';
 import { capitalizeFirstLetter } from '../../helpers/string';
 import colors from '../../config/colors';
 
-const ListItem = ({ contact, onPress})=>{
-  const name = `${capitalizeFirstLetter(contact.name)} `
+const ListItem = ({user_first_name, onPress})=>{
+  // debugger
+  // const name = `${capitalizeFirstLetter(contact.name)} `
+  const name = user_first_name
   const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward';
   return(
     <TouchableHighlight

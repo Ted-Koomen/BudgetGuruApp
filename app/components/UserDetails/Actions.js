@@ -17,7 +17,6 @@ const Actions = ({ email, cell }) =>{
         ]}
       />
     </View>
-
   )
 };
 

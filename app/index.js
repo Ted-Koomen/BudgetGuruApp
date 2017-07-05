@@ -6,7 +6,7 @@ import Root from './screens/Root';
 
 class App extends React.Component {
   render () {
-    let logged_in = false;
+    let logged_in = true;
     let test = logged_in ? <Tabs /> : <Root />
     return (
       test
