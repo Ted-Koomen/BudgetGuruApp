@@ -23,6 +23,13 @@ import EditBudget from '../screens/EditBudget';
 import AddBudget from '../screens/AddBudget';
 import Root from '../screens/Root'
 
+const LeftDrawerButton = ({ navigation }) => {
+  if (Platform.OS === 'android'){
+    return <Button title="Open" onPress={()=> navigation.navigate('DrawerOpen')} />
+  }
+  return null;
+}
+
 export const IncomeStack = StackNavigator({
   Incomes:{
     screen: Incomes,
@@ -139,12 +146,6 @@ export const BillsStack = StackNavigator({
 
 
 
-const LeftDrawerButton = ({ navigation }) => {
-  if (Platform.OS === 'android'){
-    return <Button title="Open" onPress={()=> navigation.navigate('DrawerOpen')} />
-  }
-  return null;
-}
 
 export const MeStack = StackNavigator({
   Me:{

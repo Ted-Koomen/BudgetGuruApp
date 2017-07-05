@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { Header, Actions, Info } from '../components/UserDetails';
 import colors from '../config/colors';
 import {PrimaryButton} from '../components/Buttons'
@@ -17,8 +17,9 @@ class IncomeDetails extends Component{
      }
 
      handleDelete = () => {
-       //delete function
+
      }
+
     render(){
       const contact = this.props.navigation.state.params;
 
@@ -27,6 +28,9 @@ class IncomeDetails extends Component{
           <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
                 <Header {...contact} />
+                <Actions {...contact}/>
+                <Info {...contact }/>
+
             </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
@@ -38,6 +42,7 @@ class IncomeDetails extends Component{
                 label="Delete Income"
               />
             </View>
+
           </View>
         );
     }

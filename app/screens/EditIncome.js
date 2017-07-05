@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 import colors from '../config/colors';
-import { TextInput, View } from '../components/TextInput';
+import { TextInput } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
 
 
