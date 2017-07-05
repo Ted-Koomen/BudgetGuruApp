@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import colors from '../config/colors';
-import { TextInput } from '../components/TextInput';
+import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
 
 
 
-class EditIncome extends Component{
+class EditBudget extends Component{
     constructor(props){
       super(props);
 
@@ -27,11 +27,10 @@ class EditIncome extends Component{
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder="Company"
+                placeholder="Category"
               />
-
               <TextInput
-                placeholder="Yearly Pay After Tax"
+                placeholder="Amount Budgeted"
                 keyboardType='numeric'
               />
               <PrimaryButton
@@ -43,4 +42,4 @@ class EditIncome extends Component{
     }
 }
 
-export default EditIncome;
+export default EditBudget;

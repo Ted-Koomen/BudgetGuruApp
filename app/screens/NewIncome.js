@@ -5,10 +5,6 @@ import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
 
-const fields = [
-  { placeholder: 'Bill', stateKey: 'billName' },
-  { placeholder: 'Amount', stateKey: 'billAmount' }
-]
 
 class NewIncome extends Component{
     constructor(props){

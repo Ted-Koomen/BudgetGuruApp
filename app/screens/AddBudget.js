@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import colors from '../config/colors';
-import { TextInput } from '../components/TextInput';
+import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
 
+const fields = [
+  { placeholder: 'Bill', stateKey: 'billName' },
+  { placeholder: 'Amount', stateKey: 'billAmount' }
+]
 
-
-class EditIncome extends Component{
+class NewBudget extends Component{
     constructor(props){
       super(props);
 
@@ -22,17 +25,19 @@ class EditIncome extends Component{
       this.setState(mod);
     }
 
+    handleSubmit = () => {
+      alert("Submit");
+    }
 
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder="Company"
+                placeholder="Category"
               />
-
               <TextInput
-                placeholder="Yearly Pay After Tax"
-                keyboardType='numeric'
+                placeholder="Amount Budgeted"
+                keyboardType="numeric"
               />
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
@@ -43,4 +48,4 @@ class EditIncome extends Component{
     }
 }
 
-export default EditIncome;
+export default NewBudget;

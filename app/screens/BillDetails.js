@@ -38,6 +38,12 @@ class Details extends Component{
               onPress={()=> this.handleSubmit()}
               label='Edit Bill'
               />
+              <View>
+                <PrimaryButton
+                  onPress={()=> this.handleDelete()}
+                  label="Delete Bill"
+                />
+              </View>
             </ScrollView>
         );
     }
