@@ -7,7 +7,7 @@ import { PrimaryButton } from '../components/Buttons'
 
 
 
-class NewGoal extends Component{
+class EditIncome extends Component{
     constructor(props){
       super(props);
 
@@ -27,14 +27,11 @@ class NewGoal extends Component{
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder="Goal"
+                placeholder="Company"
               />
+
               <TextInput
-                placeholder="Target Date"
-                keyboardType='numeric'
-              />
-              <TextInput
-                placeholder="Amount"
+                placeholder="Yearly Pay After Tax"
                 keyboardType='numeric'
               />
               <PrimaryButton
@@ -46,4 +43,4 @@ class NewGoal extends Component{
     }
 }
 
-export default NewGoal;
+export default EditIncome;

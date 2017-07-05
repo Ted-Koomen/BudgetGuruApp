@@ -9,11 +9,11 @@ class Incomes extends Component {
 
   handleRowPress = (item) => {
     //clicking on a bill in the bill index will route to bill show through details
-    this.props.navigation.navigate('Goal Details', item)
+    this.props.navigation.navigate('IncomeDetails', item)
   };
 
   handleSubmit = () => {
-    this.props.navigation.navigate('New Goal')
+    this.props.navigation.navigate('NewIncome')
   }
 
   render() {

@@ -1,33 +1,23 @@
 import React from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Button, Platform } from 'react-native';
 import Bills from '../screens/Bills';
-import Contacts from '../screens/Contacts'
+import Contacts from '../screens/Contacts';
 import BillDetails from '../screens/BillDetails';
-import NewContact from '../screens/NewContact';
-import Me from '../screens/Me'
-import NewBill from '../screens/NewBill'
-import NewGoal from '../screens/NewGoal'
-import Goals from '../screens/Goals'
-import GoalDetails from '../screens/GoalDetails'
-import Incomes from '../screens/Incomes'
-
-export const ContactsStack = StackNavigator({
-  Bills:{
-      screen: Bills,
-      navigationOptions:( { navigation }) => ({
-        title: 'Bills',
-        headerLeft: <LeftDrawerButton />,
-      }),
-  },
-  Details:{
-      screen: BillDetails,
-      navigationOptions:{
-        title: 'Details',
-      }
-  },
-});
+// import NewContact from '../screens/NewContact';
+import Me from '../screens/Me';
+import NewBill from '../screens/NewBill';
+import NewGoal from '../screens/NewGoal';
+import Goals from '../screens/Goals';
+import GoalDetails from '../screens/GoalDetails';
+import Incomes from '../screens/Incomes';
+import NewIncome from '../screens/Incomes';
+import IncomeDetails from '../screens/IncomeDetails';
+import EditIncome from '../screens/EditIncome';
+import EditBill from '../screens/EditBill';
+import EditGoal from '../screens/EditGoal';
+import Root from '../screens/Root'
 
 export const IncomeStack = StackNavigator({
   Incomes:{
@@ -35,8 +25,29 @@ export const IncomeStack = StackNavigator({
     navigationOptions:( { navigation }) => ({
       title: 'Incomes',
       headerLeft: <LeftDrawerButton />,
-    })
-  }
+    }),
+  },
+  NewIncome:{
+    screen:NewIncome,
+    navigationOptions: ( { navigation }) => ({
+      title: 'New Income',
+      headerLeft: <LeftDrawerButton />
+    }),
+  },
+  IncomeDetails:{
+    screen: IncomeDetails,
+    navigationOptions: ( { navigation }) => ({
+      title: 'Income Details',
+      headerLeft: <LeftDrawerButton />
+    }),
+  },
+  EditIncome:{
+    screen: EditIncome,
+    navigationOptions: ( { navigation }) => ({
+      title: 'Edit Income',
+      headerLeft: <LeftDrawerButton />
+    }),
+  },
 })
 
 export const GoalsStack = StackNavigator({
@@ -46,7 +57,8 @@ export const GoalsStack = StackNavigator({
       title: 'Goals',
       headerLeft: <LeftDrawerButton />,
     }),
-    NewGoal:{
+  },
+    GoalAdd:{
       screen:NewGoal,
       navigationOptions:{
         title:'New Goal',
@@ -58,8 +70,44 @@ export const GoalsStack = StackNavigator({
         title:'Details',
       },
     },
-  },
+    EditGoal:{
+      screen: EditGoal,
+      navigationOptions:{
+        title: 'Edit Goal'
+      }
+    }
+
 })
+
+
+
+export const BillsStack = StackNavigator({
+  Bills:{
+      screen: Bills,
+      navigationOptions:( { navigation }) => ({
+        title: 'Bills',
+        headerLeft: <LeftDrawerButton />,
+      }),
+  },
+  Details:{
+      screen: BillDetails,
+      navigationOptions:{
+        title: 'Bill Details',
+      }
+  },
+  NewBill:{
+    screen: NewBill,
+    navigationOptions:{
+      title: 'New Bill'
+    },
+  },
+  EditBill:{
+    screen: EditBill,
+    navigationOptions:{
+      title: "Edit Bill"
+    }
+  }
+});
 
 
 
@@ -70,27 +118,6 @@ const LeftDrawerButton = ({ navigation }) => {
   return null;
 }
 
-export const NewBillStack = StackNavigator({
-  NewBill:{
-    screen: NewBill,
-    navigationOptions:( { navigation }) => ({
-      title: 'New Bill',
-      headerLeft: <Button title="Open" onPress={() => navigation.navigate('DrawerOpen')} />
-    })
-  },
-})
-
-export const NewContactStack = StackNavigator({
-  NewContact: {
-    screen: NewContact,
-    navigationOptions:( { navigation }) => ({
-      title: 'New Contact',
-      headerLeft: <Button title="Open" onPress={() => navigation.navigate('DrawerOpen')} />
-    }),
-
-  },
-})
-
 export const MeStack = StackNavigator({
   Me:{
     screen: Me,
@@ -100,12 +127,13 @@ export const MeStack = StackNavigator({
     }),
   },
 })
+
 export const Tabs = TabNavigator({
   Bills:{
-    screen: ContactsStack,
+    screen: BillsStack,
     navigationOptions:{
       tabBarLabel:'Bills',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-add' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
     },
   },
   Goals:{
@@ -133,25 +161,25 @@ export const Tabs = TabNavigator({
 
 });
 
-export const Drawer = DrawerNavigator({
-  Contacts:{
-      screen: ContactsStack,
-      navigationOptions:{
-        drawerLabel: 'Contacts'
-      },
-  },
-  NewContact:{
-    screen: NewContactStack,
-    navigationOptions:{
-      drawerLabel: 'New Conctact'
-    },
-  },
-
-  Me:{
-    screen: MeStack,
-    navigationOptions:{
-      drawerLabel: 'Me'
-    },
-  },
-
-})
+// export const Drawer = DrawerNavigator({
+//   Contacts:{
+//       screen: ContactsStack,
+//       navigationOptions:{
+//         drawerLabel: 'Contacts'
+//       },
+//   },
+//   NewContact:{
+//     screen: NewContactStack,
+//     navigationOptions:{
+//       drawerLabel: 'New Conctact'
+//     },
+//   },
+//
+//   Me:{
+//     screen: MeStack,
+//     navigationOptions:{
+//       drawerLabel: 'Me'
+//     },
+//   },
+//
+// })

@@ -4,17 +4,19 @@ import {contacts} from  '../config/data';
 import colors from '../config/colors';
 import { ListItem } from '../components/ListItem'
 import { PrimaryButton } from '../components/Buttons'
+import { NavigationActions } from 'react-navigation'
 
 class Goals extends Component {
 
   handleRowPress = (item) => {
     //clicking on a bill in the bill index will route to bill show through details
-    this.props.navigation.navigate('Goal Details', item)
+    this.props.navigation.navigate('GoalDetails', item)
   };
 
   handleSubmit = () => {
-    this.props.navigation.navigate('New Goal')
+    this.props.navigation.navigate('GoalAdd')
   }
+  
 
   render() {
     return (
