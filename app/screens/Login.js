@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   AsyncStorage,
   ActivityIndicatorIOS,
+  NavigatorIOS,
   Text,
   View
 } from 'react-native';
@@ -12,8 +13,10 @@ import {
 const ACCESS_TOKEN = 'access_token';
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.navigate= this.navigate.bind(this);
+    this.onChangeText = this.onChangeText.bind(this);
 
     this.state = {
       first_name: "",
@@ -25,20 +28,63 @@ class Login extends Component {
       showProgress: false,
     }
   }
+   redirect(routeName, accessToken){
+    this.props.navigator.push({
+      name: routeName
+    });
+  }
+  storeToken(responseData){
+    AsyncStorage.setItem(ACCESS_TOKEN, responseData, (err)=> {
+      if(err){
+        console.log("an error");
+        throw err;
+      }
+      console.log("success");
+    }).catch((err)=> {
+        console.log("error is: " + err);
+    });
+  }
+  async onLoginPressed() {
+    this.setState({showProgress: true})
+    try {
+      let response = await fetch('https://localhost:8080/login', {
+                              method: 'POST',
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                session:{
+                                  email: this.state.email,
+                                  password: this.state.password,
+                                }
+                              })
+                            });
+      let res = await response.text();
+      if (response.status >= 200 && response.status < 300) {
+          //Handle success
+          let accessToken = res;
+          console.log(accessToken);
+          //On success we will store the access_token in the AsyncStorage
+          this.storeToken(accessToken);
+          this.redirect('home');
+      } else {
+          //Handle error
+          let error = res;
+          throw error;
+      }
+    } catch(error) {
+        this.setState({error: error});
+        console.log("error " + error);
+        this.setState({showProgress: false});
+    }
+  }
     render() {
       return (
         <View style={styles.container}>
           <Text style={styles.heading}>
-            Register User
+            Login User
           </Text>
-          <TextInput>
-            onChangeText={ (text)=> this.setState({first_name: text}) }
-            style={styles.input} placeholder="First Name">
-          </TextInput>
-          <TextInput>
-            onChangeText={ (text)=> this.setState({last_name: text}) }
-            style={styles.input} placeholder="Last Name">
-          </TextInput>
           <TextInput>
             onChangeText={ (text)=> this.setState({email: text}) }
             style={styles.input} placeholder="Email">
@@ -49,13 +95,9 @@ class Login extends Component {
             placeholder="Password"
             secureTextEntry={true}>
           </TextInput>
-          <TextInput>
-            onChangeText={ (text)=> this.setState({balance_floor: text}) }
-            style={styles.input} placeholder="Balance Floor">
-          </TextInput>
-          <TouchableHighlight onPress={this.onRegisterPressed.bind(this)} style={styles.button}>
+          <TouchableHighlight onPress={this.onLoginPressed.bind(this)} style={styles.button}>
             <Text style={styles.buttonText}>
-              Register
+              Login
             </Text>
           </TouchableHighlight>
 
