@@ -3,41 +3,27 @@ import { View, Text, ScrollView } from 'react-native';
 import { Header, Actions, Info } from '../components/UserDetails';
 import colors from '../config/colors';
 import { PrimaryButton } from '../components/Buttons'
-import axios from 'axios'
-
 
 //want amount and name of bill in this screen
 class Details extends Component{
-  constructor(){
-    super();
-    this.state= {
-      username:"hec",
-      bills:[]
+    constructor(){
+      super()
     }
-  }
-
-
 
     handleSubmit(){
-      this.props.navigation.navigate(this.state.username)
-
+      this.props.navigation.navigate('EditBill')
     }
 
     render(){
-      // debugger
       const contact = this.props.navigation.state.params;
-
-
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
                 <Header {...contact} />
-                {/* <Actions {...contact}/> */}
-                <Info {...contact }/>
-
-              <PrimaryButton
-              onPress={()=> this.handleSubmit()}
-              label='Edit Bill'
-              />
+                <Info bill={contact}/>
+                <PrimaryButton
+                onPress={()=> this.handleSubmit()}
+                label='Edit Bill'
+                />
             </ScrollView>
         );
     }

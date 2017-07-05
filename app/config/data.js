@@ -42,15 +42,3 @@ export const bills = [
     name:'hector'
   }
 ];
-
-
-// export const bills =
-// fetch("https://enigmatic-chamber-19729.herokuapp.com/bills/all")
-// .then((response) => response.json())
-//     .then((responseData) => {
-//       // console.log(responseData)
-//         AlertIOS.alert(
-//           responseData
-//         )
-//     })
-//     .done();
