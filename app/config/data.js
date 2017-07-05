@@ -1,3 +1,4 @@
+import {AlertIOS} from 'react-native';
 export const me = {
   gender: 'male',
   name: {
@@ -35,8 +36,8 @@ export const me = {
   },
   nat: 'ES',
 };
-
-export const contacts = [
+//
+export const bills = [
   {
     name:'hector'
   }

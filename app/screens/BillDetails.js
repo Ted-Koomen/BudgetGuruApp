@@ -16,17 +16,24 @@ class Details extends Component{
 
     render(){
       const contact = this.props.navigation.state.params;
-
-
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
                 <Header {...contact} />
-                <Actions {...contact}/>
-                <Info {...contact }/>
-              <PrimaryButton
-              onPress={()=> this.handleSubmit()}
-              label='Edit Bill'
-              />
+
+                <Info bill={contact}/>
+                <PrimaryButton
+                onPress={()=> this.handleSubmit()}
+                label='Edit Bill'
+                />
+
+              
+              <View>
+                <PrimaryButton
+                  onPress={()=> this.handleDelete()}
+                  label="Delete Bill"
+                />
+              </View>
+
             </ScrollView>
         );
     }

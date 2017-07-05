@@ -11,7 +11,10 @@ const Header = ({picture, name}) =>{
         style={styles.image}
       /> */}
       <Text style={styles.name}>
-        {capitalizeFirstLetter(name)} 
+        {capitalizeFirstLetter(name)},
+      </Text>
+      <Text style={styles.name}>
+        Here are your bills.
       </Text>
     </View>
   )
