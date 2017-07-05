@@ -17,6 +17,8 @@ import IncomeDetails from '../screens/IncomeDetails';
 import EditIncome from '../screens/EditIncome';
 import EditBill from '../screens/EditBill';
 import EditGoal from '../screens/EditGoal';
+import Budgets from '../screens/Budgets';
+import BudgetDetails from '../screens/BudgetDetails';
 import Root from '../screens/Root'
 
 export const IncomeStack = StackNavigator({
@@ -79,6 +81,22 @@ export const GoalsStack = StackNavigator({
 
 })
 
+export const BudgetStack = StackNavigator({
+  Budgets:{
+    screen: Budgets,
+    navigationOptions:( { navigation }) => ({
+      title: 'Budgets',
+      headerLeft: <LeftDrawerButton />,
+    }),
+  },
+  BudgetDetails:{
+    screen: BudgetDetails,
+    navigationOptions:( { navigation }) => ({
+      title: 'Budget Details',
+      headerLeft: <LeftDrawerButton />,
+    }),
+  }
+})
 
 
 export const BillsStack = StackNavigator({
@@ -133,6 +151,13 @@ export const Tabs = TabNavigator({
     screen: BillsStack,
     navigationOptions:{
       tabBarLabel:'Bills',
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
+    },
+  },
+  Budgets:{
+    screen: BudgetStack,
+    navigationOptions:{
+      tabBarLabel: "Budgets",
       tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
     },
   },
