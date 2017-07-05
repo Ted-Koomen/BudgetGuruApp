@@ -15,6 +15,10 @@ class IncomeDetails extends Component{
      handleSubmit = () => {
        this.props.navigation.navigate('EditIncome')
      }
+
+     handleDelete = () => {
+       //delete function
+     }
     render(){
       const contact = this.props.navigation.state.params;
 
@@ -23,14 +27,17 @@ class IncomeDetails extends Component{
           <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
                 <Header {...contact} />
-                <Actions {...contact}/>
-                <Info {...contact }/>
-
             </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
               label="Edit Income"
             />
+            <View>
+              <PrimaryButton
+                onPress={()=> this.handleDelete()}
+                label="Delete Income"
+              />
+            </View>
           </View>
         );
     }

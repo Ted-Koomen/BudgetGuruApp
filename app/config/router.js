@@ -12,7 +12,7 @@ import NewGoal from '../screens/NewGoal';
 import Goals from '../screens/Goals';
 import GoalDetails from '../screens/GoalDetails';
 import Incomes from '../screens/Incomes';
-import NewIncome from '../screens/Incomes';
+import NewIncome from '../screens/NewIncome';
 import IncomeDetails from '../screens/IncomeDetails';
 import EditIncome from '../screens/EditIncome';
 import EditBill from '../screens/EditBill';
@@ -30,8 +30,8 @@ export const IncomeStack = StackNavigator({
       title: 'Incomes',
     },
   },
-  NewIncome:{
-    screen:NewIncome,
+  IncomeNew:{
+    screen: NewIncome,
     navigationOptions: {
       title: 'New Income',
     },
