@@ -5,7 +5,6 @@ import { Button, Platform } from 'react-native';
 import Bills from '../screens/Bills';
 import Contacts from '../screens/Contacts';
 import BillDetails from '../screens/BillDetails';
-// import NewContact from '../screens/NewContact';
 import Me from '../screens/Me';
 import NewBill from '../screens/NewBill';
 import NewGoal from '../screens/NewGoal';
@@ -17,7 +16,31 @@ import IncomeDetails from '../screens/IncomeDetails';
 import EditIncome from '../screens/EditIncome';
 import EditBill from '../screens/EditBill';
 import EditGoal from '../screens/EditGoal';
-import Root from '../screens/Root'
+import Root from '../screens/Root';
+import Login from '../screens/Login';
+import Register from '../screens/Register';
+
+
+export const RootStack = StackNavigator({
+  Root: {
+    screen: Root
+  },
+  Login:{
+      screen: Login,
+      navigationOptions:( { navigation }) => ({
+        title: 'Login',
+        headerLeft: <LeftDrawerButton />,
+      }),
+  },
+  Register:{
+      screen: Register,
+      navigationOptions:( { navigation }) => ({
+        title: 'Register',
+        headerLeft: <LeftDrawerButton />,
+      }),
+  },
+});
+
 
 export const IncomeStack = StackNavigator({
   Incomes:{
@@ -161,25 +184,3 @@ export const Tabs = TabNavigator({
 
 });
 
-// export const Drawer = DrawerNavigator({
-//   Contacts:{
-//       screen: ContactsStack,
-//       navigationOptions:{
-//         drawerLabel: 'Contacts'
-//       },
-//   },
-//   NewContact:{
-//     screen: NewContactStack,
-//     navigationOptions:{
-//       drawerLabel: 'New Conctact'
-//     },
-//   },
-//
-//   Me:{
-//     screen: MeStack,
-//     navigationOptions:{
-//       drawerLabel: 'Me'
-//     },
-//   },
-//
-// })
