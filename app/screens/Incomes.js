@@ -13,7 +13,11 @@ class Incomes extends Component {
   };
 
   handleSubmit = () => {
-    this.props.navigation.navigate('NewIncome')
+    this.props.navigation.navigate('IncomeNew')
+  }
+
+  handleEdit = ()=> {
+    this.props.navigation.navigate('EditIncome')
   }
 
   render() {

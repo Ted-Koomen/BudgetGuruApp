@@ -5,7 +5,7 @@ import colors from '../config/colors';
 import {PrimaryButton} from '../components/Buttons'
 
 //want amount and name of bill in this screen
-class IncomeDetails extends Component{
+class BudgetDetails extends Component{
 
      constructor(){
        super()
@@ -13,7 +13,7 @@ class IncomeDetails extends Component{
      }
 
      handleSubmit = () => {
-       this.props.navigation.navigate('EditIncome')
+       this.props.navigation.navigate('BudgetEdit')
      }
 
      handleDelete = () => {
@@ -34,12 +34,12 @@ class IncomeDetails extends Component{
             </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
-              label="Edit Income"
+              label="Edit Budget"
             />
             <View>
               <PrimaryButton
                 onPress={()=> this.handleDelete()}
-                label="Delete Income"
+                label="Delete Budget"
               />
             </View>
 
@@ -48,4 +48,4 @@ class IncomeDetails extends Component{
     }
 }
 
-export default IncomeDetails;
+export default BudgetDetails;

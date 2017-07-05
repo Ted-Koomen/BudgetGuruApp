@@ -9,6 +9,10 @@ class GoalDetails extends Component{
   handleSubmit = () => {
     this.props.navigation.navigate('EditGoal')
   }
+
+  handleDelete = () => {
+    // route to delete budget
+  }
     render(){
       const contact = this.props.navigation.state.params;
 
@@ -22,6 +26,12 @@ class GoalDetails extends Component{
                 onPress={()=> this.handleSubmit()}
                 label="Edit Goal"
               />
+              <View>
+                <PrimaryButton
+                  onPress={()=> this.handleDelete()}
+                  label="Delete Goal"
+                />
+              </View>
             </ScrollView>
         );
     }

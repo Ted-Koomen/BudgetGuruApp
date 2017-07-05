@@ -12,41 +12,49 @@ import NewGoal from '../screens/NewGoal';
 import Goals from '../screens/Goals';
 import GoalDetails from '../screens/GoalDetails';
 import Incomes from '../screens/Incomes';
-import NewIncome from '../screens/Incomes';
+import NewIncome from '../screens/NewIncome';
 import IncomeDetails from '../screens/IncomeDetails';
 import EditIncome from '../screens/EditIncome';
 import EditBill from '../screens/EditBill';
 import EditGoal from '../screens/EditGoal';
+import Budgets from '../screens/Budgets';
+import BudgetDetails from '../screens/BudgetDetails';
+import EditBudget from '../screens/EditBudget';
+import AddBudget from '../screens/AddBudget';
 import Root from '../screens/Root'
+
+const LeftDrawerButton = ({ navigation }) => {
+  if (Platform.OS === 'android'){
+    return <Button title="Open" onPress={()=> navigation.navigate('DrawerOpen')} />
+  }
+  return null;
+}
 
 export const IncomeStack = StackNavigator({
   Incomes:{
     screen: Incomes,
-    navigationOptions:( { navigation }) => ({
+    navigationOptions:{
       title: 'Incomes',
-      headerLeft: <LeftDrawerButton />,
-    }),
+    },
   },
-  NewIncome:{
-    screen:NewIncome,
-    navigationOptions: ( { navigation }) => ({
+  IncomeNew:{
+    screen: NewIncome,
+    navigationOptions: {
       title: 'New Income',
-      headerLeft: <LeftDrawerButton />
-    }),
+    },
   },
   IncomeDetails:{
     screen: IncomeDetails,
-    navigationOptions: ( { navigation }) => ({
+    navigationOptions: {
       title: 'Income Details',
-      headerLeft: <LeftDrawerButton />
-    }),
+    },
   },
   EditIncome:{
     screen: EditIncome,
-    navigationOptions: ( { navigation }) => ({
+    navigationOptions:{
       title: 'Edit Income',
       headerLeft: <LeftDrawerButton />
-    }),
+    },
   },
 })
 
@@ -79,6 +87,33 @@ export const GoalsStack = StackNavigator({
 
 })
 
+export const BudgetStack = StackNavigator({
+  Budgets:{
+    screen: Budgets,
+    navigationOptions:( { navigation }) => ({
+      title: 'Budgets',
+      headerLeft: <LeftDrawerButton />,
+    }),
+  },
+  BudgetDetails:{
+    screen: BudgetDetails,
+    navigationOptions:{
+      title: 'Budget Details',
+    },
+  },
+  BudgetEdit:{
+    screen: EditBudget,
+    navigationOptions:{
+      title: 'Edit Budget',
+    },
+  },
+  BudgetAdd:{
+    screen: AddBudget,
+    navigationOptions:{
+      title: "Add Budget",
+    },
+  },
+})
 
 
 export const BillsStack = StackNavigator({
@@ -111,12 +146,6 @@ export const BillsStack = StackNavigator({
 
 
 
-const LeftDrawerButton = ({ navigation }) => {
-  if (Platform.OS === 'android'){
-    return <Button title="Open" onPress={()=> navigation.navigate('DrawerOpen')} />
-  }
-  return null;
-}
 
 export const MeStack = StackNavigator({
   Me:{
@@ -133,6 +162,13 @@ export const Tabs = TabNavigator({
     screen: BillsStack,
     navigationOptions:{
       tabBarLabel:'Bills',
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
+    },
+  },
+  Budgets:{
+    screen: BudgetStack,
+    navigationOptions:{
+      tabBarLabel: "Budgets",
       tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
     },
   },
