@@ -87,7 +87,7 @@ class App extends Component {
   //   }
   }
   render () {
-    let loggedIn = false;
+    let loggedIn = true;
     let test = loggedIn ? <Tabs /> : <RootStack /> 
     return (
       test

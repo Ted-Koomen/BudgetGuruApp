@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ScrollView, AlertIOS,  Picker } from 'react-native';
-import { Select, Option } from 'react-native-chooser';
 import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
