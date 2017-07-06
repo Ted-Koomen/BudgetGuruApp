@@ -52,7 +52,7 @@ class Bills extends Component {
         style={{backgroundColor: colors.background}}
         data={this.state.bills}
         renderItem={({item})=>
-          <ListItem contact={item} user_first_name={item.bill_name} onPress={() => this.handleRowPress(item)}/>
+          <ListItem bill_name={item.bill_name} onPress={() => this.handleRowPress(item)}/>
         }
         keyExtractor={(item)=>item.id}
       />

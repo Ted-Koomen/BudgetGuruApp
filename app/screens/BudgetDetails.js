@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import { Header, Actions, Info } from '../components/UserDetails';
+import {Info } from '../components/BudgetDetails';
 import colors from '../config/colors';
 import {PrimaryButton} from '../components/Buttons'
 
@@ -17,19 +17,34 @@ class BudgetDetails extends Component{
      }
 
      handleDelete = () => {
-
+       fetch("https://tranquil-taiga-66066.herokuapp.com/budgets", {
+         method: "DELETE",
+         headers: {
+           'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({
+           id: this.props.navigation.state.params.id,
+         })
+       })
+         .then((response) => response.json())
+         .then((responseData) => {
+             AlertIOS.alert(
+                 "Successfully deleted"
+             )
+             this.props.navigation.navigate('Budgets')
+         })
+       .done();
      }
 
     render(){
-      const contact = this.props.navigation.state.params;
+      const budget = this.props.navigation.state.params;
 
 
         return(
           <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
-                <Header {...contact} />
-                <Actions {...contact}/>
-                <Info {...contact }/>
+                {/* <Header {...budget} /> */}
+                <Info bill={budget}/>
 
             </ScrollView>
             <PrimaryButton

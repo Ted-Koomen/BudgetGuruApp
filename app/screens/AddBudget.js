@@ -15,10 +15,12 @@ class NewBudget extends Component{
       super(props);
 
       this.state = {
-
+        budget_name: "",
+        monthly_spend: null,
+        goal: null,
       };
+      this.handleSubmit = this.handleSubmit.bind(this)
     }
-
     onInputChange = (text, stateKey) => {
       const mod = {};
       mod[stateKey] = text;
@@ -26,19 +28,48 @@ class NewBudget extends Component{
     }
 
     handleSubmit = () => {
-      alert("Submit");
+      fetch("https://tranquil-taiga-66066.herokuapp.com/budgets/new", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          budget_name: this.state.budget_name,
+          amount: this.state.monthly_spend,
+          due_date: this.state.goal,
+        })
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          debugger
+            AlertIOS.alert(
+                "Budget Saved Successfully"
+            )
+            this.props.navigation.navigate('Budgets')
+        })
+      .done();
     }
 
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder="Category"
+                placeholder="Budget Name"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({budget_name:text})}
               />
               <TextInput
-                placeholder="Amount Budgeted"
+                placeholder="Monthly Spend"
                 keyboardType="numeric"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({monthly_spend:text})}
               />
+              <TextInput
+                placeholder="Met Goal?"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({goal:text})}
+              />
+
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
                 label="Save"

@@ -48,10 +48,9 @@ class NewBill extends Component{
             AlertIOS.alert(
                 "Bill Saved Successfully"
             )
+            this.props.navigation.navigate('Bills')
         })
-      .done(
-        this.props.navigation.navigate('Bills')
-      );
+      .done();
     }
 
     render(){
@@ -67,11 +66,6 @@ class NewBill extends Component{
                 keyboardType="numeric"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({amount:text})}
-              />
-              <TextInput
-                placeholder="Due Date"
-                returnKeyLabel = {"next"}
-                onChangeText={(text) => this.setState({due_date:text})}
               />
               <TextInput
                 placeholder="Status: Paid/Not Paid/Past Due"
