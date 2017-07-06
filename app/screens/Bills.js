@@ -37,7 +37,6 @@ class Bills extends Component {
   component
 
   handleRowPress = (item) => {
-    // debugger
     //clicking on a bill in the bill index will route to bill show through details
     this.props.navigation.navigate('Details', item)
   };

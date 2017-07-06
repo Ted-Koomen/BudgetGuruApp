@@ -27,22 +27,23 @@ import Register from '../screens/Register';
 
 export const RootStack = StackNavigator({
   Root: {
-    screen: Root
+    screen: Root,
+    navigationOptions:( { navigation } ) => ({
+    title: 'Budget Guru'
+    })
   },
   Login:{
       screen: Login,
-      navigationOptions:( { navigation }) => ({
-        title: 'Login',
-        headerLeft: <LeftDrawerButton />,
-      }),
+      navigationOptions:{
+        title: 'Login'
+      }
   },
   Register:{
       screen: Register,
-      navigationOptions:( { navigation }) => ({
-        title: 'Register',
-        headerLeft: <LeftDrawerButton />,
-      }),
-  },
+      navigationOptions:{
+        title: 'Register'
+    }
+  }
 });
 
 const LeftDrawerButton = ({ navigation }) => {

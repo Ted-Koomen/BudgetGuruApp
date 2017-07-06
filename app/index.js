@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Contacts from './screens/Contacts';
-import { Tabs, Drawer, RootStack } from './config/router.js'
+import { Tabs, Drawer, RootStack, LeftDrawerButton } from './config/router.js'
 import { 
   Platform, 
   View,
@@ -13,8 +13,6 @@ import {
   Text
 } from 'react-native';
 import Root from './screens/Root';
-// import Register from './screens/Register';
-// import Login from './screens/Login';
 import { StackNavigator } from 'react-navigation';
 
 class App extends Component {
