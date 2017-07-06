@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { ScrollView, AlertIOS } from 'react-native';
-
+import { ScrollView, AlertIOS,  Picker } from 'react-native';
+import { Select, Option } from 'react-native-chooser';
 import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
+import Calendar from 'react-native-calendar-datepicker'
+import moment from 'moment'
 
 const fields = [
   { placeholder: 'Bill', stateKey: 'billName' },
   { placeholder: 'Amount', stateKey: 'billAmount' }
 ]
 
-class NewContact extends Component{
+class NewBill extends Component{
     constructor(props){
       super(props);
 
@@ -78,6 +80,14 @@ class NewContact extends Component{
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />
+
+              <Calendar
+                onChange={(date) => this.setState({date})}
+                selected={this.state.date}
+
+              />
+
+
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
                 label="Save"
@@ -87,4 +97,4 @@ class NewContact extends Component{
     }
 }
 
-export default NewContact;
+export default NewBill;

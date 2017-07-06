@@ -189,6 +189,13 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
+axios@^0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.16.2.tgz#ba4f92f17167dfbab40983785454b9ac149c3c6d"
+  dependencies:
+    follow-redirects "^1.2.3"
+    is-buffer "^1.1.5"
+
 babel-code-frame@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.22.0.tgz#027620bee567a88c32561574e7fd0801d33118e4"
@@ -1233,7 +1240,7 @@ dateformat@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.0.0.tgz#2743e3abb5c3fc2462e527dca445e04e9f4dee17"
 
-debug@2.6.8, debug@^2.1.1, debug@^2.2.0, debug@^2.6.3:
+debug@2.6.8, debug@^2.1.1, debug@^2.2.0, debug@^2.4.5, debug@^2.6.3:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -1532,6 +1539,12 @@ find-up@^2.1.0:
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
     locate-path "^2.0.0"
+
+follow-redirects@^1.2.3:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.2.4.tgz#355e8f4d16876b43f577b0d5ce2668b9723214ea"
+  dependencies:
+    debug "^2.4.5"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -2481,7 +2494,7 @@ lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2607,7 +2620,7 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x, moment@^2.18.1:
+moment@2.x.x, moment@>=2.10.3, moment@^2.14.1, moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -3008,6 +3021,23 @@ react-devtools-core@^2.1.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-calendar-datepicker@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-calendar-datepicker/-/react-native-calendar-datepicker-1.2.2.tgz#d51aef4f155aeaec9ac8fd9874776a49411b8fea"
+  dependencies:
+    lodash "^4.15.0"
+    moment "^2.14.1"
+
+react-native-calendar@^0.12.3:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/react-native-calendar/-/react-native-calendar-0.12.3.tgz#318fff1202b7d7d6b61a9c4b933835b187a51860"
+  dependencies:
+    moment ">=2.10.3"
+
+react-native-chooser@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-chooser/-/react-native-chooser-1.5.3.tgz#1b3a250dd13f480de165ddd2d8535193bb8fddde"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3024,11 +3054,19 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
+react-native-dropdown@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown/-/react-native-dropdown-0.0.6.tgz#f4b899b4082c4823340c7377fbe73bc01399148d"
+
 react-native-keyboard-aware-scroll-view@0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.8.tgz#e9843c0d7467a2e6a2a737883bd9c2b7c7e38e35"
   dependencies:
     react-timer-mixin "^0.13.3"
+
+react-native-simple-table@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-simple-table/-/react-native-simple-table-0.0.2.tgz#cfa344428c45e64c8186ef0fb6734a83630a4b04"
 
 react-native-tab-view@^0.0.65:
   version "0.0.65"
@@ -3133,6 +3171,7 @@ react-native@0.45.1:
     yargs "^6.4.0"
 
 react-navigation@^1.0.0-beta.9:
+
   version "1.0.0-beta.11"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.11.tgz#4271edb23cdbcc6eb88602f7fde0a77f0ef7a160"
   dependencies:
@@ -3801,7 +3840,7 @@ uuid@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
-uuid@^3.0.0:
+uuid@^3.0.0, uuid@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 

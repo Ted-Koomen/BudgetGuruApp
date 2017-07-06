@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import {bills} from  '../config/data';
 import colors from '../config/colors';
-import { ListItem } from '../components/ListItem'
-import { PrimaryButton } from '../components/Buttons'
-import axios from 'axios'
+import { ListItem } from '../components/ListItem';
+import { PrimaryButton } from '../components/Buttons';
+import axios from 'axios';
 
 
 class Bills extends Component {
@@ -37,7 +37,6 @@ class Bills extends Component {
   component
 
   handleRowPress = (item) => {
-    // debugger
     //clicking on a bill in the bill index will route to bill show through details
     this.props.navigation.navigate('Details', item)
   };
