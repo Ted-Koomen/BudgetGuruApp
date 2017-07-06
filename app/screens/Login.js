@@ -8,6 +8,9 @@ import {
   Text,
   View
 } from 'react-native';
+import Me from './Me';
+import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
+
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -18,49 +21,63 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: [],
+      error: "",
       showProgress: false,
     }
   }
 
-  onLoginPressed() {
-    
+  redirect(){
+    this.props.navigation.navigate('Me')
   }
-  // async onLoginPressed() {
-  //   this.setState({showProgress: true})
-  //   try {
-  //     let response = await fetch('https://localhost:8080/login', {
-  //                             method: 'POST',
-  //                             headers: {
-  //                               'Accept': 'application/json',
-  //                               'Content-Type': 'application/json',
-  //                             },
-  //                             body: JSON.stringify({
-  //                               session:{
-  //                                 email: this.state.email,
-  //                                 password: this.state.password,
-  //                               }
-  //                             })
-  //                           });
-  //     let res = await response.text();
-  //     if (response.status >= 200 && response.status < 300) {
-  //         //Handle success
-  //         let accessToken = res;
-  //         console.log(accessToken);
-  //         //On success we will store the access_token in the AsyncStorage
-  //         this.storeToken(accessToken);
-  //         this.redirect('home');
-  //     } else {
-  //         //Handle error
-  //         let error = res;
-  //         throw error;
-  //     }
-  //   } catch(error) {
-  //       this.setState({error: error});
-  //       console.log("error " + error);
-  //       this.setState({showProgress: false});
-  //   }
-  // }
+
+  storeToken(responseData){
+    AsyncStorage.setItem(ACCESS_TOKEN, responseData, (err)=> {
+      if(err){
+        console.log("an error");
+        throw err;
+      }
+      console.log("success");
+    }).catch((err)=> {
+        console.log("error is: " + err);
+    });
+  }
+
+  async onLoginPressed() {
+    this.setState({showProgress: true})
+    try {
+      let response = await fetch('http://localhost:3000/login', {
+                              method: 'POST',
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                session:{
+                                  email: this.state.email,
+                                  password: this.state.password,
+                                }
+                              })
+                            });
+                
+      let res = await response.text();
+      console.log("res: " + res)
+      if (response.status >= 200 && response.status < 300) {
+         
+          this.setState({error: ""})
+          let accessToken = res;
+          console.log("res token: " + accessToken);
+          this.storeToken(accessToken);
+          this.props.navigation.navigate('Me') 
+      } else {
+          let error = res;
+          throw error;
+      }
+    } catch(error) {
+        this.setState({error: error});
+        console.log("error " + error);
+        this.setState({showProgress: false});
+    }
+  }
     render() {
       return (
         <View style={styles.container}>
@@ -83,12 +100,16 @@ class Login extends Component {
             </Text>
           </TouchableHighlight>
 
+          <Text style={styles.error}>
+            {this.state.error}
+          </Text>
 
           {/*<ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
       </View>
       )
     }
   }
+
 
 
 const styles = StyleSheet.create({

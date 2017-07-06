@@ -43,6 +43,13 @@ export const RootStack = StackNavigator({
       navigationOptions:{
         title: 'Register'
     }
+  },
+    Me:{
+    screen: Me,
+    navigationOptions:{
+      tabBarLabel:'Me',
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
+    },
   }
 });
 
