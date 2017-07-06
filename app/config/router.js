@@ -181,13 +181,19 @@ export const MeStack = StackNavigator({
   Me:{
     screen: Me,
     navigationOptions:( { navigation }) => ({
-      title: 'Me',
-      headerLeft: <Button title="Open" onPress={() => navigation.navigate('DrawerOpen')} />
+      title: 'Me'
     }),
   },
 })
 
 export const Tabs = TabNavigator({
+    Me:{
+    screen: MeStack,
+    navigationOptions:{
+      tabBarLabel:'Me',
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
+    },
+  },
   Bills:{
     screen: BillsStack,
     navigationOptions:{
@@ -208,13 +214,6 @@ export const Tabs = TabNavigator({
       title: 'Goals',
       tabBarLabel:'Goals',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
-    },
-  },
-  Me:{
-    screen: MeStack,
-    navigationOptions:{
-      tabBarLabel:'Me',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
     },
   },
   Incomes:{
