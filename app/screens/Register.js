@@ -35,27 +35,7 @@ class Register extends Component {
   //   }
   // }
 
-  // async onRegisterPressed() {
-  //   this.setState({showProgress: true})
-  //   try {
-  //     let response = await fetch('https://localhost:8080/users/new', {
-  //                             method: 'POST',
-  //                             headers: {
-  //                               'Accept': 'application/json',
-  //                               'Content-Type': 'application/json',
-  //                             },
-  //                             body: JSON.stringify({
-  //                               user:{
-  //                                 first_name: this.state.first_name,
-  //                                 last_name: this.state.last_name,
-  //                                 email: this.state.email,
-  //                                 password: this.state.password,
-  //                                 balance_floor: this.state.balance_floor,
-  //                               }
-  //                             })
-  //                           });
-  //       let res = await response.text();
-  //       console.log("res is: " + res)
+
       // if (response.status >= 200 && response.status < 300) {
       //     //Handle success
       //     let accessToken = res;
@@ -85,8 +65,37 @@ class Register extends Component {
       // this.setState({showProgress: false});
     // }
 
-    onRegisterPressed(){
+    async onRegisterPressed(){
+      this.setState({showProgress: true})
+      try {
+        let response = await fetch('http://localhost:3000/users', {
+                              method: 'POST',
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                user:{
+                                  first_name: this.state.first_name,
+                                  last_name: this.state.last_name,
+                                  email: this.state.email,
+                                  password: this.state.password,
+                                  balance_floor: this.state.balance_floor,
+                                }
+                              })
+                            });
 
+          let res = await response.text();
+
+          if (response.status >= 200 && response.status < 300) {
+            console.log("res is" + res);
+          } else {
+            let errors = res;
+            throw errors;
+          }
+      } catch(errors) {
+        console.log("catch errors: " + res);
+      }
     }
 
     render() {
@@ -123,9 +132,9 @@ class Register extends Component {
             </Text>
           </TouchableHighlight>
 
-          {/*<Errors errors={this.state.errors}/>
+          <Errors errors={this.state.errors}/>
 
-          <ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
+          {/*<ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
       </View>
       )
     }

@@ -69,11 +69,6 @@ class Root extends Component {
     render() {
     return (
       <View style={styles.container}>
-      {/*<PrimaryButton
-        onPress={this.handleSubmit('NewBill')}
-        label="Register"
-      />*/}
-        {/*<RootStack />*/}
         <Text style={styles.title}>Budget Guru </Text>
         <TouchableHighlight onPress={()=> this.handleSubmit('Register')} style={styles.button}>
           <Text style={styles.buttonText}>Register</Text>
