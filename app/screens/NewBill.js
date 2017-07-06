@@ -38,8 +38,7 @@ class NewBill extends Component{
                 placeholder="Name"
               />
               <TextInput
-                placeholder="Due Date"
-                keyboardType="numeric"
+                placeholder="Status: Paid/Not Paid/Past Due"
               />
               <TextInput
                 placeholder="Company"
