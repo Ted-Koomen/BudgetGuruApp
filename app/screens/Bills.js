@@ -20,7 +20,7 @@ class Bills extends Component {
   }
 
   onLoad(){
-    fetch("https://enigmatic-chamber-19729.herokuapp.com/bills/all")
+    fetch("https://tranquil-taiga-66066.herokuapp.com/bills/all")
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({
