@@ -9,19 +9,34 @@ import axios from 'axios';
 
 class Bills extends Component {
 
+
   constructor(){
     super();
-    this.state= {
-      username:"hec",
+    this.state = {
+      bills: [],
+      user_first_name:"hector"
     }
-    console.log(bills)
-    console.log("here")
+    this.onLoad()
+  }
+
+  onLoad(){
+    fetch("https://tranquil-taiga-66066.herokuapp.com/bills/all")
+    .then((response) => response.json())
+        .then((responseData) => {
+          this.setState({
+            bills: [].concat(responseData)
+          })
+          console.log(this.state.bills)
+            // AlertIOS.alert(
+            //      this.state.bills
+            // )
+        })
+        .done();
   }
 
   component
 
   handleRowPress = (item) => {
-    // debugger
     //clicking on a bill in the bill index will route to bill show through details
     this.props.navigation.navigate('Details', item)
   };
@@ -35,11 +50,11 @@ class Bills extends Component {
       <View>
       <FlatList
         style={{backgroundColor: colors.background}}
-        data={bills}
+        data={this.state.bills}
         renderItem={({item})=>
-        <ListItem contact={item} user_first_name={this.state.username} onPress={() => this.handleRowPress(item)}/>
-      }
-      keyExtractor={(item)=>item.email}
+          <ListItem contact={item} user_first_name={item.bill_name} onPress={() => this.handleRowPress(item)}/>
+        }
+        keyExtractor={(item)=>item.id}
       />
       <PrimaryButton
         onPress={()=> this.handleSubmit()}

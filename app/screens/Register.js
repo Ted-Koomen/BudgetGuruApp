@@ -25,31 +25,77 @@ class Register extends Component {
       showProgress: false,
     }
   }
+
+    async onRegisterPressed(){
+      this.setState({showProgress: true})
+      try {
+        let response = await fetch('http://localhost:3000/users', {
+                              method: 'POST',
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                user:{
+                                  first_name: this.state.first_name,
+                                  last_name: this.state.last_name,
+                                  email: this.state.email,
+                                  password: this.state.password,
+                                  balance_floor: this.state.balance_floor,
+                                }
+                              })
+                            });
+
+          let res = await response.text();
+
+          if (response.status >= 200 && response.status < 300) {
+            console.log("res is" + res);
+          } else {
+            let errors = res;
+            throw errors;
+          }
+      } catch(errors) {
+        console.log("catch errors: " + errors);
+
+        let formErrors = JSON.parse(errors);
+        let errorsArray = [];
+        for(var key in formErrors) {
+          if(formErrors[key].length > 1) {
+              formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
+          } else {
+              errorsArray.push(`${key} ${formErrors[key]}`);
+          }
+        }
+       this.setState({errors: errorsArray})
+       this.setState({showProgress: false});
+      }
+    }
+
     render() {
       return (
         <View style={styles.container}>
           <Text style={styles.heading}>
             Register User
           </Text>
-          <TextInput>
+          <TextInput
             onChangeText={ (text)=> this.setState({first_name: text}) }
             style={styles.input} placeholder="First Name">
           </TextInput>
-          <TextInput>
+          <TextInput
             onChangeText={ (text)=> this.setState({last_name: text}) }
             style={styles.input} placeholder="Last Name">
           </TextInput>
-          <TextInput>
+          <TextInput
             onChangeText={ (text)=> this.setState({email: text}) }
             style={styles.input} placeholder="Email">
           </TextInput>
-          <TextInput>
+          <TextInput
             onChangeText={ (text)=> this.setState({password: text}) }
             style={styles.input}
             placeholder="Password"
             secureTextEntry={true}>
           </TextInput>
-          <TextInput>
+          <TextInput
             onChangeText={ (text)=> this.setState({balance_floor: text}) }
             style={styles.input} placeholder="Balance Floor">
           </TextInput>
@@ -59,12 +105,21 @@ class Register extends Component {
             </Text>
           </TouchableHighlight>
 
+          <Errors errors={this.state.errors}/>
 
-          <ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />
+          {/*<ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
       </View>
       )
     }
   }
+
+  const Errors = (props) => {
+  return (
+    <View>
+      {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
+    </View>
+  );
+}
 
 
 const styles = StyleSheet.create({
@@ -101,7 +156,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: 'red',
-    paddingTop: 10
+    paddingTop: 10,
   },
   loader: {
     marginTop: 20

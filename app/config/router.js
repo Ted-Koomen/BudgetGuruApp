@@ -5,7 +5,6 @@ import { Button, Platform } from 'react-native';
 import Bills from '../screens/Bills';
 import Contacts from '../screens/Contacts';
 import BillDetails from '../screens/BillDetails';
-// import NewContact from '../screens/NewContact';
 import Me from '../screens/Me';
 import NewBill from '../screens/NewBill';
 import NewGoal from '../screens/NewGoal';
@@ -21,7 +20,38 @@ import Budgets from '../screens/Budgets';
 import BudgetDetails from '../screens/BudgetDetails';
 import EditBudget from '../screens/EditBudget';
 import AddBudget from '../screens/AddBudget';
-import Root from '../screens/Root'
+import Root from '../screens/Root';
+import Login from '../screens/Login';
+import Register from '../screens/Register';
+
+
+export const RootStack = StackNavigator({
+  Root: {
+    screen: Root,
+    navigationOptions:( { navigation } ) => ({
+    title: 'Budget Guru'
+    })
+  },
+  Login:{
+      screen: Login,
+      navigationOptions:{
+        title: 'Login'
+      }
+  },
+  Register:{
+      screen: Register,
+      navigationOptions:{
+        title: 'Register'
+    }
+  },
+    Me:{
+    screen: Me,
+    navigationOptions:{
+      tabBarLabel:'Me',
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
+    },
+  }
+});
 
 const LeftDrawerButton = ({ navigation }) => {
   if (Platform.OS === 'android'){
@@ -197,25 +227,3 @@ export const Tabs = TabNavigator({
 
 });
 
-// export const Drawer = DrawerNavigator({
-//   Contacts:{
-//       screen: ContactsStack,
-//       navigationOptions:{
-//         drawerLabel: 'Contacts'
-//       },
-//   },
-//   NewContact:{
-//     screen: NewContactStack,
-//     navigationOptions:{
-//       drawerLabel: 'New Conctact'
-//     },
-//   },
-//
-//   Me:{
-//     screen: MeStack,
-//     navigationOptions:{
-//       drawerLabel: 'Me'
-//     },
-//   },
-//
-// })
