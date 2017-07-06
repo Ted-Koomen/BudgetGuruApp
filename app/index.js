@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Contacts from './screens/Contacts';
 import { Tabs, Drawer, RootStack, LeftDrawerButton } from './config/router.js'
-import { 
-  Platform, 
+import {
+  Platform,
   View,
   StyleSheet,
   TextInput,
@@ -88,7 +88,7 @@ class App extends Component {
   }
   render () {
     let loggedIn = true;
-    let test = loggedIn ? <Tabs /> : <RootStack /> 
+    let test = loggedIn ? <Tabs /> : <RootStack />
     return (
       test
     )
