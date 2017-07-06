@@ -32,7 +32,7 @@ class NewBill extends Component{
     }
 
     handleSubmit = () => {
-      fetch("http://localhost:3000/bills/new", {
+      fetch("https://tranquil-taiga-66066.herokuapp.com/bills/new", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -52,7 +52,6 @@ class NewBill extends Component{
         })
       .done(
         this.props.navigation.navigate('Bills')
-
       );
     }
 
@@ -71,22 +70,15 @@ class NewBill extends Component{
                 onChangeText={(text) => this.setState({amount:text})}
               />
               <TextInput
-                placeholder="Due Date"
-                returnKeyLabel = {"next"}
-                onChangeText={(text) => this.setState({due_date:text})}
-              />
-              <TextInput
                 placeholder="Status"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />
 
               <Calendar
-                onChange={(date) => this.setState({date})}
+                onChange={(date) => this.setState({due_date:date})}
                 selected={this.state.date}
-
               />
-
 
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
