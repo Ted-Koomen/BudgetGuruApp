@@ -4,7 +4,8 @@ import { Select, Option } from 'react-native-chooser';
 import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
-import { Calendar } from 'react-native-calendar';
+import Calendar from 'react-native-calendar-datepicker'
+import moment from 'moment'
 
 const fields = [
   { placeholder: 'Bill', stateKey: 'billName' },
@@ -48,13 +49,12 @@ class NewBill extends Component{
                 keyboardType='numeric'
               />
 
-              {/* <Picker>
-                <Picker.Item label="Paid" value="billStatus" />
-                <Picker.Item label="Unpaid" value="billStatus" />
-                <Picker.Item label="Past Due" value="billStatus" />
-              </Picker>
-               */}
-              
+              <Calendar
+                onChange={(date) => this.setState({date})}
+                selected={this.state.date}
+
+              />
+
 
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
