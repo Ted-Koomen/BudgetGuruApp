@@ -6,10 +6,10 @@ import styles, { CHEVRON_SIZE } from './styles';
 import { capitalizeFirstLetter } from '../../helpers/string';
 import colors from '../../config/colors';
 
-const ListItem = ({bill_name, onPress})=>{
+const BudgetList = ({budget, onPress})=>{
   // debugger
   // const name = `${capitalizeFirstLetter(contact.name)} `
-  const name = bill_name
+  const name = budget
   const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward';
   return(
     <TouchableHighlight
@@ -38,4 +38,4 @@ const ListItem = ({bill_name, onPress})=>{
   )
 }
 
-export default ListItem;
+export default BudgetList;
