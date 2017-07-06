@@ -8,6 +8,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
+    marginTop: 10,
   },
   primaryButton:{
     borderColor: colors.border,

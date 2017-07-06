@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ScrollView, AlertIOS,  Picker } from 'react-native';
-import { Select, Option } from 'react-native-chooser';
 import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
@@ -70,7 +69,12 @@ class NewBill extends Component{
                 onChangeText={(text) => this.setState({amount:text})}
               />
               <TextInput
-                placeholder="Status"
+                placeholder="Due Date"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({due_date:text})}
+              />
+              <TextInput
+                placeholder="Status: Paid/Not Paid/Past Due"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />
