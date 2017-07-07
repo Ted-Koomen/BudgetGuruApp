@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native';
 import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
+import Calendar from 'react-native-calendar-datepicker'
 
 
 
@@ -26,19 +27,20 @@ class EditBill extends Component{
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                // {bill.bill_name}
+                placeholder={bill.bill_name}
               />
 
               <TextInput
-                // {bill.amount}
+                placeholder={bill.amount.toString()}
               />
 
               <TextInput
-                // {bill.due_date}
+                placeholder={bill.status}
               />
 
-              <TextInput
-                // {bill.status}
+              <Calendar
+                onChange={(date) => this.setState({due_date:date})}
+                selected={this.state.date}
               />
 
               <PrimaryButton

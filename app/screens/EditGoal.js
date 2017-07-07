@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native';
 import colors from '../config/colors';
 import { TextInput, View } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
-
+import Calendar from 'react-native-calendar-datepicker'
 
 
 class EditGoal extends Component{
@@ -30,12 +30,12 @@ class EditGoal extends Component{
               placeholder="Goal"
             />
             <TextInput
-              placeholder="Target Date"
-              keyboardType='numeric'
-            />
-            <TextInput
               placeholder="Amount"
               keyboardType='numeric'
+            />
+            <Calendar
+              onChange={(date) => this.setState({due_date:date})}
+              selected={this.state.date}
             />
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
