@@ -2,42 +2,57 @@ import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import {contacts} from  '../config/data';
 import colors from '../config/colors';
-import { ListItem } from '../components/ListItem'
+import { BudgetList } from '../components/ListItem'
 import { PrimaryButton } from '../components/Buttons'
+
 
 class Incomes extends Component {
 
-  handleRowPress = (item) => {
-    //clicking on a bill in the bill index will route to bill show through details
-    this.props.navigation.navigate('IncomeDetails', item)
-  };
-
-  handleSubmit = () => {
-    this.props.navigation.navigate('IncomeNew')
-  }
-
-  handleEdit = ()=> {
-    this.props.navigation.navigate('EditIncome')
-  }
-
-  render() {
-    return (
-      <View>
-      <FlatList
-        style={{backgroundColor: colors.background}}
-        data={contacts}
-        renderItem={({item})=>
-        <ListItem contact={item} onPress={() => this.handleRowPress(item)}/>
+    constructor(){
+      super();
+      this.state = {
+        incomes: [],
       }
-      keyExtractor={(item)=>item.email}
-      />
-      <PrimaryButton
-        onPress={()=> this.handleSubmit()}
-        label="Add Income"
-      />
-    </View>
-    );
+    }
+
+    componentWillMount(){
+      fetch("http://localhost:3000/incomes")
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          incomes: [].concat(responseData)
+        })
+        console.log(this.state.budgets)
+      })
+      .done();
+    }
+
+    handleRowPress = (item) => {
+      this.props.navigation.navigate('IncomeDetails', item)
+    };
+
+    handleSubmit = ()=>{
+      this.props.navigation.navigate('IncomeNew')
+    }
+
+    render() {
+      return (
+        <View>
+          <FlatList
+            style={{backgroundColor: colors.background}}
+            data={this.state.incomes}
+            renderItem={({item})=>
+            <BudgetList itemName={item.source} onPress={() => this.handleRowPress(item)}/>
+          }
+          keyExtractor={(item)=>item.id}
+          />
+          <PrimaryButton
+            onPress={()=> this.handleSubmit()}
+            label="Add Income"
+          />
+      </View>
+      );
+    }
   }
-}
 
 export default Incomes

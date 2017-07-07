@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { ScrollView, AlertIOS,  Picker, StyleSheet, View, AsyncStorage, Text} from 'react-native';
 import colors from '../config/colors';
