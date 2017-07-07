@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-class Me extends Component{
+class Profile extends Component{
     render(){
         return(
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Me Screen</Text>
+                <Text>Profile Page</Text>
             </View>
         );
     }
 }
 
-export default Me;
+export default Profile;

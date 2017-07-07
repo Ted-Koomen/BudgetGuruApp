@@ -6,6 +6,7 @@ import styles, { CHEVRON_SIZE } from './styles';
 import { capitalizeFirstLetter } from '../../helpers/string';
 import colors from '../../config/colors';
 
+
 const BudgetList = ({itemName, onPress})=>{
   const name = itemName
   const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward';

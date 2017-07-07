@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  TextInput,
-  TouchableHighlight,
-  AsyncStorage,
-  ActivityIndicatorIOS,
-  Text,
-  View
-} from 'react-native';
-import Me from './Me';
+import { StyleSheet, TextInput, TouchableHighlight, AsyncStorage, ActivityIndicatorIOS, Text, ScrollView} from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
+import Root from './Root';
 
 
 const ACCESS_TOKEN = 'access_token';
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: "",
@@ -24,10 +16,6 @@ class Login extends Component {
       error: "",
       showProgress: false,
     }
-  }
-
-  redirect(){
-    this.props.navigation.navigate('Me')
   }
 
   storeToken(responseData){
@@ -62,13 +50,12 @@ class Login extends Component {
       let res = await response.text();
       console.log("res: " + res)
       if (response.status >= 200 && response.status < 300) {
-         
+          this.props.navigation.navigate('Home')
           this.setState({error: ""})
           let accessToken = res;
           console.log("res token: " + accessToken);
-          this.storeToken(accessToken);
-          this.props.navigation.navigate('Me') 
-      } else {
+          this.storeToken(accessToken);          
+      } else { 
           let error = res;
           throw error;
       }
@@ -80,10 +67,11 @@ class Login extends Component {
   }
     render() {
       return (
-        <View style={styles.container}>
+        <ScrollView keyboardShouldPersistTaps='always' contentContainerStyle={styles.container}>
           <Text style={styles.heading}>
             Login User
           </Text>
+
           <TextInput
             onChangeText={ (text)=> this.setState({email: text}) }
             style={styles.input} placeholder="Email">
@@ -103,9 +91,7 @@ class Login extends Component {
           <Text style={styles.error}>
             {this.state.error}
           </Text>
-
-          {/*<ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
-      </View>
+      </ScrollView>
       )
     }
   }
@@ -131,7 +117,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#064F9C',
     alignSelf: 'stretch',
     marginTop: 10,
     justifyContent: 'center'

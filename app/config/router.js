@@ -1,11 +1,11 @@
 import React from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Button, Platform } from 'react-native';
+import { Button, Platform, StatusBar } from 'react-native';
 import Bills from '../screens/Bills';
 import Contacts from '../screens/Contacts';
 import BillDetails from '../screens/BillDetails';
-import Me from '../screens/Me';
+import Profile from '../screens/Profile';
 import NewBill from '../screens/NewBill';
 import NewGoal from '../screens/NewGoal';
 import Incomes from '../screens/Incomes';
@@ -24,34 +24,6 @@ import Root from '../screens/Root';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
 
-
-export const RootStack = StackNavigator({
-  Root: {
-    screen: Root,
-    navigationOptions:( { navigation } ) => ({
-    title: 'Budget Guru'
-    })
-  },
-  Login:{
-      screen: Login,
-      navigationOptions:{
-        title: 'Login'
-      }
-  },
-  Register:{
-      screen: Register,
-      navigationOptions:{
-        title: 'Register'
-    }
-  },
-    Me:{
-    screen: Me,
-    navigationOptions:{
-      tabBarLabel:'Me',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
-    },
-  }
-});
 
 const LeftDrawerButton = ({ navigation }) => {
   if (Platform.OS === 'android'){
@@ -93,7 +65,6 @@ export const GoalsStack = StackNavigator({
     screen: Goals,
     navigationOptions:( { navigation } ) => ({
       title: 'Goals',
-      headerLeft: <LeftDrawerButton />,
     }),
   },
     GoalAdd:{
@@ -178,10 +149,10 @@ export const BillsStack = StackNavigator({
 
 
 export const MeStack = StackNavigator({
-  Me:{
-    screen: Me,
+ Profile:{
+    screen: Profile,
     navigationOptions:( { navigation }) => ({
-      title: 'Me'
+      title: 'Profile'
     }),
   },
 })
@@ -190,7 +161,7 @@ export const Tabs = TabNavigator({
     Me:{
     screen: MeStack,
     navigationOptions:{
-      tabBarLabel:'Me',
+      tabBarLabel:'Profile',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
     },
   },
@@ -211,7 +182,6 @@ export const Tabs = TabNavigator({
   Goals:{
     screen: GoalsStack,
     navigationOptions:{
-      title: 'Goals',
       tabBarLabel:'Goals',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
     },
@@ -224,4 +194,35 @@ export const Tabs = TabNavigator({
     },
   },
 
+});
+
+export const RootStack = StackNavigator({
+  Root: {
+    screen: Root,
+    navigationOptions:( { navigation } ) => ({
+    header: null,
+    title: 'Budget Guru'
+    })
+  },
+  Login:{
+      screen: Login,
+      navigationOptions:{
+        title: 'Login'
+      }
+  },
+  Register:{
+      screen: Register,
+      navigationOptions:{
+        title: 'Register'
+    }
+  },
+  Home:{
+    screen: Tabs,
+    headerMode: 'screen',
+    navigationOptions:( { navigation } ) => ({
+    header: null,
+    title: 'Budget Guru'
+    })
+
+  }
 });
