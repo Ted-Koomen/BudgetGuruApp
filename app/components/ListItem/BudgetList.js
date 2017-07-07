@@ -7,7 +7,6 @@ import { capitalizeFirstLetter } from '../../helpers/string';
 import colors from '../../config/colors';
 
 const BudgetList = ({budget, onPress})=>{
-  // debugger
   // const name = `${capitalizeFirstLetter(contact.name)} `
   const name = budget
   const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward';

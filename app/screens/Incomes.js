@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList} from 'react-native';
 import {contacts} from  '../config/data';
 import colors from '../config/colors';
 import { ListItem } from '../components/ListItem'

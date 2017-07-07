@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  TextInput,
-  TouchableHighlight,
-  AsyncStorage,
-  ActivityIndicatorIOS,
-  Text,
-  View
-} from 'react-native';
+import { StyleSheet, TextInput, TouchableHighlight, AsyncStorage, ActivityIndicatorIOS, Text, View} from 'react-native';
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -50,6 +42,7 @@ class Register extends Component {
 
           if (response.status >= 200 && response.status < 300) {
             console.log("res is" + res);
+            this.props.navigation.navigate('Home')
           } else {
             let errors = res;
             throw errors;
@@ -141,7 +134,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#064F9C',
     alignSelf: 'stretch',
     marginTop: 10,
     justifyContent: 'center'
