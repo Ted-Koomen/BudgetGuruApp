@@ -8,8 +8,6 @@ import BillDetails from '../screens/BillDetails';
 import Me from '../screens/Me';
 import NewBill from '../screens/NewBill';
 import NewGoal from '../screens/NewGoal';
-import Goals from '../screens/Goals';
-import GoalDetails from '../screens/GoalDetails';
 import Incomes from '../screens/Incomes';
 import NewIncome from '../screens/NewIncome';
 import IncomeDetails from '../screens/IncomeDetails';
@@ -18,6 +16,8 @@ import EditBill from '../screens/EditBill';
 import EditGoal from '../screens/EditGoal';
 import Budgets from '../screens/Budgets';
 import BudgetDetails from '../screens/BudgetDetails';
+import Goals from '../screens/Goals';
+import GoalDetails from '../screens/GoalDetails';
 import EditBudget from '../screens/EditBudget';
 import AddBudget from '../screens/AddBudget';
 import Root from '../screens/Root';
@@ -225,4 +225,3 @@ export const Tabs = TabNavigator({
   },
 
 });
-

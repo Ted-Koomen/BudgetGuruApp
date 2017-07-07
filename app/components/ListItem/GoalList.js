@@ -6,8 +6,8 @@ import styles, { CHEVRON_SIZE } from './styles';
 import { capitalizeFirstLetter } from '../../helpers/string';
 import colors from '../../config/colors';
 
-const BudgetList = ({itemName, onPress})=>{
-  const name = itemName
+const GoalList = ({goal, onPress})=>{
+  const name = goal
   const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward';
   return(
     <TouchableHighlight
@@ -36,4 +36,4 @@ const BudgetList = ({itemName, onPress})=>{
   )
 }
 
-export default BudgetList;
+export default GoalList;

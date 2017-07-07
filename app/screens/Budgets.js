@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import {contacts} from  '../config/data';
 import colors from '../config/colors';
 import  {BudgetList}  from '../components/ListItem';
 import { PrimaryButton } from '../components/Buttons';
@@ -41,7 +40,7 @@ class Budgets extends Component {
           style={{backgroundColor: colors.background}}
           data={this.state.budgets}
           renderItem={({item})=>
-          <BudgetList budget={item.budget_name} onPress={() => this.handleRowPress(item)}/>
+          <BudgetList itemName={item.budget_name} onPress={() => this.handleRowPress(item)}/>
         }
         keyExtractor={(item)=>item.email}
         />
