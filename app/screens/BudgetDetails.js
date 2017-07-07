@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, AlertIOS } from 'react-native';
 import {Info } from '../components/BudgetDetails';
 import colors from '../config/colors';
 import {PrimaryButton} from '../components/Buttons'
@@ -9,7 +9,6 @@ class BudgetDetails extends Component{
 
      constructor(){
        super()
-
      }
 
      handleSubmit = () => {
@@ -17,7 +16,7 @@ class BudgetDetails extends Component{
      }
 
      handleDelete = () => {
-       fetch("https://tranquil-taiga-66066.herokuapp.com/budgets", {
+       fetch("http://localhost:3000/budgets", {
          method: "DELETE",
          headers: {
            'Content-Type': 'application/json'

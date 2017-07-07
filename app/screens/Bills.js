@@ -16,11 +16,10 @@ class Bills extends Component {
       bills: [],
       user_first_name:"hector"
     }
-    this.onLoad()
   }
 
-  onLoad(){
-    fetch("https://tranquil-taiga-66066.herokuapp.com/bills/all")
+  componentWillMount(){
+    fetch("http://localhost:3000/bills/all")
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({

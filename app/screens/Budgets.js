@@ -12,11 +12,10 @@ class Budgets extends Component {
     this.state = {
       budgets: [],
     }
-    this.onLoad()
   }
 
-  onLoad(){
-    fetch("https://tranquil-taiga-66066.herokuapp.com/budgets")
+  componentWillMount(){
+    fetch("http://localhost:3000/budgets")
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({

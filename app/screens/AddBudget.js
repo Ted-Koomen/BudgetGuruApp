@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView,AlertIOS  } from 'react-native';
 
 import colors from '../config/colors';
-import { TextInput, View } from '../components/TextInput';
+import { TextInput, View} from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
 
 const fields = [
@@ -28,20 +28,19 @@ class NewBudget extends Component{
     }
 
     handleSubmit = () => {
-      fetch("https://tranquil-taiga-66066.herokuapp.com/budgets/new", {
+      fetch("http://localhost:3000/budgets/new", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           budget_name: this.state.budget_name,
-          amount: this.state.monthly_spend,
-          due_date: this.state.goal,
+          monthly_spend: this.state.monthly_spend,
+          goal: this.state.goal,
         })
       })
         .then((response) => response.json())
         .then((responseData) => {
-          debugger
             AlertIOS.alert(
                 "Budget Saved Successfully"
             )

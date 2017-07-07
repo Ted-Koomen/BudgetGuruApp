@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, AlertIOS } from 'react-native';
 import { Header, Actions, Info } from '../components/UserDetails';
 import colors from '../config/colors';
-import { PrimaryButton } from '../components/Buttons'
+import { PrimaryButton } from '../components/Buttons';
+import EditBill from './EditBill';
 
 //want amount and name of bill in this screen
 class Details extends Component{
@@ -11,7 +12,28 @@ class Details extends Component{
     }
 
     handleSubmit(){
-      this.props.navigation.navigate('EditBill')
+      let bill = this.props.navigation.state.params
+      this.props.navigation.navigate('EditBill',bill)
+    }
+
+    handleDelete(){
+      fetch("http://localhost:3000//bills", {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: this.props.navigation.state.params.id,
+        })
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+            AlertIOS.alert(
+                "Successfully deleted"
+            )
+            this.props.navigation.navigate('Bills')
+        })
+      .done();
     }
 
     render(){
@@ -22,11 +44,12 @@ class Details extends Component{
 
                 <Info bill={contact}/>
                 <PrimaryButton
-                onPress={()=> this.handleSubmit()}
-                label='Edit Bill'
+                  onPress={()=> this.handleSubmit()}
+                  label='Edit Bill'
                 />
 
-              
+
+
               <View>
                 <PrimaryButton
                   onPress={()=> this.handleDelete()}
