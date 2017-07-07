@@ -10,7 +10,6 @@ import { PrimaryButton } from '../components/Buttons'
 class EditBill extends Component{
     constructor(props){
       super(props);
-
       this.state = {
 
       };
@@ -22,21 +21,26 @@ class EditBill extends Component{
       this.setState(mod);
     }
 
-
     render(){
+      const bill = this.props.navigation.state.params
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder="Company"
+                // {bill.bill_name}
               />
+
               <TextInput
-                placeholder="Target Date"
-                keyboardType='numeric'
+                // {bill.amount}
               />
+
               <TextInput
-                placeholder="Amount"
-                keyboardType='numeric'
+                // {bill.due_date}
               />
+
+              <TextInput
+                // {bill.status}
+              />
+
               <PrimaryButton
                 onPress={()=> this.handleSubmit()}
                 label="Save"

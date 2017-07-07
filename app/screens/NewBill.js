@@ -31,7 +31,7 @@ class NewBill extends Component{
     }
 
     handleSubmit = () => {
-      fetch("https://tranquil-taiga-66066.herokuapp.com/bills/new", {
+      fetch("http://localhost:3000/bills/new", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
