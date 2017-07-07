@@ -13,27 +13,20 @@ class Bills extends Component {
   constructor(){
     super();
     this.state = {
-      bills: [],
-      user_first_name:"hector"
+      bills: []
     }
   }
 
   componentWillMount(){
     fetch("http://localhost:3000/bills/all")
     .then((response) => response.json())
-        .then((responseData) => {
-          this.setState({
-            bills: [].concat(responseData)
-          })
-          console.log(this.state.bills)
-            // AlertIOS.alert(
-            //      this.state.bills
-            // )
-        })
-        .done();
+    .then((responseData) => {
+      this.setState({
+        bills: [].concat(responseData)
+      })
+    })
+    .done();
   }
-
-  component
 
   handleRowPress = (item) => {
     //clicking on a bill in the bill index will route to bill show through details

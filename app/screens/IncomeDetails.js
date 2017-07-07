@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import { Header, Actions, Info } from '../components/UserDetails';
+import { View, Text, ScrollView, StyleSheet, AlertIOS } from 'react-native';
+import {Info } from '../components/IncomeDetails';
 import colors from '../config/colors';
 import {PrimaryButton} from '../components/Buttons'
 
@@ -9,37 +9,51 @@ class IncomeDetails extends Component{
 
      constructor(){
        super()
-
      }
 
      handleSubmit = () => {
-       this.props.navigation.navigate('EditIncome')
+       this.props.navigation.navigate('BillEdit')
      }
 
      handleDelete = () => {
-
+       fetch("http://localhost:3000/incomes", {
+         method: "DELETE",
+         headers: {
+           'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({
+           id: this.props.navigation.state.params.id,
+         })
+       })
+         .then((response) => response.json())
+         .then((responseData) => {
+             AlertIOS.alert(
+                 "Successfully deleted"
+             )
+             this.props.navigation.navigate('Incomes')
+         })
+       .done();
      }
 
     render(){
-      const contact = this.props.navigation.state.params;
+      const income = this.props.navigation.state.params;
 
 
         return(
           <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
-                <Header {...contact} />
-                <Actions {...contact}/>
-                <Info {...contact }/>
+                {/* <Header {...budget} /> */}
+                <Info income={income}/>
 
             </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
-              label="Edit Income"
+              label="Edit Goal"
             />
             <View>
               <PrimaryButton
                 onPress={()=> this.handleDelete()}
-                label="Delete Income"
+                label="Delete Goal"
               />
             </View>
 

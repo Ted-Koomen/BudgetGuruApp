@@ -1,38 +1,63 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { Header, Actions, Info } from '../components/UserDetails';
+import { View, Text, ScrollView, StyleSheet, AlertIOS } from 'react-native';
+import {Info } from '../components/GoalDetails';
 import colors from '../config/colors';
-import { PrimaryButton } from '../components/Buttons';
+import {PrimaryButton} from '../components/Buttons'
 
 //want amount and name of bill in this screen
 class GoalDetails extends Component{
-  handleSubmit = () => {
-    this.props.navigation.navigate('EditGoal')
-  }
 
-  handleDelete = () => {
-    // route to delete budget
-  }
+     constructor(){
+       super()
+     }
+
+     handleSubmit = () => {
+       this.props.navigation.navigate('BudgetEdit')
+     }
+
+     handleDelete = () => {
+       fetch("http://localhost:3000/goals", {
+         method: "DELETE",
+         headers: {
+           'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({
+           id: this.props.navigation.state.params.id,
+         })
+       })
+         .then((response) => response.json())
+         .then((responseData) => {
+             AlertIOS.alert(
+                 "Successfully deleted"
+             )
+             this.props.navigation.navigate('Goals')
+         })
+       .done();
+     }
+
     render(){
-      const contact = this.props.navigation.state.params;
+      const goal = this.props.navigation.state.params;
 
 
         return(
+          <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
-                <Header {...contact} />
-                <Actions {...contact}/>
-                <Info {...contact }/>
-              <PrimaryButton
-                onPress={()=> this.handleSubmit()}
-                label="Edit Goal"
-              />
-              <View>
-                <PrimaryButton
-                  onPress={()=> this.handleDelete()}
-                  label="Delete Goal"
-                />
-              </View>
+                {/* <Header {...budget} /> */}
+                <Info goal={goal}/>
+
             </ScrollView>
+            <PrimaryButton
+              onPress={()=> this.handleSubmit()}
+              label="Edit Goal"
+            />
+            <View>
+              <PrimaryButton
+                onPress={()=> this.handleDelete()}
+                label="Delete Goal"
+              />
+            </View>
+
+          </View>
         );
     }
 }

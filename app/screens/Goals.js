@@ -1,41 +1,56 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import {contacts} from  '../config/data';
 import colors from '../config/colors';
-import { ListItem } from '../components/ListItem'
-import { PrimaryButton } from '../components/Buttons'
-import { NavigationActions } from 'react-navigation'
+import  { BudgetList }  from '../components/ListItem';
+import { PrimaryButton } from '../components/Buttons';
 
 class Goals extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      goals: [],
+    }
+  }
+
+  componentWillMount(){
+    fetch("http://localhost:3000/goals/all")
+    .then((response) => response.json())
+        .then((responseData) => {
+          this.setState({
+            goals: [].concat(responseData)
+          })
+          console.log(this.state.goals)
+        })
+        .done();
+  }
+
   handleRowPress = (item) => {
-    //clicking on a bill in the bill index will route to bill show through details
     this.props.navigation.navigate('GoalDetails', item)
   };
 
-  handleSubmit = () => {
+  handleSubmit = ()=>{
     this.props.navigation.navigate('GoalAdd')
   }
-  
 
   render() {
     return (
       <View>
-      <FlatList
-        style={{backgroundColor: colors.background}}
-        data={contacts}
-        renderItem={({item})=>
-        <ListItem contact={item} onPress={() => this.handleRowPress(item)}/>
-      }
-      keyExtractor={(item)=>item.email}
-      />
-      <PrimaryButton
-        onPress={()=> this.handleSubmit()}
-        label="Add Goal"
-      />
+        <FlatList
+          style={{backgroundColor: colors.background}}
+          data={this.state.goals}
+          renderItem={({item})=>
+          <BudgetList itemName={item.goal_name} onPress={() => this.handleRowPress(item)}/>
+        }
+        keyExtractor={(item)=>item.email}
+        />
+        <PrimaryButton
+          onPress={()=> this.handleSubmit()}
+          label="Add Goal"
+        />
     </View>
     );
   }
 }
 
-export default Goals
+export default Goals;
