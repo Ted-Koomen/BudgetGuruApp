@@ -44,7 +44,7 @@ class NewBill extends Component{
                                 user:{
                                   bill_name: this.state.bill_name,
                                   amount: this.state.amount,
-                                  due_date: this.state.due_date,
+                                  due_date: this.state.due_date.daym,
                                   status: this.state.status
                                 }
                               })

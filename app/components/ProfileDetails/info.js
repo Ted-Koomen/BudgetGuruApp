@@ -8,19 +8,18 @@ import Row from './Row';
 import { capitalizeFirstLetter } from '../../helpers/string';
 
 
-class AllBills extends Component{
+class AllBudgets extends Component{
   render() {
-    let bill = this.props.bill
+    let income = this.props.income
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          {"$"+bill.amount+"\n"}
-          {"Due the "+ bill.due_date + "of every month"+ "\n"}
-          {"Status: " + bill.status+"\n"}
+          {income.monthly_spend+"\n"}
+          {income.goal}
         </Text>
       </View>
     );
   }
 }
 
-export default AllBills
+export default AllBudgets
