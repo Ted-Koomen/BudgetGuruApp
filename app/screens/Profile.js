@@ -15,14 +15,9 @@ class Profile extends Component{
       super()
       this.state = {
         remaining_balance: "",
-        positive: "",
+        canSpend: null,
         message: "",
-        total_income: "",
-        total_expenses: "",
-        year_spend: "",
-        average_monthly_available_spend: "",
-        total_budgets_amount: "",
-        floor: ""
+        // floor: ""
       }
     }
 
@@ -37,14 +32,9 @@ class Profile extends Component{
       .then((responseData) => {
         this.setState({
           remaining_balance: responseData.remaining_balance,
-          positive: responseData.positive,
+          canSpend: responseData.can_spend,
           message: responseData.message,
-          total_income: responseData.total_income,
-          total_expenses: responseData.total_expenses,
-          year_spend: responseData.year_spend,
-          average_monthly_available_spend: responseData.average_monthly_available_spend,
-          total_budgets_amount: responseData.total_budgets_amount,
-          floor: responseData.floor
+          // floor: responseData.floor
           })
       })
       .done();
@@ -55,9 +45,9 @@ class Profile extends Component{
               <Text style={styles.heading}>
                 Summary
               </Text>
-              {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Balance:{this.state.remaining_balance}</Text>}
+              {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
-              {this.state.remaining_balance > 0 ? <ScrollView><TextInput style={styles.input}
+              {this.state.canSpend ? <ScrollView><TextInput style={styles.input}
                 placeholder="Amount"
                 keyboardType="numeric"
                 returnKeyLabel = {"next"}
@@ -67,13 +57,11 @@ class Profile extends Component{
                 <Text style={styles.buttonText}>
                   Feelin Lucky
                 </Text>
-             </TouchableHighlight></ScrollView>: <Text>Sorry, you cant spend anything right now</Text>}
+              </TouchableHighlight></ScrollView>: <Text style={{color:'red',fontWeight: 'bold'}}>Warning</Text>}
 
-             <Text>
+             <Text style={styles.subHeading}>
               {this.state.message}
              </Text>
-              <Text>Expenses: {this.state.total_expenses}</Text>
-              <Text>Income: {this.state.total_income}</Text>
 
             </View>
         );
@@ -114,6 +102,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
+  },
+  subHeading: {
+    fontSize: 18,
   },
   error: {
     color: 'red',

@@ -15,7 +15,7 @@ class AllBills extends Component{
       <View style={styles.container}>
         <Text style={styles.welcome}>
           {"$"+bill.amount+"\n"}
-          {"Due in "+moment(bill.due_date).endOf('day').fromNow() +"\n"}
+          {"Due the "+ bill.due_date + "of every month"+ "\n"}
           {"Status: " + bill.status+"\n"}
         </Text>
       </View>
