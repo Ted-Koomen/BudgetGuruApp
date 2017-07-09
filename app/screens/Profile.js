@@ -17,12 +17,49 @@ class Profile extends Component{
         remaining_balance: "",
         canSpend: null,
         message: "",
+        amount:null
         // floor: ""
       }
+      this.goHere = this.goHere.bind(this)
     }
 
-    goHere(){
+    async goHere(){
+      this.setState({showProgress: true})
+      try {
+        let response = await fetch('http://localhost:3000/expense', {
+                              method: 'POST',
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                              },
+                              body: JSON.stringify({
+                                amount: this.state.amount
+                              })
+                            });
 
+          let res = await response.text();
+
+          if (response.status >= 200 && response.status < 300) {
+            this.props.navigation.navigate('Profile')
+          } else {
+            let errors = res;
+            throw errors;
+          }
+      } catch(errors) {
+        console.log("catch errors: " + errors);
+
+        let formErrors = JSON.parse(errors);
+        let errorsArray = [];
+        for(var key in formErrors) {
+          if(formErrors[key].length > 1) {
+              formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
+          } else {
+              errorsArray.push(`${key} ${formErrors[key]}`);
+          }
+        }
+       this.setState({errors: errorsArray})
+      //  this.setState({showProgress: false});
+      }
     }
 
 
@@ -51,7 +88,7 @@ class Profile extends Component{
                 placeholder="Amount"
                 keyboardType="numeric"
                 returnKeyLabel = {"next"}
-                onChangeText={(text) => this.setState({text})}
+                onChangeText={(text) => this.setState({amount:text})}
               />
               <TouchableHighlight onPress={this.goHere} style={styles.button}>
                 <Text style={styles.buttonText}>
