@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, ScrollView } from 'react-native';
 import colors from '../config/colors';
 import  {BudgetList}  from '../components/ListItem';
 import { PrimaryButton } from '../components/Buttons';
@@ -10,7 +10,8 @@ class Budgets extends Component {
     super();
     this.state = {
       budgets: [],
-      status: null
+      status: null,
+      array:null
     }
   }
 
@@ -20,7 +21,8 @@ class Budgets extends Component {
         .then((responseData) => {
           this.setState({
             budgets: [].concat(responseData),
-            status: responseData.status
+            status: responseData.status,
+            array:responseData.array
           })
           console.log(this.state.budgets)
         })
@@ -38,8 +40,7 @@ class Budgets extends Component {
   render() {
     return (
       <View>
-
-        {this.state.budgets === [] ? <Text>No budgets for this user</Text>: <FlatList
+        {this.state.array == 0  ? <Text>No budgets for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.budgets}
           renderItem={({item})=>
@@ -52,13 +53,6 @@ class Budgets extends Component {
           onPress={()=> this.handleSubmit()}
           label="Add Budget"
         /></ScrollView>: <Text>Sorry, adding a budget is currently disabled because your account is Negative.</Text> }
-
-        {/* {this.state.status === true ? <PrimaryButton
-          onPress={()=> this.handleSubmit()}
-          label="Add Budget"}
-        /> */}
-
-
     </View>
     );
   }

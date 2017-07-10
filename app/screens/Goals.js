@@ -10,6 +10,8 @@ class Goals extends Component {
     super();
     this.state = {
       goals: [],
+      array: null,
+      status: null
     }
   }
 
@@ -18,7 +20,9 @@ class Goals extends Component {
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({
-            goals: [].concat(responseData)
+            goals: responseData.goals,
+            array: responseData.array,
+            status: responseData.status
           })
           console.log(this.state.goals)
         })
@@ -36,18 +40,20 @@ class Goals extends Component {
   render() {
     return (
       <View>
-        <FlatList
+        {this.state.array == 0  ? <Text>No goals for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.goals}
           renderItem={({item})=>
           <BudgetList itemName={item.goal_name} onPress={() => this.handleRowPress(item)}/>
         }
-        keyExtractor={(item)=>item.email}
-        />
-        <PrimaryButton
+        keyExtractor={(item)=>item.id}
+        /> }
+
+        {this.state.status === true ? <ScrollView><PrimaryButton
           onPress={()=> this.handleSubmit()}
           label="Add Goal"
-        />
+        /></ScrollView>: <Text>Sorry, adding a goal is currently disabled because your account is Negative.</Text> }
+
     </View>
     );
   }
