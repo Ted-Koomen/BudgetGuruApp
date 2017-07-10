@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, ScrollView, Text, FlatList } from 'react-native';
 import colors from '../config/colors';
 import  { BudgetList }  from '../components/ListItem';
 import { PrimaryButton } from '../components/Buttons';
