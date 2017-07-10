@@ -21,8 +21,10 @@ class NewBill extends Component{
         due_date: null,
         status: null,
         errors: [],
-        showProgress: false
+        showProgress: false,
+        token: global.ACCESS_TOKEN
       };
+      // debugger
     }
 
     onInputChange = (text, stateKey) => {
@@ -44,7 +46,7 @@ class NewBill extends Component{
                                 user:{
                                   bill_name: this.state.bill_name,
                                   amount: this.state.amount,
-                                  due_date: this.state.due_date.day,
+                                  due_date: this.state.due_date.day(),
                                   status: this.state.status
                                 }
                               })

@@ -11,7 +11,7 @@ import {
   Platform
 } from 'react-native';
 
-const ACCESS_TOKEN = 'access_token';
+global.ACCESS_TOKEN = 'access_token';
 
 class Register extends Component {
   constructor() {
