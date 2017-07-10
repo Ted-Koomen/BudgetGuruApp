@@ -56,7 +56,7 @@ class Login extends Component {
                                 }
                               })
                             });
-                
+
       let res = await response.text();
       console.log("res: " + res)
       if (response.status >= 200 && response.status < 300) {
@@ -64,8 +64,8 @@ class Login extends Component {
           this.setState({error: ""})
           let accessToken = res;
           console.log("res token: " + accessToken);
-          this.storeToken(accessToken);          
-      } else { 
+          this.storeToken(accessToken);
+      } else {
           let error = res;
           throw error;
       }

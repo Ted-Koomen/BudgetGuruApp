@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, TouchableHighlight, AsyncStorage, ActivityIndicatorIOS, Text, View} from 'react-native';
+import { 
+  StyleSheet, 
+  TextInput, 
+  TouchableHighlight, 
+  AsyncStorage, 
+  ActivityIndicatorIOS, 
+  Text, 
+  View,
+  Dimensions,
+  Platform
+} from 'react-native';
 
 global.ACCESS_TOKEN = 'access_token';
 
@@ -128,6 +138,7 @@ class Register extends Component {
   );
 }
 
+const window = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -144,7 +155,8 @@ const styles = StyleSheet.create({
     padding: 4,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#48bbec'
+    borderColor: '#48bbec',
+    width: Platform.OS == 'ios' ? window.width - 20 : 375
   },
   button: {
     height: 50,
