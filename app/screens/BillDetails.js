@@ -17,7 +17,7 @@ class Details extends Component{
     }
 
     handleDelete(){
-      fetch("http://localhost:3000//bills", {
+      fetch("http://localhost:3000/bills", {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
@@ -47,8 +47,6 @@ class Details extends Component{
                   onPress={()=> this.handleSubmit()}
                   label='Edit Bill'
                 />
-
-
 
               <View>
                 <PrimaryButton

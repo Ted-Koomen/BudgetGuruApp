@@ -14,8 +14,8 @@ class AllBudgets extends Component{
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
+          {budget.budget_name+"\n"}
           {budget.monthly_spend+"\n"}
-          {budget.goal}
         </Text>
       </View>
     );
