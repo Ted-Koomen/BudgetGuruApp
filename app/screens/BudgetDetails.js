@@ -12,7 +12,8 @@ class BudgetDetails extends Component{
      }
 
      handleSubmit = () => {
-       this.props.navigation.navigate('BudgetEdit')
+       let budget = this.props.navigation.state.params
+       this.props.navigation.navigate('BudgetEdit',budget)
      }
 
      handleDelete = () => {

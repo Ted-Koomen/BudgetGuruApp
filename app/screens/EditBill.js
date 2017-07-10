@@ -13,10 +13,10 @@ class EditBill extends Component{
       super(props);
 
       this.state = {
-        bill_name: "",
-        amount: null,
-        due_date: null,
-        status: null,
+        bill_name: this.props.navigation.state.params.bill_name,
+        amount: this.props.navigation.state.params.amount.toString(),
+        due_date: this.props.navigation.state.params.due_date,
+        status: this.props.navigation.state.params.status,
         errors: [],
         showProgress: false
       };
@@ -76,18 +76,18 @@ class EditBill extends Component{
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
               <TextInput
-                placeholder={bill.bill_name}
+                value={this.state.bill_name}
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({bill_name:text})}
               />
               <TextInput
-                placeholder={bill.amount.toString()}
+                value={this.state.amount}
                 keyboardType="numeric"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({amount:text})}
               />
               <TextInput
-                placeholder={bill.status}
+                value={this.state.status}
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />
