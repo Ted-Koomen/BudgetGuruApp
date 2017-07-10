@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, TouchableHighlight, AsyncStorage, ActivityIndicatorIOS, Text, View} from 'react-native';
 
-const ACCESS_TOKEN = 'access_token';
+global.ACCESS_TOKEN = 'access_token';
 
 class Register extends Component {
   constructor() {
