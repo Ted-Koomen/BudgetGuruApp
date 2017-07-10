@@ -70,6 +70,7 @@ class Register extends Component {
           <Text style={styles.heading}>
             Register User
           </Text>
+          <Errors errors={this.state.errors}/>
           <TextInput
             onChangeText={ (text)=> this.setState({first_name: text}) }
             style={styles.input} placeholder="First Name">
@@ -97,8 +98,6 @@ class Register extends Component {
               Register
             </Text>
           </TouchableHighlight>
-
-          <Errors errors={this.state.errors}/>
 
           {/*<ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
       </View>

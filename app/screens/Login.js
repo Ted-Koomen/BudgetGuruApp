@@ -71,7 +71,9 @@ class Login extends Component {
           <Text style={styles.heading}>
             Login User
           </Text>
-
+          <Text style={styles.error}>
+            {this.state.error}
+          </Text>
           <TextInput
             onChangeText={ (text)=> this.setState({email: text}) }
             style={styles.input} placeholder="Email">
@@ -87,10 +89,6 @@ class Login extends Component {
               Login
             </Text>
           </TouchableHighlight>
-
-          <Text style={styles.error}>
-            {this.state.error}
-          </Text>
       </ScrollView>
       )
     }
