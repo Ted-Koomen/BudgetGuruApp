@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, TouchableHighlight, AsyncStorage, ActivityIndicatorIOS, Text, View} from 'react-native';
 
-const ACCESS_TOKEN = 'access_token';
+global.ACCESS_TOKEN = 'access_token';
 
 class Register extends Component {
   constructor() {
@@ -16,6 +16,18 @@ class Register extends Component {
       errors: [],
       showProgress: false,
     }
+  }
+
+    storeToken(responseData){
+    AsyncStorage.setItem(ACCESS_TOKEN, responseData, (err)=> {
+      if(err){
+        console.log("an error");
+        throw err;
+      }
+      console.log("success");
+    }).catch((err)=> {
+        console.log("error is: " + err);
+    });
   }
 
     async onRegisterPressed(){
@@ -43,6 +55,9 @@ class Register extends Component {
           if (response.status >= 200 && response.status < 300) {
             console.log("res is" + res);
             this.props.navigation.navigate('Home')
+            let accessToken = res;
+            console.log("res token: " + accessToken);
+            this.storeToken(accessToken);
           } else {
             let errors = res;
             throw errors;

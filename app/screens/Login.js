@@ -14,7 +14,7 @@ import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
 import Root from './Root';
 
 
-const ACCESS_TOKEN = 'access_token';
+global.ACCESS_TOKEN = 'access_token';
 
 class Login extends Component {
   constructor(props) {
