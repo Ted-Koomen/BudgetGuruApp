@@ -10,6 +10,7 @@ export default StyleSheet.create({
     borderBottomWidth: Platform.OS == 'ios' ? StyleSheet.hairlineWidth : 0,
     marginTop: 15,
   },
+  
   input:{
     height: 40,
     width: window.width,
