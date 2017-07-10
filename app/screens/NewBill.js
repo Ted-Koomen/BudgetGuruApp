@@ -14,7 +14,6 @@ const fields = [
 class NewBill extends Component{
     constructor(props){
       super(props);
-debugger
       this.state = {
         bill_name: "",
         amount: null,
