@@ -4,11 +4,6 @@ import { TextInput } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons';
 import colors from '../config/colors';
 
-
-
-
-
-
 class Profile extends Component{
 
     constructor(){
@@ -62,7 +57,6 @@ class Profile extends Component{
       }
     }
 
-
     componentWillMount(){
       fetch("http://localhost:3000/summary")
       .then((response) => response.json())
@@ -74,8 +68,8 @@ class Profile extends Component{
           // floor: responseData.floor
           })
       })
-      .done();
     }
+
     render(){
         return(
              <View style={styles.container}>
