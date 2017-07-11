@@ -22,7 +22,7 @@ class Goals extends Component {
           this.setState({
             goals: responseData.goals,
             array: responseData.array,
-            status: responseData.status
+            status: responseData.positive
           })
           console.log(this.state.goals)
         })
