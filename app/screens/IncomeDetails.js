@@ -40,24 +40,21 @@ class IncomeDetails extends Component{
 
 
         return(
-          <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
                 {/* <Header {...budget} /> */}
                 <Info income={income}/>
 
-            </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
-              label="Edit Goal"
+              label="Edit Income"
             />
-            <View>
-              <PrimaryButton
-                onPress={()=> this.handleDelete()}
-                label="Delete Goal"
-              />
-            </View>
 
-          </View>
+            <PrimaryButton
+              onPress={()=> this.handleDelete()}
+              label="Delete Income"
+            />
+
+          </ScrollView>
         );
     }
 }
