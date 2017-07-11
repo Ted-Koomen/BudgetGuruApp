@@ -16,6 +16,11 @@ class BudgetDetails extends Component{
        this.props.navigation.navigate('BudgetEdit',budget)
      }
 
+     addGoal = () => {
+       let budget = this.props.navigation.state.params
+       this.props.navigation.navigate('GoalAdd',budget)
+     }
+
      handleDelete = () => {
        fetch("http://localhost:3000/budgets", {
          method: "DELETE",
@@ -41,24 +46,27 @@ class BudgetDetails extends Component{
 
 
         return(
-          <View>
+
             <ScrollView style={{ backgroundColor: colors.background }}>
                 {/* <Header {...budget} /> */}
                 <Info bill={budget}/>
 
-            </ScrollView>
-            <PrimaryButton
-              onPress={()=> this.handleSubmit()}
-              label="Edit Budget"
-            />
-            <View>
+
+              <PrimaryButton
+                onPress={()=> this.handleSubmit()}
+                label="Edit Budget"
+              />
+
               <PrimaryButton
                 onPress={()=> this.handleDelete()}
                 label="Delete Budget"
               />
-            </View>
 
-          </View>
+              <PrimaryButton
+                onPress={()=> this.addGoal()}
+                label="Add Goal to this Budget"
+              />
+          </ScrollView>
         );
     }
 }

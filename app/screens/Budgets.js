@@ -20,7 +20,7 @@ class Budgets extends Component {
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({
-            budgets: [].concat(responseData),
+            budgets: responseData.budgets,
             status: responseData.status,
             array:responseData.array
           })
