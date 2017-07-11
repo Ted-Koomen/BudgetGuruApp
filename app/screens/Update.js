@@ -8,7 +8,8 @@ import {
   Text,
   ScrollView,
   Dimensions,
-  Platform
+  Platform, 
+  View
 } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
 
@@ -17,11 +18,12 @@ class Update extends Component{
       super(props);
 
       this.state = {
-        first_name: this.props.navigation.state.params.first_name,
-        last_name: this.props.navigation.state.params.last_name,
-        email: this.props.navigation.state.params.email,
-        password: this.props.navigation.state.params.password,
-        balance_floor: this.props.navigation.state.params.amount.toString(),
+        access_token: global.ACCESS_TOKEN,
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        balance_floor: "",
         errors: [],
       };
     }
@@ -33,16 +35,14 @@ class Update extends Component{
     }
 
     async handleSubmit(){
-    //   let access_token = global.ACCESS_TOKEN;
       try {
-        let response = await fetch(`http://localhost:3000/users/update`, {
+        let response = await fetch(`http://localhost:3000/users/update`+access_token, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            // access_token: access_token,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             email: this.state.email,
@@ -78,7 +78,7 @@ class Update extends Component{
     render(){
       const user = this.props.navigation.state.params
         return(
-            <ScrollView style={{ backgroundColor: colors.background }}>
+            <ScrollView contentContainerStyle={styles.container}>
               <TextInput
                 value={this.state.first_name}
                 returnKeyLabel = {"next"}
@@ -101,10 +101,11 @@ class Update extends Component{
                 secureTextEntry={true}
               />
 
-              <PrimaryButton
-                onPress={()=> this.handleSubmit()}
-                label="Save"
-              />
+              <TouchableHighlight onPress={()=> this.handleSubmit()} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Save
+              </Text>
+              </TouchableHighlight>
               <Errors errors={this.state.errors}/>
             </ScrollView>
 
@@ -135,11 +136,12 @@ const styles = StyleSheet.create({
     padding: 4,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#48bbec'
+    borderColor: '#48bbec',
+    width: Platform.OS == 'ios' ? window.width - 20 : 375
   },
   button: {
     height: 50,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#064F9C',
     alignSelf: 'stretch',
     marginTop: 10,
     justifyContent: 'center'

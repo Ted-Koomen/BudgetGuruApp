@@ -23,7 +23,6 @@ import AddBudget from '../screens/AddBudget';
 import Root from '../screens/Root';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
-import Logout from '../screens/Logout';
 import Update from '../screens/Update';
 import Settings from '../screens/Settings';
 
@@ -161,12 +160,6 @@ export const SettingsStack = StackNavigator({
     screen: Settings,
     navigationOptions:{
       title: 'Settings'
-    },
-  },
- Logout:{
-    screen: Logout,
-    navigationOptions:{
-      title: 'Logout'
     },
   },
   Update:{
