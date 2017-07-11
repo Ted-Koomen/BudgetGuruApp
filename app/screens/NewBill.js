@@ -22,7 +22,6 @@ class NewBill extends Component{
         errors: [],
         showProgress: false
       };
-      // debugger
     }
 
     onInputChange = (text, stateKey) => {

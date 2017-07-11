@@ -28,15 +28,38 @@ class Update extends Component{
       };
     }
 
+    componentWillMount() {
+    this.fetchUserData();
+    }
+
     onInputChange = (text, stateKey) => {
       const mod = {};
       mod[stateKey] = text;
       this.setState(mod);
     }
 
+    async fetchUserData() {
+    try {
+      let response = await fetch("http://localhost:3000/users/"+global.ACCESS_TOKEN+"/edit");
+      let res = await response.text();
+      if (response.status >= 200 && response.status < 300) {
+        let userData = JSON.parse(res);
+          this.setState({first_name: userData.first_name});
+          this.setState({last_name: userData.last_name});
+          this.setState({email: userData.email});
+          this.setState({balance_floor: userData.balance_floor});
+      } else {
+          let error = res;
+          throw err;
+      }
+    } catch(error) {
+        this.props.navigation.navigate('Profile')
+    }
+  }
+
     async handleSubmit(){
       try {
-        let response = await fetch(`http://localhost:3000/users/update`+access_token, {
+        let response = await fetch(`http://localhost:3000/update/`+global.ACCESS_TOKEN, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -79,46 +102,47 @@ class Update extends Component{
       const user = this.props.navigation.state.params
         return(
             <ScrollView contentContainerStyle={styles.container}>
+              <Text style={styles.heading}>
+                Account Details
+              </Text>
+              <Errors errors={this.state.errors}/>
               <TextInput
-                value={this.state.first_name}
-                returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({first_name:text})}
+                style={styles.input} value={this.state.first_name}
               />
               <TextInput
-                value={this.state.last_name}
-                returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({last_name:text})}
+                style={styles.input} value={this.state.last_name}
               />
               <TextInput
-                value={this.state.email}
-                returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({email:text})}
+                style={styles.input} value={this.state.email}
               />
-            <TextInput
-                value={this.state.password}
-                returnKeyLabel = {"next"}
+              <TextInput
                 onChangeText={(text) => this.setState({password:text})}
+                style={styles.input} placeholder="Password"
                 secureTextEntry={true}
               />
-
+              <TextInput
+                onChangeText={(text) => this.setState({balance_floor:text})}
+                style={styles.input} value={this.state.balance_floor}
+              />
               <TouchableHighlight onPress={()=> this.handleSubmit()} style={styles.button}>
               <Text style={styles.buttonText}>
                 Save
               </Text>
               </TouchableHighlight>
-              <Errors errors={this.state.errors}/>
             </ScrollView>
-
         );
     }
 }
 
 const Errors = (props) => {
-return (
-  <View>
-    {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
-  </View>
-);
+  return (
+    <View>
+      {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
