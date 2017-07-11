@@ -39,7 +39,7 @@ class Budgets extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         {this.state.array == 0  ? <Text style={style.text2}>No budgets for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.budgets}
@@ -60,7 +60,7 @@ class Budgets extends Component {
 
 const style = StyleSheet.create({
   text:{
-    color:'#F3C152',
+    color:'#1D2B59',
     alignItems:'center',
     alignSelf:'center',
     justifyContent:'center',

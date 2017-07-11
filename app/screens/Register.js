@@ -106,21 +106,26 @@ class Register extends Component {
           <Errors errors={this.state.errors}/>
           <TextInput
             onChangeText={ (text)=> this.setState({first_name: text}) }
-            style={styles.input} placeholder="First Name">
+            style={styles.input} placeholder="First Name"
+            autoCorrect='false'>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({last_name: text}) }
-            style={styles.input} placeholder="Last Name">
+            style={styles.input} placeholder="Last Name"
+            autoCorrect='false'>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({email: text}) }
-            style={styles.input} placeholder="Email">
+            style={styles.input} placeholder="Email"
+            autoCorrect='false'
+            autoCapitalize='none'>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({password: text}) }
             style={styles.input}
             placeholder="Password"
-            secureTextEntry={true}>
+            secureTextEntry={true}
+            autoCorrect='false'>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({balance_floor: text}) }

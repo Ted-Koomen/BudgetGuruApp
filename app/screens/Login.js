@@ -95,7 +95,8 @@ class Login extends Component {
           </Text>
           <TextInput
             onChangeText={ (text)=> this.setState({email: text}) }
-            style={styles.input} placeholder="Email">
+            style={styles.input} placeholder="Email"
+            autoCapitalize='none'>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({password: text}) }
