@@ -22,4 +22,21 @@ export default StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
   },
-});
+  button: {
+    height: 50,
+    backgroundColor: '#064F9C',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    marginTop: 10,
+    justifyContent: 'center'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#1d2b59',
+    padding: 10,
+    paddingTop: 80
+  },
+
+  });

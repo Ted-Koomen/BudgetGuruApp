@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableHighlight, AsyncStorage, FlatList, Text, View } from 'react-native';
+import { StyleSheet, TouchableHighlight, AsyncStorage, FlatList, Text, View, Image } from 'react-native';
 import colors from '../config/colors';
 import { Tabs, Drawer, RootStack } from '../config/router.js'
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
@@ -21,13 +21,15 @@ class Root extends Component {
     render() {
         return (
           <View style={styles.container}>
-            <Text style={styles.title}>Budget Guru</Text>
-            <TouchableHighlight onPress={()=> this.handleSubmit('Register')} style={styles.button}>
-              <Text style={styles.buttonText}>Register</Text>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={()=> this.handleSubmit('Login')} style={styles.button}>
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableHighlight>
+            <View style={styles.subcontainer}>
+              <Image resizeMode="contain" style={styles.logo} source={require('../components/Images/BudgetGURU-01.png')}/>
+              <TouchableHighlight onPress={()=> this.handleSubmit('Register')} style={styles.button}>
+                <Text style={styles.buttonText}>Register</Text>
+              </TouchableHighlight>
+              <TouchableHighlight onPress={()=> this.handleSubmit('Login')} style={styles.button}>
+                <Text style={styles.buttonText}>Login</Text>
+              </TouchableHighlight>
+            </View>
           </View>
         );
       }
@@ -40,24 +42,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
     padding: 10,
-    paddingTop: 180
+   
+    paddingTop: 50,
+   
+    
+  },
+  subcontainer:{
+    marginTop:10,
+    borderRadius: 10
+
   },
   button: {
     height: 50,
-    backgroundColor: '#064F9C',
-    alignSelf: 'stretch',
+    backgroundColor: '#2eba66',
+    
     alignItems: 'center',
     marginTop: 10,
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 22,
-    color: '#FFF',
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: 300,
     alignSelf: 'center'
   },
-  title: {
-    fontSize: 25,
-    marginBottom: 15
+  logo:{
+    width: 600,
+    height: 400
+  },
+  buttonText:{
+    color:'#FFF',
+    alignSelf:'center',
+    fontSize: 18,
+
   }
 });
 
