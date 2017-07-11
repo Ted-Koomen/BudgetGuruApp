@@ -20,8 +20,7 @@ class NewBill extends Component{
         due_date: null,
         status: null,
         errors: [],
-        showProgress: false,
-        token: global.ACCESS_TOKEN
+        showProgress: false
       };
       // debugger
     }
@@ -35,19 +34,17 @@ class NewBill extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/bills/new', {
+        let response = await fetch('http://localhost:3000/bills/new/'+global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                               },
                               body: JSON.stringify({
-                                user:{
-                                  bill_name: this.state.bill_name,
-                                  amount: this.state.amount,
-                                  due_date: this.state.due_date.day(),
-                                  status: this.state.status
-                                }
+                                bill_name: this.state.bill_name,
+                                amount: this.state.amount,
+                                due_date: this.state.due_date.day(),
+                                status: this.state.status
                               })
                             });
 

@@ -16,7 +16,7 @@ class Goals extends Component {
   }
 
   componentWillMount(){
-    fetch("http://localhost:3000/goals")
+    fetch("http://localhost:3000/goals/"+global.ACCESS_TOKEN)
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({

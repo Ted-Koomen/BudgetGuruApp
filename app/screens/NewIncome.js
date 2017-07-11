@@ -32,19 +32,17 @@ class NewIncome extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/incomes', {
+        let response = await fetch('http://localhost:3000/incomes/'+global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                               },
                               body: JSON.stringify({
-                                user:{
-                                  source: this.state.source,
-                                  post_tax_amount:this.state.post_tax_amount,
-                                  fixed: this.state.fixed,
-                                  pay_schedule:this.state.pay_schedule
-                                }
+                                source: this.state.source,
+                                post_tax_amount:this.state.post_tax_amount,
+                                fixed: this.state.fixed,
+                                pay_schedule:this.state.pay_schedule
                               })
                             });
 
