@@ -8,7 +8,8 @@ import {
   Text,
   ScrollView,
   Dimensions,
-  Platform
+  Platform,
+  View
 } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
 import Root from './Root';
