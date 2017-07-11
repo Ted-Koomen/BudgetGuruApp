@@ -37,7 +37,7 @@ class Profile extends Component{
           remaining_balance: responseData.remaining_balance,
           canSpend: responseData.can_spend,
           message: responseData.message,
-          })
+        })
       })
     }
 
@@ -47,41 +47,35 @@ class Profile extends Component{
 
     render(){
         return(
-             <View style={styles.container}>
-              <Text style={styles.heading}>
-                Summary
-              </Text>
-              {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
-
-              {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
-                placeholder="Amount"
-                keyboardType="numeric"
-                returnKeyLabel = {"next"}
-                onChangeText={(text) => this.setState({amount:text})}
-              />
-              <TouchableHighlight onPress={this.goHere} style={styles.button}>
-                <Text style={styles.buttonText}>
-                  Feelin Lucky
-                </Text>
-              </TouchableHighlight></ScrollView>: <Text style={{color:'red',fontWeight: 'bold'}}>Warning</Text>}
-
-             <Text style={styles.subHeading}>
-              {this.state.message}
-             </Text>
-
-            <TouchableHighlight onPress={this.onSettingsPressed.bind(this)} style={styles.button}>
-            <Text style={styles.buttonText}>
-              Settings
+          <View style={styles.container}>
+            <Text style={styles.heading}>
+              Summary
             </Text>
-          </TouchableHighlight>
+            {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
-          <TouchableHighlight onPress={this.refresh.bind(this)} style={styles.button}>
-          <Text style={styles.buttonText}>
-            Refresh
-          </Text>
-          </TouchableHighlight>
+            {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
+              placeholder="Amount"
+              keyboardType="numeric"
+              returnKeyLabel = {"next"}
+              onChangeText={(text) => this.setState({amount:text})}
+            />
+            <TouchableHighlight onPress={this.goHere} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Feelin Lucky
+              </Text>
+            </TouchableHighlight></ScrollView>: <Text style={{color:'red',fontWeight: 'bold'}}>Warning</Text>}
 
-            </View>
+            <Text style={styles.subHeading}>
+              {this.state.message}
+            </Text>
+
+            <TouchableHighlight onPress={this.refresh.bind(this)} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Refresh
+              </Text>
+            </TouchableHighlight>
+
+          </View>
         );
     }
 }
