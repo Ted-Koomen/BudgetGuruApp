@@ -56,15 +56,19 @@ class Profile extends Component{
       }
     }
 
+    refresh(){
+      this.componentWillMount
+    }
+
     componentWillMount(){
-      fetch("http://localhost:3000/summary/"+global.ACCESS_TOKEN)
+      fetch("http://localhost:3000/summary")
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
           remaining_balance: responseData.remaining_balance,
           canSpend: responseData.can_spend,
           message: responseData.message,
-          })
+        })
       })
     }
 
@@ -80,7 +84,7 @@ class Profile extends Component{
               </Text>
               {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
-              {this.state.canSpend ? <ScrollView><TextInput style={styles.input}
+              {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
                 placeholder="Amount"
                 keyboardType="numeric"
                 returnKeyLabel = {"next"}
@@ -96,11 +100,11 @@ class Profile extends Component{
               {this.state.message}
              </Text>
 
-            <TouchableHighlight onPress={this.onSettingsPressed.bind(this)} style={styles.button}>
-            <Text style={styles.buttonText}>
-              Settings
-            </Text>
-          </TouchableHighlight>
+             <TouchableHighlight onPress={this.refresh} style={styles.button}>
+               <Text style={styles.buttonText}>
+                 refresh
+               </Text>
+             </TouchableHighlight>
 
             </View>
         );
