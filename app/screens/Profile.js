@@ -12,8 +12,7 @@ class Profile extends Component{
         remaining_balance: "",
         canSpend: null,
         message: "",
-        amount:null,
-        token: this.props.navigation.state.params.accessToken
+        amount:null
       }
       this.goHere = this.goHere.bind(this);
       this.onSettingsPressed = this.onSettingsPressed.bind(this);
@@ -22,7 +21,7 @@ class Profile extends Component{
     async goHere(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/expense', {
+        let response = await fetch('http://localhost:3000/expense/'+ global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
@@ -58,14 +57,13 @@ class Profile extends Component{
     }
 
     componentWillMount(){
-      fetch("http://localhost:3000/summary")
+      fetch("http://localhost:3000/summary/"+global.ACCESS_TOKEN)
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
           remaining_balance: responseData.remaining_balance,
           canSpend: responseData.can_spend,
           message: responseData.message,
-          // floor: responseData.floor
           })
       })
     }

@@ -16,7 +16,7 @@ class Incomes extends Component {
     }
 
     componentWillMount(){
-      fetch("http://localhost:3000/incomes")
+      fetch("http://localhost:3000/incomes/"+global.ACCESS_TOKEN)
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
