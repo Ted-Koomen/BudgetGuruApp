@@ -11,7 +11,7 @@ import {
   Platform
 } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
-import Root from './Root';
+
 
 
 global.ACCESS_TOKEN= "accessToken"
@@ -23,7 +23,6 @@ class Login extends Component {
       email: "",
       password: "",
       error: "",
-      showProgress: false
     }
     this.storeToken = this.storeToken.bind(this)
   }
@@ -66,7 +65,6 @@ class Login extends Component {
           console.log("res token: " + accessToken);
           this.storeToken(accessToken);
           global.ACCESS_TOKEN =  accessToken
-          console.log("test*******"+this.state.x)
       } else {
           let error = res;
           throw error;
@@ -76,7 +74,6 @@ class Login extends Component {
         console.log("error " + error);
         this.setState({showProgress: false});
     }
-    global.ACCESS_TOKEN = accessToken
   }
     render() {
       return (

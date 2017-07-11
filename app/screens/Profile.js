@@ -6,16 +6,17 @@ import colors from '../config/colors';
 
 class Profile extends Component{
 
-    constructor(){
-      super()
+    constructor(props){
+      super(props)
       this.state = {
         remaining_balance: "",
         canSpend: null,
         message: "",
-        amount:null
-        // floor: ""
+        amount:null,
+        token: this.props.navigation.state.params.accessToken
       }
-      this.goHere = this.goHere.bind(this)
+      this.goHere = this.goHere.bind(this);
+      this.onSettingsPressed = this.onSettingsPressed.bind(this);
     }
 
     async goHere(){
@@ -53,7 +54,6 @@ class Profile extends Component{
           }
         }
        this.setState({errors: errorsArray})
-      //  this.setState({showProgress: false});
       }
     }
 
@@ -68,6 +68,10 @@ class Profile extends Component{
           // floor: responseData.floor
           })
       })
+    }
+
+    onSettingsPressed(){
+      this.props.navigation.navigate('Settings')
     }
 
     render(){
@@ -93,6 +97,12 @@ class Profile extends Component{
              <Text style={styles.subHeading}>
               {this.state.message}
              </Text>
+
+            <TouchableHighlight onPress={this.onSettingsPressed.bind(this)} style={styles.button}>
+            <Text style={styles.buttonText}>
+              Settings
+            </Text>
+          </TouchableHighlight>
 
             </View>
         );
