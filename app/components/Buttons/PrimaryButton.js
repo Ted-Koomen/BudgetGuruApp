@@ -6,13 +6,15 @@ import styles from './styles';
 
 const PrimaryButton = ({ label,onPress }) => {
   return (
-    <View style={styles.primaryButtonContainer}>
+    <View style={styles.container}>
+      <View style={styles.subcontainer}>
         <TouchableOpacity
           onPress={() => onPress()}
           style={styles.button}
           >
           <Text style={styles.primaryButtonText}>{label}</Text>
       </TouchableOpacity>
+      </View>
     </View>
   )
 };
