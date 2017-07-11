@@ -26,7 +26,7 @@ class Login extends Component {
     }
     this.storeToken = this.storeToken.bind(this)
   }
-
+  
   storeToken(responseData){
     AsyncStorage.setItem(ACCESS_TOKEN, responseData, (err)=> {
       if(err){

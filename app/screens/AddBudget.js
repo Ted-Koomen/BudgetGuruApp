@@ -17,7 +17,6 @@ class NewBudget extends Component{
       this.state = {
         budget_name: "",
         monthly_spend: null,
-        goal: null,
         errors: []
       };
       this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,8 +38,7 @@ class NewBudget extends Component{
                               },
                               body: JSON.stringify({
                                 budget_name: this.state.budget_name,
-                                monthly_spend: this.state.monthly_spend,
-                                goal: this.state.goal,
+                                monthly_spend: this.state.monthly_spend
                               })
                             });
 
@@ -81,11 +79,6 @@ class NewBudget extends Component{
                 keyboardType="numeric"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({monthly_spend:text})}
-              />
-              <TextInput
-                placeholder="Met Goal?"
-                returnKeyLabel = {"next"}
-                onChangeText={(text) => this.setState({goal:text})}
               />
 
               <PrimaryButton
