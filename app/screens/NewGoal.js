@@ -33,20 +33,18 @@ class NewGoal extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/goals/new', {
+        let response = await fetch('http://localhost:3000/goals/new'+global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                               },
                               body: JSON.stringify({
-                                user:{
-                                  goal_name: this.state.goal_name,
-                                  amount_saved: this.state.amount_saved,
-                                  timeframe: this.state.timeframe,
-                                  achieved:this.state.achieved,
-                                  total:this.state.total
-                                }
+                                goal_name: this.state.goal_name,
+                                amount_saved: this.state.amount_saved,
+                                timeframe: this.state.timeframe,
+                                achieved:this.state.achieved,
+                                total:this.state.total
                               })
                             });
 

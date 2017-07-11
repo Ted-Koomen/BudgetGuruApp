@@ -16,7 +16,7 @@ class Budgets extends Component {
   }
 
   componentWillMount(){
-    fetch("http://localhost:3000/budgets")
+    fetch("http://localhost:3000/budgets/"+global.ACCESS_TOKEN)
     .then((response) => response.json())
         .then((responseData) => {
           this.setState({

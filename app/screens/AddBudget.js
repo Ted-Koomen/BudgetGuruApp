@@ -31,18 +31,16 @@ class NewBudget extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/budgets/new', {
+        let response = await fetch('http://localhost:3000/budgets/new/'+global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                               },
                               body: JSON.stringify({
-                                user:{
-                                  budget_name: this.state.budget_name,
-                                  monthly_spend: this.state.monthly_spend,
-                                  goal: this.state.goal,
-                                }
+                                budget_name: this.state.budget_name,
+                                monthly_spend: this.state.monthly_spend,
+                                goal: this.state.goal,
                               })
                             });
 

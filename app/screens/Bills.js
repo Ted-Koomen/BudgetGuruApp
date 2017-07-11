@@ -18,7 +18,7 @@ class Bills extends Component {
   }
 
   componentWillMount(){
-    fetch("http://localhost:3000/bills")
+    fetch("http://localhost:3000/bills/"+global.ACCESS_TOKEN)
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({

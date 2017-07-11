@@ -16,7 +16,7 @@ class IncomeDetails extends Component{
      }
 
      handleDelete = () => {
-       fetch("http://localhost:3000/incomes", {
+       fetch("http://localhost:3000/incomes/"+global.ACCESS_TOKEN, {
          method: "DELETE",
          headers: {
            'Content-Type': 'application/json'
