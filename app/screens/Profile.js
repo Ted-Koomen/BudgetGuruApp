@@ -93,6 +93,14 @@ class Profile extends Component{
               </Text>
             </TouchableHighlight>
 
+            <TouchableHighlight onPress={this.onSettingsPressed.bind(this)} style={this.state.pressStatus? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay.bind(this)}
+                onShowUnderlay={this._onShowUnderlay.bind(this)}>
+              <Text style={styles.buttonText}>
+                Settings
+              </Text>
+            </TouchableHighlight>
+
           </View>
         );
     }
