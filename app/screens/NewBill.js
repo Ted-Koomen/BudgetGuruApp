@@ -88,7 +88,7 @@ class NewBill extends Component{
                 onChangeText={(text) => this.setState({amount:text})}
               />
               <TextInput
-                placeholder="Status: Paid/Not Paid/Past Due"
+                placeholder="Status: paid/not Paid"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />

@@ -65,7 +65,7 @@ class Profile extends Component{
             <Text style={styles.heading}>
               Summary
             </Text>
-            {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
+            {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}> {this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
             {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
               placeholder="Amount"
@@ -79,7 +79,7 @@ class Profile extends Component{
               <Text style={styles.buttonText}>
                 Feelin Lucky
               </Text>
-            </TouchableHighlight></ScrollView>: <Text style={{color:'red',fontWeight: 'bold'}}>Warning</Text>}
+            </TouchableHighlight></ScrollView>: null}
 
             <Text style={styles.subHeading}>
               {this.state.message}
