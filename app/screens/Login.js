@@ -79,7 +79,7 @@ class Login extends Component {
       return (
         <ScrollView keyboardShouldPersistTaps='always' contentContainerStyle={styles.container}>
           <Text style={styles.heading}>
-            Login User
+            Check Your Account!
           </Text>
           <Text style={styles.error}>
             {this.state.error}
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
+    color:"#F3C152"
   },
   error: {
     color: 'red',

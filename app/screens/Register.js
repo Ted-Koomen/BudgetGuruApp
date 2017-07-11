@@ -68,7 +68,7 @@ class Register extends Component {
             let accessToken = res;
             console.log("res token: " + accessToken);
             this.storeToken(accessToken);
-            global.ACCESS_TOKEN =  accessToken
+            global.ACCESS_TOKEN = accessToken
           } else {
             let errors = res;
             throw errors;
