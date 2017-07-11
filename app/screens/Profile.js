@@ -14,53 +14,22 @@ class Profile extends Component{
         message: "",
         amount:null
       }
-      this.goHere = this.goHere.bind(this);
       this.onSettingsPressed = this.onSettingsPressed.bind(this);
     }
 
-    async goHere(){
-      this.setState({showProgress: true})
-      try {
-        let response = await fetch('http://localhost:3000/expense/'+ global.ACCESS_TOKEN, {
-                              method: 'POST',
-                              headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                              },
-                              body: JSON.stringify({
-                                amount: this.state.amount
-                              })
-                            });
-
-          let res = await response.text();
-
-          if (response.status >= 200 && response.status < 300) {
-            this.props.navigation.navigate('Profile')
-          } else {
-            let errors = res;
-            throw errors;
-          }
-      } catch(errors) {
-        console.log("catch errors: " + errors);
-
-        let formErrors = JSON.parse(errors);
-        let errorsArray = [];
-        for(var key in formErrors) {
-          if(formErrors[key].length > 1) {
-              formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
-          } else {
-              errorsArray.push(`${key} ${formErrors[key]}`);
-          }
-        }
-       this.setState({errors: errorsArray})
-      }
+    componentWillMount(){
+      fetch("http://localhost:3000/summary")
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          remaining_balance: responseData.remaining_balance,
+          canSpend: responseData.can_spend,
+          message: responseData.message,
+          })
+      })
     }
 
     refresh(){
-      this.componentWillMount
-    }
-
-    componentWillMount(){
       fetch("http://localhost:3000/summary")
       .then((response) => response.json())
       .then((responseData) => {
@@ -92,9 +61,21 @@ class Profile extends Component{
 
     render(){
         return(
-             <View style={styles.container}>
-              <Text style={styles.heading}>
-                Summary
+          <View style={styles.container}>
+            <Text style={styles.heading}>
+              Summary
+            </Text>
+            {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
+
+            {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
+              placeholder="Amount"
+              keyboardType="numeric"
+              returnKeyLabel = {"next"}
+              onChangeText={(text) => this.setState({amount:text})}
+            />
+            <TouchableHighlight onPress={this.goHere} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Feelin Lucky
               </Text>
               {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
@@ -114,7 +95,7 @@ class Profile extends Component{
 
              <Text style={styles.subHeading}>
               {this.state.message}
-             </Text>
+            </Text>
 
              <TouchableHighlight onPress={this.refresh} style={this.state.pressStatus? styles.pressedButton : styles.button}
                 onHideUnderlay={this._onHideUnderlay.bind(this)}
@@ -124,7 +105,7 @@ class Profile extends Component{
                </Text>
              </TouchableHighlight>
 
-            </View>
+          </View>
         );
     }
 }
@@ -191,3 +172,47 @@ const styles = StyleSheet.create({
 });
 
 export default Profile;
+
+
+
+
+
+//
+//
+// async goHere(){
+//   this.setState({showProgress: true})
+//   try {
+//     let response = await fetch('http://localhost:3000/expense/', {
+//                           method: 'POST',
+//                           headers: {
+//                             'Accept': 'application/json',
+//                             'Content-Type': 'application/json'
+//                           },
+//                           body: JSON.stringify({
+//                             amount: this.state.amount
+//                           })
+//                         });
+//
+//       let res = await response.text();
+//
+//       if (response.status >= 200 && response.status < 300) {
+//         this.props.navigation.navigate('Profile')
+//       } else {
+//         let errors = res;
+//         throw errors;
+//       }
+//   } catch(errors) {
+//     console.log("catch errors: " + errors);
+//
+//     let formErrors = JSON.parse(errors);
+//     let errorsArray = [];
+//     for(var key in formErrors) {
+//       if(formErrors[key].length > 1) {
+//           formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
+//       } else {
+//           errorsArray.push(`${key} ${formErrors[key]}`);
+//       }
+//     }
+//    this.setState({errors: errorsArray})
+//   }
+// }
