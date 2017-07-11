@@ -41,8 +41,8 @@ class NewIncome extends Component{
                               body: JSON.stringify({
                                 source: this.state.source,
                                 post_tax_amount:this.state.post_tax_amount,
-                                fixed: this.state.fixed,
-                                pay_schedule:this.state.pay_schedule
+                                fixed: this.state.fixedtoLowerCase(),
+                                pay_schedule:this.state.pay_schedule.toLowerCase()
                               })
                             });
 
@@ -90,7 +90,7 @@ class NewIncome extends Component{
               onChangeText={(text) => this.setState({fixed:text})}
             />
             <TextInput
-              placeholder="Weekly-BiWeekly-Monthly"
+              placeholder="Weekly/Bi-Weekly/Monthly"
               keyboardType='numeric'
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({pay_schedule:text})}
