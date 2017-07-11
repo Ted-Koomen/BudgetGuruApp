@@ -39,7 +39,7 @@ class Bills extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
       <FlatList
         style={{backgroundColor: colors.background}}
         data={this.state.bills}

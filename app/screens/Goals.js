@@ -39,7 +39,7 @@ class Goals extends Component {
 
   render() {
     return (
-      <View style={style.subcontainer}>
+      <View>
         {this.state.array == 0  ? <Text style={style.text2}>No goals for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.goals}
@@ -61,7 +61,7 @@ class Goals extends Component {
 
 const style = StyleSheet.create({
   text:{
-    color:'#F3C152',
+    color:'#1D2B59',
     alignItems:'center',
     alignSelf:'center',
     justifyContent:'center',

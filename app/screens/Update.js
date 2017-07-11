@@ -163,17 +163,22 @@ const styles = StyleSheet.create({
     borderColor: '#48bbec',
     width: Platform.OS == 'ios' ? window.width - 20 : 375
   },
-  button: {
+   button: {
     height: 50,
-    backgroundColor: '#064F9C',
-    alignSelf: 'stretch',
+    backgroundColor: '#2eba66',
+    
+    alignItems: 'center',
     marginTop: 10,
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 22,
-    color: '#FFF',
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: 300,
     alignSelf: 'center'
+  },
+ buttonText:{
+    color:'#FFF',
+    alignSelf:'center',
+    fontSize: 18,
+
   },
   heading: {
     fontSize: 30,
