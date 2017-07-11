@@ -45,6 +45,20 @@ class Profile extends Component{
       this.props.navigation.navigate('Settings')
     }
 
+    _onHideUnderlay(){
+    this.setState({ pressStatus: false });
+  }
+  _onShowUnderlay(){
+    this.setState({ pressStatus: true });
+  }
+
+  _onHideUnderlay2(){
+    this.setState({ pressStatus2: false });
+  }
+  _onShowUnderlay2(){
+    this.setState({ pressStatus2: true });
+  }
+
     render(){
         return(
           <View style={styles.container}>
@@ -59,7 +73,9 @@ class Profile extends Component{
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({amount:text})}
             />
-            <TouchableHighlight onPress={this.goHere} style={styles.button}>
+            <TouchableHighlight onPress={this.goHere} style={this.state.pressStatus? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay2.bind(this)}
+                onShowUnderlay={this._onShowUnderlay2.bind(this)}>
               <Text style={styles.buttonText}>
                 Feelin Lucky
               </Text>
@@ -69,7 +85,9 @@ class Profile extends Component{
               {this.state.message}
             </Text>
 
-            <TouchableHighlight onPress={this.refresh.bind(this)} style={styles.button}>
+            <TouchableHighlight onPress={this.refresh.bind(this)} style={this.state.pressStatus2? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay2.bind(this)}
+                onShowUnderlay={this._onShowUnderlay2.bind(this)}>
               <Text style={styles.buttonText}>
                 Refresh
               </Text>
@@ -102,13 +120,16 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: '#064F9C',
-    alignSelf: 'stretch',
+    justifyContent: 'center',
+    backgroundColor: '#2eba66',
+    alignSelf: 'center',
     marginTop: 10,
-    justifyContent: 'center'
+    alignItems: 'center',
+    borderRadius:10,
+    width: 300
   },
-  buttonText: {
-    fontSize: 22,
+ buttonText: {
+    fontSize: 18,
     color: '#FFF',
     alignSelf: 'center'
   },
@@ -124,7 +145,18 @@ const styles = StyleSheet.create({
   },
   loader: {
     marginTop: 20
-  }
+  },
+  pressedButton:{
+    height: 50,
+    backgroundColor: '#29593c',
+    alignItems: 'center',
+    marginTop: 10,
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: 300,
+    alignSelf: 'center'
+
+  },
 });
 
 export default Profile;

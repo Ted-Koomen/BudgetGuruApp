@@ -3,7 +3,7 @@ import { View, Text, FlatList} from 'react-native';
 import {contacts} from  '../config/data';
 import colors from '../config/colors';
 import { BudgetList } from '../components/ListItem'
-import { PrimaryButton } from '../components/Buttons'
+import { PrimaryButton,styles } from '../components/Buttons';
 
 
 class Incomes extends Component {
@@ -37,7 +37,7 @@ class Incomes extends Component {
 
     render() {
       return (
-        <View>
+        <View style={styles.container}>
           <FlatList
             style={{backgroundColor: colors.background}}
             data={this.state.incomes}

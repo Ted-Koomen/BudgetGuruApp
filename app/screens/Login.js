@@ -23,6 +23,7 @@ class Login extends Component {
       email: "",
       password: "",
       error: "",
+      pressedStatus: false
     }
     this.storeToken = this.storeToken.bind(this)
   }
@@ -75,6 +76,14 @@ class Login extends Component {
         this.setState({showProgress: false});
     }
   }
+
+  _onHideUnderlay(){
+    this.setState({ pressStatus: false });
+  }
+  _onShowUnderlay(){
+    this.setState({ pressStatus: true });
+  }
+
     render() {
       return (
         <ScrollView keyboardShouldPersistTaps='always' contentContainerStyle={styles.container}>
@@ -94,7 +103,9 @@ class Login extends Component {
             placeholder="Password"
             secureTextEntry={true}>
           </TextInput>
-          <TouchableHighlight onPress={this.onLoginPressed.bind(this)} style={styles.button}>
+          <TouchableHighlight onPress={this.onLoginPressed.bind(this)} style={this.state.pressStatus? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay.bind(this)}
+                onShowUnderlay={this._onShowUnderlay.bind(this)}>
             <Text style={styles.buttonText}>
               Login
             </Text>
@@ -125,13 +136,29 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: '#064F9C',
-    alignSelf: 'stretch',
+    justifyContent: 'center',
+    backgroundColor: '#2eba66',
+    alignSelf: 'center',
     marginTop: 10,
-    justifyContent: 'center'
+    alignItems: 'center',
+    
+    borderRadius:10,
+    width: 300
+  },
+  pressedButton:{
+    height: 50,
+    backgroundColor: '#29593c',
+    
+    alignItems: 'center',
+    marginTop: 10,
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: 300,
+    alignSelf: 'center'
+
   },
   buttonText: {
-    fontSize: 22,
+    fontSize: 18,
     color: '#FFF',
     alignSelf: 'center'
   },

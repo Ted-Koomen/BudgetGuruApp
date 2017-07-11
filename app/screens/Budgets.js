@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, ScrollView } from 'react-native';
 import colors from '../config/colors';
 import  {BudgetList}  from '../components/ListItem';
-import { PrimaryButton } from '../components/Buttons';
+import { PrimaryButton,styles } from '../components/Buttons';
 
 class Budgets extends Component {
 
@@ -39,7 +39,7 @@ class Budgets extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.array == 0  ? <Text>No budgets for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.budgets}

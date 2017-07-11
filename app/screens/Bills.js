@@ -3,7 +3,7 @@ import { View, Text, FlatList } from 'react-native';
 import {bills} from  '../config/data';
 import colors from '../config/colors';
 import { ListItem } from '../components/ListItem';
-import { PrimaryButton } from '../components/Buttons';
+import { PrimaryButton,styles } from '../components/Buttons';
 import axios from 'axios';
 
 
@@ -39,7 +39,7 @@ class Bills extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
       <FlatList
         style={{backgroundColor: colors.background}}
         data={this.state.bills}

@@ -90,6 +90,13 @@ class Register extends Component {
       }
     }
 
+     _onHideUnderlay(){
+    this.setState({ pressStatus: false });
+  }
+  _onShowUnderlay(){
+    this.setState({ pressStatus: true });
+  }
+
     render() {
       return (
         <View style={styles.container}>
@@ -119,7 +126,9 @@ class Register extends Component {
             onChangeText={ (text)=> this.setState({balance_floor: text}) }
             style={styles.input} placeholder="Balance Floor">
           </TextInput>
-          <TouchableHighlight onPress={this.onRegisterPressed.bind(this)} style={styles.button}>
+          <TouchableHighlight onPress={this.onRegisterPressed.bind(this)} style={this.state.pressStatus? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay.bind(this)}
+                onShowUnderlay={this._onShowUnderlay.bind(this)}>
             <Text style={styles.buttonText}>
               Register
             </Text>
@@ -160,11 +169,15 @@ const styles = StyleSheet.create({
     width: Platform.OS == 'ios' ? window.width - 20 : 375
   },
   button: {
-    height: 50,
-    backgroundColor: '#064F9C',
-    alignSelf: 'stretch',
+   height: 50,
+    justifyContent: 'center',
+    backgroundColor: '#2eba66',
+    alignSelf: 'center',
     marginTop: 10,
-    justifyContent: 'center'
+    alignItems: 'center',
+    
+    borderRadius:10,
+    width: 300
   },
   buttonText: {
     fontSize: 22,
@@ -177,6 +190,18 @@ const styles = StyleSheet.create({
   error: {
     color: 'red',
     paddingTop: 10,
+  },
+  pressedButton:{
+    height: 50,
+    backgroundColor: '#29593c',
+    
+    alignItems: 'center',
+    marginTop: 10,
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: 300,
+    alignSelf: 'center'
+
   },
   loader: {
     marginTop: 20

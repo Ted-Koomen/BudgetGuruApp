@@ -10,10 +10,21 @@ export default StyleSheet.create({
     marginBottom: 20,
     marginTop: 10,
   },
+   subcontainer:{
+    marginTop:10,
+    borderRadius: 10
+
+  },
   primaryButton:{
-    borderColor: colors.border,
-    borderWidth: StyleSheet.harlineWidth,
-    backgroundColor: colors.link,
+    height: 50,
+    justifyContent: 'center',
+    backgroundColor: '#2eba66',
+    alignSelf: 'center',
+    marginTop: 10,
+    alignItems: 'center',
+    
+    borderRadius:10,
+    width: 300
   },
   primaryButtonText:{
     paddingVertical: 15,
@@ -23,20 +34,23 @@ export default StyleSheet.create({
     fontWeight: '500',
   },
   button: {
-    height: 50,
-    backgroundColor: '#064F9C',
-    alignSelf: 'stretch',
-    alignItems: 'center',
+  height: 50,
+    justifyContent: 'center',
+    backgroundColor: '#2eba66',
+    alignSelf: 'center',
     marginTop: 10,
-    justifyContent: 'center'
+    alignItems: 'center',
+    
+    borderRadius:10,
+    width: 300
   },
   container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#1d2b59',
-    padding: 10,
-    paddingTop: 80
+    backgroundColor: '#F5FCFF',
+  
+    // paddingTop: 80
   },
 
   });
