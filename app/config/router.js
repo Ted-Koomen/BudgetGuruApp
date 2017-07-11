@@ -23,6 +23,10 @@ import AddBudget from '../screens/AddBudget';
 import Root from '../screens/Root';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
+import Logout from '../screens/Logout';
+import Update from '../screens/Update';
+import Settings from '../screens/Settings';
+
 
 
 const LeftDrawerButton = ({ navigation }) => {
@@ -145,21 +149,56 @@ export const BillsStack = StackNavigator({
   }
 });
 
-
+export const SettingsStack = StackNavigator({
+   Profile:{
+    screen: Profile,
+    navigationOptions:( { navigation }) => ({
+      title: 'Profile',
+    headerLeft: <LeftDrawerButton />,
+    }),
+  },
+  Settings:{
+    screen: Settings,
+    navigationOptions:{
+      title: 'Settings'
+    },
+  },
+ Logout:{
+    screen: Logout,
+    navigationOptions:{
+      title: 'Logout'
+    },
+  },
+  Update:{
+    screen: Update,
+    navigationOptions:{
+    title: 'Update'
+    },
+  }
+})
 
 
 export const MeStack = StackNavigator({
- Profile:{
+  Profile:{
     screen: Profile,
     navigationOptions:( { navigation }) => ({
-      title: 'Profile'
+      title: 'Profile',
+    headerLeft: <LeftDrawerButton />,
     }),
   },
+  Settings:{
+    screen: SettingsStack,
+    headerMode: 'screen',
+    navigationOptions:{
+    header: null,
+    title: 'Settings'
+    },
+  }
 })
 
 export const Tabs = TabNavigator({
     Me:{
-    screen: MeStack,
+    screen: SettingsStack,
     navigationOptions:{
       tabBarLabel:'Profile',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
