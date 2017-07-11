@@ -28,13 +28,6 @@ import Settings from '../screens/Settings';
 
 
 
-const LeftDrawerButton = ({ navigation }) => {
-  if (Platform.OS === 'android'){
-    return <Button title="Open" onPress={()=> navigation.navigate('DrawerOpen')} />
-  }
-  return null;
-}
-
 export const IncomeStack = StackNavigator({
   Incomes:{
     screen: Incomes,
@@ -58,7 +51,6 @@ export const IncomeStack = StackNavigator({
     screen: EditIncome,
     navigationOptions:{
       title: 'Edit Income',
-      headerLeft: <LeftDrawerButton />
     },
   },
 })
@@ -96,7 +88,6 @@ export const BudgetStack = StackNavigator({
     screen: Budgets,
     navigationOptions:( { navigation }) => ({
       title: 'Budgets',
-      headerLeft: <LeftDrawerButton />,
     }),
   },
   BudgetDetails:{
@@ -125,7 +116,6 @@ export const BillsStack = StackNavigator({
       screen: Bills,
       navigationOptions:( { navigation }) => ({
         title: 'Bills',
-        headerLeft: <LeftDrawerButton />,
       }),
   },
   Details:{
@@ -137,13 +127,13 @@ export const BillsStack = StackNavigator({
   NewBill:{
     screen: NewBill,
     navigationOptions:{
-      title: 'New Bill'
+      title: 'New Bill',
     },
   },
   EditBill:{
     screen: EditBill,
     navigationOptions:{
-      title: "Edit Bill"
+      title: "Edit Bill",
     }
   }
 });
@@ -153,7 +143,6 @@ export const SettingsStack = StackNavigator({
     screen: Profile,
     navigationOptions:( { navigation }) => ({
       title: 'Profile',
-    headerLeft: <LeftDrawerButton />,
     }),
   },
   Settings:{
@@ -176,7 +165,6 @@ export const MeStack = StackNavigator({
     screen: Profile,
     navigationOptions:( { navigation }) => ({
       title: 'Profile',
-    headerLeft: <LeftDrawerButton />,
     }),
   },
   Settings:{
@@ -193,7 +181,7 @@ export const Tabs = TabNavigator({
     Me:{
     screen: SettingsStack,
     navigationOptions:{
-      tabBarLabel:'Profile',
+      tabBarLabel: Platform.OS == 'ios' ? 'Profile' : 'Me',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
     },
   },
@@ -207,7 +195,7 @@ export const Tabs = TabNavigator({
   Budgets:{
     screen: BudgetStack,
     navigationOptions:{
-      tabBarLabel: "Budgets",
+      tabBarLabel: Platform.OS == 'ios' ? 'Budgets' : 'Budget',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
     },
   },
@@ -221,7 +209,7 @@ export const Tabs = TabNavigator({
   Incomes:{
     screen: IncomeStack,
     navigationOptions:{
-      tabBarLabel:'Incomes',
+      tabBarLabel: Platform.OS == 'ios' ? 'Incomes' : 'Income',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
     },
   },
