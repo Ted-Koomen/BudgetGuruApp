@@ -19,39 +19,27 @@ class Settings extends Component{
     onUpdatePressed(){
       this.props.navigation.navigate('Update');
     }
-    
-    async deleteToken() {
-    try {
-        await AsyncStorage.removeItem(ACCESS_TOKEN)
-        this.redirect('Root');
-    } catch(error) {
-        console.log("Something went wrong");
-    }
-  }
 
     onLogoutPressed(){
         AlertIOS.alert(
-            "You have been successfully logged out"
+          "You have successfully been logged out"
         )
-      this.deleteToken();
       this.props.navigation.navigate('Root');
     }
 
     render(){
         return(
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.container}>
             <TouchableHighlight onPress={this.onUpdatePressed.bind(this)} style={styles.button}>
             <Text style={styles.buttonText}>
               Update Profile
             </Text>
-          </TouchableHighlight>
+            </TouchableHighlight>
             <TouchableHighlight onPress={this.onLogoutPressed.bind(this)} style={styles.button}>
             <Text style={styles.buttonText}>
               Logout
             </Text>
           </TouchableHighlight>
-
-
             </View>
         );
     }
