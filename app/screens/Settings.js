@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   AsyncStorage,
   ActivityIndicatorIOS,
+  AlertIOS,
   Text,
   ScrollView,
   Dimensions,
@@ -29,9 +30,13 @@ class Settings extends Component{
   }
 
     onLogoutPressed(){
-      this.props.navigation.navigate('Logout');
+        AlertIOS.alert(
+            "You have been successfully logged out"
+        )
       this.deleteToken();
+      this.props.navigation.navigate('Root');
     }
+
     render(){
         return(
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
