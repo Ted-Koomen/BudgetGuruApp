@@ -76,8 +76,8 @@ const style = StyleSheet.create({
     paddingBottom:20
   },
   subcontainer:{
-    marginTop:10,
-    borderRadius: 10
+    backgroundColor: '#F5FCFF',
+    height: 1000
 
   },
 })
