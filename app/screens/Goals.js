@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, FlatList } from 'react-native';
+import { View, ScrollView, Text, FlatList, StyleSheet } from 'react-native';
 import colors from '../config/colors';
 import  { BudgetList }  from '../components/ListItem';
-import { PrimaryButton } from '../components/Buttons';
+import { PrimaryButton,styles } from '../components/Buttons';
 
 class Goals extends Component {
 
@@ -39,8 +39,8 @@ class Goals extends Component {
 
   render() {
     return (
-      <View>
-        {this.state.array == 0  ? <Text>No goals for this user</Text>: <FlatList
+      <View style={style.subcontainer}>
+        {this.state.array == 0  ? <Text style={style.text2}>No goals for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.goals}
           renderItem={({item})=>
@@ -52,11 +52,34 @@ class Goals extends Component {
         {this.state.status === true ? <ScrollView><PrimaryButton
           onPress={()=> this.handleSubmit()}
           label="Add Goal"
-        /></ScrollView>: <Text>Sorry, adding a goal is currently disabled because your account is Negative.</Text> }
+        /></ScrollView>: <Text style={style.text}>Sorry, adding a goal is currently disabled because your account is Negative.</Text> }
 
     </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  text:{
+    color:'#F3C152',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
+    fontWeight:'bold'
+  },
+  text2:{
+    color:'#2E3033',
+    fontWeight:'bold',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
+    paddingBottom:20
+  },
+  subcontainer:{
+    marginTop:10,
+    borderRadius: 10
+
+  },
+})
 
 export default Goals;
