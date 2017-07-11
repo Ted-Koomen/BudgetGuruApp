@@ -73,37 +73,25 @@ class Profile extends Component{
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({amount:text})}
             />
-            <TouchableHighlight onPress={this.goHere} style={styles.button}>
+            <TouchableHighlight onPress={this.goHere} style={this.state.pressStatus? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay2.bind(this)}
+                onShowUnderlay={this._onShowUnderlay2.bind(this)}>
               <Text style={styles.buttonText}>
                 Feelin Lucky
               </Text>
-              {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}>{this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
+            </TouchableHighlight></ScrollView>: <Text style={{color:'red',fontWeight: 'bold'}}>Warning</Text>}
 
-              {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
-                placeholder="Amount"
-                keyboardType="numeric"
-                returnKeyLabel = {"next"}
-                onChangeText={(text) => this.setState({amount:text})}
-              />
-              <TouchableHighlight onPress={this.goHere} tyle={this.state.pressStatus2? styles.pressedButton : styles.button}
-                onHideUnderlay={this._onHideUnderlay2.bind(this)}
-                onShowUnderlay={this._onShowUnderlay2.bind(this)}>
-                <Text style={styles.buttonText}>
-                  Feelin Lucky
-                </Text>
-              </TouchableHighlight></ScrollView>: <Text style={{color:'red',fontWeight: 'bold'}}>Warning</Text>}
-
-             <Text style={styles.subHeading}>
+            <Text style={styles.subHeading}>
               {this.state.message}
             </Text>
 
-             <TouchableHighlight onPress={this.refresh} style={this.state.pressStatus? styles.pressedButton : styles.button}
-                onHideUnderlay={this._onHideUnderlay.bind(this)}
-                onShowUnderlay={this._onShowUnderlay.bind(this)}>
-               <Text style={styles.buttonText}>
-                 Refresh
-               </Text>
-             </TouchableHighlight>
+            <TouchableHighlight onPress={this.refresh.bind(this)} style={this.state.pressStatus2? styles.pressedButton : styles.button}
+                onHideUnderlay={this._onHideUnderlay2.bind(this)}
+                onShowUnderlay={this._onShowUnderlay2.bind(this)}>
+              <Text style={styles.buttonText}>
+                Refresh
+              </Text>
+            </TouchableHighlight>
 
           </View>
         );
