@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ScrollView } from 'react-native';
+import { View, Text, FlatList, ScrollView, StyleSheet } from 'react-native';
 import colors from '../config/colors';
 import  {BudgetList}  from '../components/ListItem';
 import { PrimaryButton,styles } from '../components/Buttons';
@@ -40,7 +40,7 @@ class Budgets extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.array == 0  ? <Text>No budgets for this user</Text>: <FlatList
+        {this.state.array == 0  ? <Text style={style.text2}>No budgets for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.budgets}
           renderItem={({item})=>
@@ -52,10 +52,33 @@ class Budgets extends Component {
         {this.state.status === true ? <ScrollView><PrimaryButton
           onPress={()=> this.handleSubmit()}
           label="Add Budget"
-        /></ScrollView>: <Text>Sorry, adding a budget is currently disabled because your account is Negative.</Text> }
+        /></ScrollView>: <Text style={style.text}>Sorry, adding a budget is currently disabled because your account is Negative.</Text> }
     </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  text:{
+    color:'#F3C152',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
+    fontWeight:'bold'
+  },
+  text2:{
+    color:'#2E3033',
+    fontWeight:'bold',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
+    paddingBottom:20
+  },
+  subcontainer:{
+    marginTop:10,
+    borderRadius: 10
+
+  },
+})
 
 export default Budgets;
