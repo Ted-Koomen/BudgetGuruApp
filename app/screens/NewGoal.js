@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { ScrollView, AlertIOS,  Picker, StyleSheet, View, AsyncStorage, Text} from 'react-native';
+import { ScrollView, AlertIOS,  Picker, Text, StyleSheet, AsyncStorage, View} from 'react-native';
+
 import colors from '../config/colors';
-import { TextInput } from '../components/TextInput';
+import { TextInput} from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons'
 import Calendar from 'react-native-calendar-datepicker'
-import moment from 'moment'
+
 
 const fields = [
   { placeholder: 'Bill', stateKey: 'billName' },
@@ -14,16 +15,17 @@ const fields = [
 class NewGoal extends Component{
     constructor(props){
       super(props);
+
       this.state = {
-        goal_name: "",
+        goal_name:null,
         amount_saved: null,
-        timeframe: null,
-        achieved: null,
+        time_frame: null,
         total:null,
         errors:[]
       };
-    }
 
+      this.handleSubmit = this.handleSubmit.bind(this)
+    }
     onInputChange = (text, stateKey) => {
       const mod = {};
       mod[stateKey] = text;
@@ -33,17 +35,17 @@ class NewGoal extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/goals/new'+global.ACCESS_TOKEN, {
+        let response = await fetch('http://localhost:3000/goals/new', {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                               },
                               body: JSON.stringify({
+                                id: this.props.navigation.state.params.id,
                                 goal_name: this.state.goal_name,
                                 amount_saved: this.state.amount_saved,
-                                timeframe: this.state.timeframe,
-                                achieved:this.state.achieved,
+                                time_frame: this.state.time_frame,
                                 total:this.state.total
                               })
                             });
@@ -51,7 +53,7 @@ class NewGoal extends Component{
           let res = await response.text();
 
           if (response.status >= 200 && response.status < 300) {
-            this.props.navigation.navigate('Goals')
+            this.props.navigation.navigate('Goals',this.props.navigation.state.params.id)
           } else {
             let errors = res;
             throw errors;
@@ -74,51 +76,42 @@ class NewGoal extends Component{
 
     render(){
         return(
-          <ScrollView style={{ backgroundColor: colors.background }}>
-            <TextInput
-              placeholder="Goal Name"
-              returnKeyLabel = {"next"}
-              onChangeText={(text) => this.setState({goal_name:text})}
-            />
-            <TextInput
-              placeholder="Amount Saved"
-              keyboardType="numeric"
-              returnKeyLabel = {"next"}
-              onChangeText={(text) => this.setState({amount_saved:text})}
-            />
-            <TextInput
-              placeholder="Achieved"
-              keyboardType="numeric"
-              returnKeyLabel = {"next"}
-              onChangeText={(text) => this.setState({achieved:text})}
-            />
-            <TextInput
-              placeholder="Total"
-              keyboardType="numeric"
-              returnKeyLabel = {"next"}
-              onChangeText={(text) => this.setState({total:text})}
-            />
+            <ScrollView style={{ backgroundColor: colors.background }}>
+              <TextInput
+                placeholder="Goal Name"
+                keyboardType="numeric"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({goal_name:text})}
+              />
+              <TextInput
+                placeholder="Amount Saved"
+                keyboardType="numeric"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({amount_saved:text})}
+              />
 
-            <View>
-              <Text>
-                Goal date
-              </Text>
-            </View>
-            <Calendar
-              onChange={(date) => this.setState({timeframe:date})}
-              selected={this.state.date}
-            />
+              <TextInput
+                placeholder="Total"
+                keyboardType="numeric"
+                returnKeyLabel = {"next"}
+                onChangeText={(text) => this.setState({total:text})}
+              />
 
-            <Errors errors={this.state.errors}/>
-            <PrimaryButton
-              onPress={()=> this.handleSubmit()}
-              label="Save"
-            />
-          </ScrollView>
+              <Calendar
+                onChange={(date) => this.setState({time_frame:date})}
+                selected={this.state.date}
+              />
+
+              <PrimaryButton
+                onPress={()=> this.handleSubmit()}
+                label="Save"
+              />
+
+              <Errors errors={this.state.errors}/>
+            </ScrollView>
         );
     }
 }
-
 
 const Errors = (props) => {
 return (
@@ -127,7 +120,6 @@ return (
   </View>
 );
 }
-
 
 const styles = StyleSheet.create({
   container: {

@@ -22,7 +22,7 @@ class Goals extends Component {
           this.setState({
             goals: responseData.goals,
             array: responseData.array,
-            status: responseData.positive
+            status: responseData.status
           })
           console.log(this.state.goals)
         })
@@ -33,9 +33,6 @@ class Goals extends Component {
     this.props.navigation.navigate('GoalDetails', item)
   };
 
-  handleSubmit = ()=>{
-    this.props.navigation.navigate('GoalAdd')
-  }
 
   render() {
     return (
@@ -48,11 +45,6 @@ class Goals extends Component {
         }
         keyExtractor={(item)=>item.id}
         /> }
-
-        {this.state.status === true ? <ScrollView><PrimaryButton
-          onPress={()=> this.handleSubmit()}
-          label="Add Goal"
-        /></ScrollView>: <Text style={style.text}>Sorry, adding a goal is currently disabled because your account is Negative.</Text> }
 
     </View>
     );

@@ -7,12 +7,9 @@ import {PrimaryButton} from '../components/Buttons'
 //want amount and name of bill in this screen
 class GoalDetails extends Component{
 
-     constructor(){
-       super()
-     }
-
      handleSubmit = () => {
-       this.props.navigation.navigate('BudgetEdit')
+       const goal = this.props.navigation.state.params;
+       this.props.navigation.navigate('EditGoal',goal)
      }
 
      handleDelete = () => {
@@ -38,26 +35,22 @@ class GoalDetails extends Component{
     render(){
       const goal = this.props.navigation.state.params;
 
-
         return(
-          <View>
             <ScrollView style={{ backgroundColor: colors.background }}>
                 {/* <Header {...budget} /> */}
                 <Info goal={goal}/>
 
-            </ScrollView>
             <PrimaryButton
               onPress={()=> this.handleSubmit()}
               label="Edit Goal"
             />
-            <View>
+
               <PrimaryButton
                 onPress={()=> this.handleDelete()}
                 label="Delete Goal"
               />
-            </View>
 
-          </View>
+          </ScrollView>
         );
     }
 }
