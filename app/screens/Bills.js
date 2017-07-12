@@ -18,7 +18,7 @@ class Bills extends Component {
   }
 
   componentWillMount(){
-    fetch("http://localhost:3000/bills/"+global.ACCESS_TOKEN)
+    fetch("https://budgetguru.herokuapp.com/bills/"+global.ACCESS_TOKEN)
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
@@ -37,7 +37,7 @@ class Bills extends Component {
   }
 
   refresh(){
-    fetch("http://localhost:3000/bills/"+global.ACCESS_TOKEN)
+    fetch("https://budgetguru.herokuapp.com/bills/"+global.ACCESS_TOKEN)
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({

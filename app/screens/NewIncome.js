@@ -32,7 +32,7 @@ class NewIncome extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/incomes/'+global.ACCESS_TOKEN, {
+        let response = await fetch('https://budgetguru.herokuapp.com/incomes/'+global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',

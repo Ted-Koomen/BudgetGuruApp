@@ -33,7 +33,7 @@ class NewBill extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/bills/new/'+global.ACCESS_TOKEN, {
+        let response = await fetch('https://budgetguru.herokuapp.com/bills/new/'+global.ACCESS_TOKEN, {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
@@ -88,7 +88,7 @@ class NewBill extends Component{
                 onChangeText={(text) => this.setState({amount:text})}
               />
               <TextInput
-                placeholder="Status: Paid/Not Paid/Past Due/Due Today"
+                placeholder="Status: Paid/Not Paid"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />

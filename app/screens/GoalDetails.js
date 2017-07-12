@@ -13,7 +13,7 @@ class GoalDetails extends Component{
      }
 
      handleDelete = () => {
-       fetch("http://localhost:3000/goals", {
+       fetch("https://budgetguru.herokuapp.com/goals", {
          method: "DELETE",
          headers: {
            'Content-Type': 'application/json'

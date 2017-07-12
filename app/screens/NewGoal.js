@@ -35,7 +35,7 @@ class NewGoal extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/goals/new', {
+        let response = await fetch('https://budgetguru.herokuapp.com/goals/new', {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',

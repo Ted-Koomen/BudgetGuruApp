@@ -27,7 +27,7 @@ class Login extends Component {
     }
     this.storeToken = this.storeToken.bind(this)
   }
-  
+
   storeToken(responseData){
     AsyncStorage.setItem(ACCESS_TOKEN, responseData, (err)=> {
       if(err){
@@ -43,7 +43,7 @@ class Login extends Component {
   async onLoginPressed() {
     this.setState({showProgress: true})
     try {
-      let response = await fetch('http://localhost:3000/login', {
+      let response = await fetch('https://budgetguru.herokuapp.com/login', {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
@@ -142,14 +142,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
     alignItems: 'center',
-    
+
     borderRadius:10,
     width: 300
   },
   pressedButton:{
     height: 50,
     backgroundColor: '#29593c',
-    
+
     alignItems: 'center',
     marginTop: 10,
     justifyContent: 'center',
