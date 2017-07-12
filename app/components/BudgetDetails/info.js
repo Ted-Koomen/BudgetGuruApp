@@ -13,7 +13,7 @@ class AllBudgets extends Component{
     let budget = this.props.bill
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
+        <Text style={{fontWeight:"bold",color: "#064F9C"}}>
           {budget.budget_name+"\n"}
           {budget.monthly_spend+"\n"}
         </Text>

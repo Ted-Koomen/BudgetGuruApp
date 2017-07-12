@@ -182,35 +182,35 @@ export const Tabs = TabNavigator({
     screen: SettingsStack,
     navigationOptions:{
       tabBarLabel: Platform.OS == 'ios' ? 'Profile' : 'Me',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={"#007AFF"}/>
     },
   },
   Bills:{
     screen: BillsStack,
     navigationOptions:{
       tabBarLabel:'Bills',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-paper' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-paper' size={35} color={"#f95316"}/>
     },
   },
   Budgets:{
     screen: BudgetStack,
     navigationOptions:{
       tabBarLabel: Platform.OS == 'ios' ? 'Budgets' : 'Budget',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-calculator' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-calculator' size={35} color={"#7309ed"}/>
     },
   },
   Goals:{
     screen: GoalsStack,
     navigationOptions:{
       tabBarLabel:'Goals',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-trophy' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-trophy' size={35} color={"#fcbb16"}/>
     },
   },
   Incomes:{
     screen: IncomeStack,
     navigationOptions:{
       tabBarLabel: Platform.OS == 'ios' ? 'Incomes' : 'Income',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-cash' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-cash' size={35} color={"#10bc0d"}/>
     },
   },
 
