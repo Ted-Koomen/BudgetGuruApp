@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableHighlight} from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableHighlight, Platform} from 'react-native';
 import { TextInput } from '../components/TextInput';
 import { PrimaryButton } from '../components/Buttons';
 import colors from '../config/colors';
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#48bbec',
-    width: 130,
+    width: Platform.OS == 'ios' ? 130 : 175,
     right: 10
   },
   button: {
