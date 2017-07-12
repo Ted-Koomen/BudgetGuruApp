@@ -13,9 +13,11 @@ class Profile extends Component{
         canSpend: null,
         message: "",
         amount: 0,
-        error: ""
+        error: "",
+        spend: null
       }
       this.onSettingsPressed = this.onSettingsPressed.bind(this);
+      this.search = this.search.bind(this)
     }
 
     componentWillMount(){
@@ -48,7 +50,8 @@ class Profile extends Component{
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         let userData = JSON.parse(res);
-          this.setState({canSpend: userData.can_spend});
+        // debugger
+          this.setState({spend: userData.can_spend});
       } else {
           let error = res;
           throw err;
@@ -58,43 +61,43 @@ class Profile extends Component{
     }
   }
 
-    // async goHere(){
-    //   this.setState({showProgress: true})
-    //   try {
-    //     let response = await fetch('http://localhost:3000/expense/', {
-    //                           method: 'POST',
-    //                           headers: {
-    //                             'Accept': 'application/json',
-    //                             'Content-Type': 'application/json'
-    //                           },
-    //                           body: JSON.stringify({
-    //                             amount: this.state.amount
-    //                           })
-    //                         });
-    //
-    //       let res = await response.text();
-    //
-    //       if (response.status >= 200 && response.status < 300) {
-    //         this.props.navigation.navigate('Profile')
-    //       } else {
-    //         let errors = res;
-    //         throw errors;
-    //       }
-    //   } catch(errors) {
-    //     console.log("catch errors: " + errors);
-    //
-    //     let formErrors = JSON.parse(errors);
-    //     let errorsArray = [];
-    //     for(var key in formErrors) {
-    //       if(formErrors[key].length > 1) {
-    //           formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
-    //       } else {
-    //           errorsArray.push(`${key} ${formErrors[key]}`);
-    //       }
-    //     }
-    //    this.setState({errors: errorsArray})
-    //   }
-    // }
+    async addExpense(){
+      this.setState({showProgress: true})
+      try {
+        let response = await fetch('http://localhost:3000/expense/', {
+                              method: 'POST',
+                              headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                              },
+                              body: JSON.stringify({
+                                amount: this.state.amount
+                              })
+                            });
+
+          let res = await response.text();
+
+          if (response.status >= 200 && response.status < 300) {
+            this.props.navigation.navigate('Profile')
+          } else {
+            let errors = res;
+            throw errors;
+          }
+      } catch(errors) {
+        console.log("catch errors: " + errors);
+
+        let formErrors = JSON.parse(errors);
+        let errorsArray = [];
+        for(var key in formErrors) {
+          if(formErrors[key].length > 1) {
+              formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
+          } else {
+              errorsArray.push(`${key} ${formErrors[key]}`);
+          }
+        }
+       this.setState({errors: errorsArray})
+      }
+    }
 
     onSettingsPressed(){
       this.props.navigation.navigate('Settings')
@@ -116,6 +119,7 @@ class Profile extends Component{
     }
 
     render(){
+      // debugger
         return(
           <View style={styles.container}>
             <Text style={styles.heading}>
@@ -128,15 +132,15 @@ class Profile extends Component{
               keyboardType="numeric"
               returnKeyLabel = {"next"}
               onChangeText={this.search}
-            />
+            /></ScrollView>: null}
 
-            <TouchableHighlight onPress={this.goHere} style={this.state.pressStatus? styles.pressedButton : styles.button}
+              {this.state.spend && this.state.remaining_balance > 0 ? <TouchableHighlight onPress={this.addExpense} style={this.state.pressStatus? styles.pressedButton : styles.button}
                 onHideUnderlay={this._onHideUnderlay2.bind(this)}
                 onShowUnderlay={this._onShowUnderlay2.bind(this)}>
               <Text style={styles.buttonText}>
-                Feelin Lucky
+                Save
               </Text>
-            </TouchableHighlight></ScrollView>: null}
+            </TouchableHighlight> : null}
 
             <Text style={styles.subHeading}>
               {this.state.message}
