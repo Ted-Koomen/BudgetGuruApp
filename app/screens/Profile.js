@@ -130,7 +130,7 @@ class Profile extends Component{
             <Text style={styles.subHeading}>
               {this.state.message}
             </Text>
-            
+
             {this.state.canSpend && this.state.remaining_balance > 0 ? <ScrollView><TextInput style={styles.input}
               placeholder="Amount"
               keyboardType="numeric"
