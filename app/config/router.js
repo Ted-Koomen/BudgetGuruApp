@@ -189,28 +189,28 @@ export const Tabs = TabNavigator({
     screen: BillsStack,
     navigationOptions:{
       tabBarLabel:'Bills',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-paper' size={35} color={tintColor}/>
     },
   },
   Budgets:{
     screen: BudgetStack,
     navigationOptions:{
       tabBarLabel: Platform.OS == 'ios' ? 'Budgets' : 'Budget',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-clipboard' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-calculator' size={35} color={tintColor}/>
     },
   },
   Goals:{
     screen: GoalsStack,
     navigationOptions:{
       tabBarLabel:'Goals',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-trophy' size={35} color={tintColor}/>
     },
   },
   Incomes:{
     screen: IncomeStack,
     navigationOptions:{
       tabBarLabel: Platform.OS == 'ios' ? 'Incomes' : 'Income',
-      tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={35} color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Icon name='ios-cash' size={35} color={tintColor}/>
     },
   },
 
