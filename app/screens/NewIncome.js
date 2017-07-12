@@ -41,7 +41,7 @@ class NewIncome extends Component{
                               body: JSON.stringify({
                                 source: this.state.source,
                                 post_tax_amount:this.state.post_tax_amount,
-                                fixed: this.state.fixedtoLowerCase(),
+                                fixed: this.state.fixed.toLowerCase(),
                                 pay_schedule:this.state.pay_schedule.toLowerCase()
                               })
                             });
