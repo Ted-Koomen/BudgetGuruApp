@@ -12,7 +12,8 @@ class Profile extends Component{
         remaining_balance: null,
         canSpend: null,
         message: "",
-        amount: 0
+        amount: 0,
+        error: ""
       }
       this.onSettingsPressed = this.onSettingsPressed.bind(this);
     }
@@ -41,22 +42,21 @@ class Profile extends Component{
       })
     }
 
-    search(text) {
-        fetch("http://localhost:3000/calculate/"+text, {
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response =>{
-          res = JSON.parse(response)
-          debugger
-          this.setState({
-            canSpend: res.can_spend
-          })
-      })
+    async search(num) {
+    try {
+      let response = await fetch("http://localhost:3000/calculate/"+num);
+      let res = await response.text();
+      if (response.status >= 200 && response.status < 300) {
+        let userData = JSON.parse(res);
+          this.setState({canSpend: userData.can_spend});
+      } else {
+          let error = res;
+          throw err;
+      }
+    } catch(error) {
+        this.setState({error:error})
     }
-
+  }
 
     // async goHere(){
     //   this.setState({showProgress: true})
