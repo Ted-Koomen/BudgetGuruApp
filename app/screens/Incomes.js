@@ -77,7 +77,7 @@ class Incomes extends Component {
           <TouchableHighlight style={this.state.pressStatus? styles.pressedButton : styles.button}
               onHideUnderlay={this._onHideUnderlay.bind(this)}
               onShowUnderlay={this._onShowUnderlay.bind(this)}>
-            <Text style={styles.buttonText}
+            <Text style={styles.primaryButtonText}
               onPress={()=> this.handleSubmit()}>
               Add Income
             </Text>
@@ -86,7 +86,7 @@ class Incomes extends Component {
           <TouchableHighlight onPress={this.refresh.bind(this)} style={this.state.pressStatus2? styles.pressedButton : styles.button}
             onHideUnderlay={this._onHideUnderlay2.bind(this)}
             onShowUnderlay={this._onShowUnderlay2.bind(this)}>
-            <Text style={styles.buttonText}>
+            <Text style={styles.primaryButtonText}>
               Refresh
             </Text>
           </TouchableHighlight>
