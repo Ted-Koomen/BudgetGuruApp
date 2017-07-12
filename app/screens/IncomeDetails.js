@@ -17,7 +17,7 @@ class IncomeDetails extends Component{
      }
 
      handleDelete = () => {
-       fetch("http://localhost:3000/incomes/"+global.ACCESS_TOKEN, {
+       fetch("https://budgetguru.herokuapp.com/incomes/"+global.ACCESS_TOKEN, {
          method: "DELETE",
          headers: {
            'Content-Type': 'application/json'

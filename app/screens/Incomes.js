@@ -16,7 +16,7 @@ class Incomes extends Component {
     }
 
     componentWillMount(){
-      fetch("http://localhost:3000/incomes/"+global.ACCESS_TOKEN)
+      fetch("https://budgetguru.herokuapp.com/incomes/"+global.ACCESS_TOKEN)
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
@@ -36,7 +36,7 @@ class Incomes extends Component {
     }
 
     refresh(){
-      fetch("http://localhost:3000/incomes/"+global.ACCESS_TOKEN)
+      fetch("https://budgetguru.herokuapp.com/incomes/"+global.ACCESS_TOKEN)
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({

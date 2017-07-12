@@ -22,7 +22,7 @@ class Profile extends Component{
     }
 
     componentWillMount(){
-      fetch("http://localhost:3000/summary")
+      fetch("https://budgetguru.herokuapp.com/summary")
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
@@ -34,7 +34,7 @@ class Profile extends Component{
     }
 
     refresh(){
-      fetch("http://localhost:3000/summary")
+      fetch("https://budgetguru.herokuapp.com/summary")
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
@@ -48,7 +48,7 @@ class Profile extends Component{
     async search(num) {
       this.setState({amount:num})
     try {
-      let response = await fetch("http://localhost:3000/calculate/"+num);
+      let response = await fetch("https://budgetguru.herokuapp.com/calculate/"+num);
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         let userData = JSON.parse(res);
@@ -65,7 +65,7 @@ class Profile extends Component{
     async addExpense(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/expense/', {
+        let response = await fetch('https://budgetguru.herokuapp.com/expense/', {
                               method: 'POST',
                               headers: {
                                 'Accept': 'application/json',
@@ -128,6 +128,10 @@ class Profile extends Component{
             </Text>
             {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}> {this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
+            <Text style={styles.subHeading}>
+              {this.state.message}
+            </Text>
+            
             {this.state.canSpend && this.state.remaining_balance > 0 ? <ScrollView><TextInput style={styles.input}
               placeholder="Amount"
               keyboardType="numeric"
@@ -143,9 +147,6 @@ class Profile extends Component{
               </Text>
             </TouchableHighlight> : null}
 
-            <Text style={styles.subHeading}>
-              {this.state.message}
-            </Text>
 
             <TouchableHighlight onPress={this.refresh.bind(this)} style={this.state.pressStatus2? styles.pressedButton : styles.button}
                 onHideUnderlay={this._onHideUnderlay2.bind(this)}

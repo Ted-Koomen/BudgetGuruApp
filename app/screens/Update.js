@@ -40,7 +40,7 @@ class Update extends Component{
 
     async fetchUserData() {
     try {
-      let response = await fetch("http://localhost:3000/users/"+global.ACCESS_TOKEN+"/edit");
+      let response = await fetch("https://budgetguru.herokuapp.com/users/"+global.ACCESS_TOKEN+"/edit");
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         let userData = JSON.parse(res);
@@ -59,7 +59,7 @@ class Update extends Component{
 
     async handleSubmit(){
       try {
-        let response = await fetch(`http://localhost:3000/update/`+global.ACCESS_TOKEN, {
+        let response = await fetch(`https://budgetguru.herokuapp.com/update/`+global.ACCESS_TOKEN, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
