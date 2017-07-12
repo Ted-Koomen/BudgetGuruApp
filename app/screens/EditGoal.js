@@ -77,6 +77,7 @@ class EditBill extends Component{
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
+              <Errors errors={this.state.errors}/>
               <TextInput
                 placeholder="Goal Name"
                 value={this.state.goal_name}
@@ -108,7 +109,6 @@ class EditBill extends Component{
                 onPress={()=> this.handleSubmit()}
                 label="Save"
               />
-              <Errors errors={this.state.errors}/>
             </ScrollView>
 
         );

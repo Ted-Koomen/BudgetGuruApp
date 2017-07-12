@@ -69,6 +69,8 @@ class NewBudget extends Component{
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
+              <Errors errors={this.state.errors}/>
+
               <TextInput
                 placeholder="Budget Name"
                 returnKeyLabel = {"next"}
@@ -86,7 +88,6 @@ class NewBudget extends Component{
                 label="Save"
               />
 
-              <Errors errors={this.state.errors}/>
             </ScrollView>
         );
     }

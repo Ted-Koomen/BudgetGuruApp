@@ -71,6 +71,7 @@ class NewBudget extends Component{
       const budget = this.props.navigation.state.params
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
+              <Errors errors={this.state.errors}/>
               <TextInput
                 value={this.state.budget_name}
                 returnKeyLabel = {"next"}
@@ -87,7 +88,6 @@ class NewBudget extends Component{
                 label="Save"
               />
 
-              <Errors errors={this.state.errors}/>
             </ScrollView>
         );
     }

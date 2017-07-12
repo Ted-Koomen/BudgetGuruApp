@@ -12,7 +12,8 @@ class IncomeDetails extends Component{
      }
 
      handleSubmit = () => {
-       this.props.navigation.navigate('BillEdit')
+       const income= this.props.navigation.state.params
+       this.props.navigation.navigate('EditIncome',income)
      }
 
      handleDelete = () => {

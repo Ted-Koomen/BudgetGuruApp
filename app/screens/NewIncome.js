@@ -73,6 +73,7 @@ class NewIncome extends Component{
     render(){
         return(
           <ScrollView style={{ backgroundColor: colors.background }}>
+            <Errors errors={this.state.errors}/>
             <TextInput
               placeholder="Source"
               returnKeyLabel = {"next"}
@@ -85,7 +86,7 @@ class NewIncome extends Component{
               onChangeText={(text) => this.setState({post_tax_amount:text})}
             />
             <TextInput
-              placeholder="Fixed"
+              placeholder="true of false"
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({fixed:text})}
             />
@@ -99,7 +100,6 @@ class NewIncome extends Component{
               onPress={()=> this.handleSubmit()}
               label="Save"
             />
-            <Errors errors={this.state.errors}/>
           </ScrollView>
         );
     }

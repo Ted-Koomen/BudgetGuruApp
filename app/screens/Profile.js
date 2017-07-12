@@ -9,10 +9,10 @@ class Profile extends Component{
     constructor(props){
       super(props)
       this.state = {
-        remaining_balance: "",
+        remaining_balance: null,
         canSpend: null,
         message: "",
-        amount:null
+        amount: 0
       }
       this.onSettingsPressed = this.onSettingsPressed.bind(this);
     }
@@ -41,23 +41,79 @@ class Profile extends Component{
       })
     }
 
+    search(text) {
+        fetch("http://localhost:3000/expense", {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            amount: text
+          })
+        })
+        .then(response =>{
+          // debugger
+      })
+    }
+
+
+    // async goHere(){
+    //   this.setState({showProgress: true})
+    //   try {
+    //     let response = await fetch('http://localhost:3000/expense/', {
+    //                           method: 'POST',
+    //                           headers: {
+    //                             'Accept': 'application/json',
+    //                             'Content-Type': 'application/json'
+    //                           },
+    //                           body: JSON.stringify({
+    //                             amount: this.state.amount
+    //                           })
+    //                         });
+    //
+    //       let res = await response.text();
+    //
+    //       if (response.status >= 200 && response.status < 300) {
+    //         this.props.navigation.navigate('Profile')
+    //       } else {
+    //         let errors = res;
+    //         throw errors;
+    //       }
+    //   } catch(errors) {
+    //     console.log("catch errors: " + errors);
+    //
+    //     let formErrors = JSON.parse(errors);
+    //     let errorsArray = [];
+    //     for(var key in formErrors) {
+    //       if(formErrors[key].length > 1) {
+    //           formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
+    //       } else {
+    //           errorsArray.push(`${key} ${formErrors[key]}`);
+    //       }
+    //     }
+    //    this.setState({errors: errorsArray})
+    //   }
+    // }
+
     onSettingsPressed(){
       this.props.navigation.navigate('Settings')
     }
 
     _onHideUnderlay(){
-    this.setState({ pressStatus: false });
-  }
-  _onShowUnderlay(){
-    this.setState({ pressStatus: true });
-  }
+      this.setState({ pressStatus: false });
+    }
 
-  _onHideUnderlay2(){
-    this.setState({ pressStatus2: false });
-  }
-  _onShowUnderlay2(){
-    this.setState({ pressStatus2: true });
-  }
+    _onShowUnderlay(){
+      this.setState({ pressStatus: true });
+    }
+
+    _onHideUnderlay2(){
+      this.setState({ pressStatus2: false });
+    }
+    _onShowUnderlay2(){
+      this.setState({ pressStatus2: true });
+    }
 
     render(){
         return(
@@ -67,12 +123,13 @@ class Profile extends Component{
             </Text>
             {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}> {this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
 
-            {this.state.canSpend && this.state.amount > 0 ? <ScrollView><TextInput style={styles.input}
+            {this.state.canSpend && this.state.remaining_balance > 0 ? <ScrollView><TextInput style={styles.input}
               placeholder="Amount"
               keyboardType="numeric"
               returnKeyLabel = {"next"}
-              onChangeText={(text) => this.setState({amount:text})}
+              onChangeText={this.search}
             />
+
             <TouchableHighlight onPress={this.goHere} style={this.state.pressStatus? styles.pressedButton : styles.button}
                 onHideUnderlay={this._onHideUnderlay2.bind(this)}
                 onShowUnderlay={this._onShowUnderlay2.bind(this)}>
@@ -168,47 +225,3 @@ const styles = StyleSheet.create({
 });
 
 export default Profile;
-
-
-
-
-
-//
-//
-// async goHere(){
-//   this.setState({showProgress: true})
-//   try {
-//     let response = await fetch('http://localhost:3000/expense/', {
-//                           method: 'POST',
-//                           headers: {
-//                             'Accept': 'application/json',
-//                             'Content-Type': 'application/json'
-//                           },
-//                           body: JSON.stringify({
-//                             amount: this.state.amount
-//                           })
-//                         });
-//
-//       let res = await response.text();
-//
-//       if (response.status >= 200 && response.status < 300) {
-//         this.props.navigation.navigate('Profile')
-//       } else {
-//         let errors = res;
-//         throw errors;
-//       }
-//   } catch(errors) {
-//     console.log("catch errors: " + errors);
-//
-//     let formErrors = JSON.parse(errors);
-//     let errorsArray = [];
-//     for(var key in formErrors) {
-//       if(formErrors[key].length > 1) {
-//           formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
-//       } else {
-//           errorsArray.push(`${key} ${formErrors[key]}`);
-//       }
-//     }
-//    this.setState({errors: errorsArray})
-//   }
-// }
