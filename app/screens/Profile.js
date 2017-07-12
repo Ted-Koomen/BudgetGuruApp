@@ -42,18 +42,18 @@ class Profile extends Component{
     }
 
     search(text) {
-        fetch("http://localhost:3000/expense", {
-          method: 'POST',
+        fetch("http://localhost:3000/calculate/"+text, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            amount: text
-          })
+          }
         })
         .then(response =>{
-          // debugger
+          res = JSON.parse(response)
+          debugger
+          this.setState({
+            canSpend: res.can_spend
+          })
       })
     }
 
