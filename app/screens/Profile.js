@@ -50,7 +50,6 @@ class Profile extends Component{
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         let userData = JSON.parse(res);
-        // debugger
           this.setState({spend: userData.can_spend});
       } else {
           let error = res;
