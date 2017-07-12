@@ -120,13 +120,12 @@ class Profile extends Component{
     }
 
     render(){
-      // debugger
         return(
           <View style={styles.container}>
             <Text style={styles.heading}>
               Summary
             </Text>
-            {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red'}}> {this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green'}}>Remaining Balance:{this.state.remaining_balance}</Text>}
+            {this.state.remaining_balance < 0 ? <Text style={{fontSize: 20,fontWeight: 'bold',color: 'red', paddingBottom: 20}}> {this.state.remaining_balance}</Text> : <Text style={{fontSize: 20,fontWeight: 'bold',color: 'green', paddingBottom: 20}}>Remaining Balance: ${this.state.remaining_balance}</Text>}
 
             <Text style={styles.subHeading}>
               {this.state.message}
@@ -206,6 +205,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
+    color: "#F3C152"
   },
   subHeading: {
     fontSize: 18,
@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 300,
     alignSelf: 'center'
-
   },
 });
 

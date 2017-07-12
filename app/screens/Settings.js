@@ -90,6 +90,9 @@ class Settings extends Component{
             
 
           <View>
+          <Text style={styles.heading}>
+            Add Bank Account
+          </Text>
             <TextInput
               placeholder="Bank Name"
               returnKeyLabel = {"next"}
@@ -98,14 +101,14 @@ class Settings extends Component{
             />
 
             <TextInput
-              placeholder="Checking or savings"
+              placeholder="Checking or Savings"
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({account:text})}
               style={styles.inputField}
             />
 
             <TextInput
-              placeholder="Current total balance"
+              placeholder="Current Total Balance"
               keyboardType="numeric"
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({balance:text})}
@@ -158,7 +161,6 @@ const styles = StyleSheet.create({
 button: {
     height: 50,
     backgroundColor: '#2eba66',
-
     alignItems: 'center',
     marginTop: 10,
     justifyContent: 'center',
@@ -183,6 +185,10 @@ logoutButton:{
    },
   heading: {
     fontSize: 30,
+    color: "#F3C152",
+    justifyContent:'center',
+    alignSelf:'center'
+
   },
   error: {
     color: 'red',

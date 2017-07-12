@@ -66,7 +66,8 @@ class Budgets extends Component {
   render() {
     return (
       <View>
-        {this.state.array == 0  ? <Text style={styles.text2}>No budgets for this user</Text>: <FlatList
+        {this.state.array == 0  ?
+          <Text style={style.welcome}>No budgets for this user.</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.budgets}
           renderItem={({item})=>
@@ -98,5 +99,17 @@ class Budgets extends Component {
     );
   }
 }
+
+const style = StyleSheet.create({
+ welcome:{
+    paddingTop: 20,
+    paddingBottom: 10, 
+    alignItems:'center',
+    justifyContent:'center',
+    alignSelf:'center',
+    fontSize:16,
+  }
+})
+
 
 export default Budgets;
