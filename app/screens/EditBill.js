@@ -31,7 +31,7 @@ class EditBill extends Component{
     async handleSubmit(){
       this.setState({showProgress: true})
       try {
-        let response = await fetch('http://localhost:3000/bills/update/'+global.ACCESS_TOKEN, {
+        let response = await fetch('https://budgetguru.herokuapp.com/bills/update/'+global.ACCESS_TOKEN, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

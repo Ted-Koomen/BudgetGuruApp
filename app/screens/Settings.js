@@ -33,7 +33,7 @@ class Settings extends Component{
   async handleSubmit(){
     this.setState({showProgress: true})
     try {
-      let response = await fetch('http://localhost:3000/accounts/new/'+global.ACCESS_TOKEN, {
+      let response = await fetch('https://budgetguru.herokuapp.com/accounts/new/'+global.ACCESS_TOKEN, {
                             method: 'POST',
                             headers: {
                               'Accept': 'application/json',
