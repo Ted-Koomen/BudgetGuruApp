@@ -75,6 +75,7 @@ class EditBill extends Component{
       const bill = this.props.navigation.state.params
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
+              <Errors errors={this.state.errors}/>
               <TextInput
                 value={this.state.bill_name}
                 returnKeyLabel = {"next"}
@@ -101,7 +102,6 @@ class EditBill extends Component{
                 onPress={()=> this.handleSubmit()}
                 label="Save"
               />
-              <Errors errors={this.state.errors}/>
             </ScrollView>
 
         );

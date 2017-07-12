@@ -42,7 +42,7 @@ class NewBill extends Component{
                               body: JSON.stringify({
                                 bill_name: this.state.bill_name,
                                 amount: this.state.amount,
-                                due_date: this.state.due_date.day(),
+                                due_date: this.state.due_date,
                                 status: this.state.status
                               })
                             });
@@ -75,6 +75,7 @@ class NewBill extends Component{
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
+              <Errors errors={this.state.errors}/>
               <TextInput
                 placeholder="Bill Name"
                 returnKeyLabel = {"next"}
@@ -101,7 +102,6 @@ class NewBill extends Component{
                 onPress={()=> this.handleSubmit()}
                 label="Save"
               />
-              <Errors errors={this.state.errors}/>
             </ScrollView>
 
         );

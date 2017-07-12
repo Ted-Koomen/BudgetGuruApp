@@ -52,7 +52,7 @@ class Budgets extends Component {
         {this.state.status === true ? <ScrollView><PrimaryButton
           onPress={()=> this.handleSubmit()}
           label="Add Budget"
-        /></ScrollView>: <Text style={style.text}>Sorry, adding a budget is currently disabled because your account is Negative.</Text> }
+        /></ScrollView>: <Text style={style.text}>Sorry, adding a budget is currently disabled because your account is either negative or at does not have sufficient funds.</Text> }
     </View>
     );
   }

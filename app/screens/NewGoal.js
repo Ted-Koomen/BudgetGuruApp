@@ -77,6 +77,7 @@ class NewGoal extends Component{
     render(){
         return(
             <ScrollView style={{ backgroundColor: colors.background }}>
+              <Errors errors={this.state.errors}/>
               <TextInput
                 placeholder="Goal Name"
                 keyboardType="numeric"
@@ -107,7 +108,6 @@ class NewGoal extends Component{
                 label="Save"
               />
 
-              <Errors errors={this.state.errors}/>
             </ScrollView>
         );
     }
