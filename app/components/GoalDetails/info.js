@@ -15,7 +15,7 @@ class AllGoals extends Component{
       <View style={styles.container}>
         <Text style={styles.welcome}>
           {"Amount saved: " + goal.amount_saved+"\n"}
-          {"Time Frame: " + goal.timeframe+"\n"}
+          {"Time Frame: " + moment(goal.timeframe.toString()).format('ll') +"\n"}
           {"Achieved: " + goal.achieved+"\n"}
           {"Total: " + goal.total+"\n"}
         </Text>
