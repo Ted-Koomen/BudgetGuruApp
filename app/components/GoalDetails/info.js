@@ -14,13 +14,31 @@ class AllGoals extends Component{
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          {"Amount saved: " + goal.amount_saved+"\n"}
-          {"Time Frame: " + moment(goal.timeframe.toString()).format('ll') +"\n"}
-          {"Achieved: " + goal.achieved+"\n"}
-          {"Total: " + goal.total+"\n"}
+          <Text style={{fontWeight:"bold",color: "#064F9C"}}>
+            Amount Saved:
+          </Text>
+          {" " + goal.amount_saved+"\n"}
+          <Text style={{fontWeight:"bold",color: "#064F9C"}}>
+            Time Frame:
+          </Text>
+          {" " + goal.timeframe+"\n"}
+          <Text style={{fontWeight:"bold",color: "#064F9C"}}>
+            Achieved: 
+          </Text>
+          {" " + goal.achieved+"\n"}
+          <Text style={{fontWeight:"bold",color: "#064F9C"}}>
+            Total: 
+          </Text>
+          {" " + goal.total+"\n"}
         </Text>
       </View>
     );
   }
 }
 export default AllGoals;
+
+const style = StyleSheet.create({
+  container: {
+    paddingTop: 10
+  }
+})

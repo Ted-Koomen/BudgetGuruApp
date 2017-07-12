@@ -58,6 +58,10 @@ export default StyleSheet.create({
   },
   infoContainer:{
     paddingVertical: 15,
+  }, 
+  container: {
+    paddingTop: 10,
+    alignItems: 'center',
   }
 
 });

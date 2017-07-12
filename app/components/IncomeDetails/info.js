@@ -13,7 +13,7 @@ class AllIncomes extends Component{
     let income = this.props.income
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
+        <Text style={{fontWeight:"bold",color: "#064F9C"}}>
           {"Source: " + income.source+"\n"}
           {"Post Tax: " + income.post_tax_amount+"\n"}
           {"Fixed: " + income.fixed+"\n"}
