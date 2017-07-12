@@ -21,13 +21,13 @@ class AllGoals extends Component{
           <Text style={{fontWeight:"bold",color: "#064F9C"}}>
             Time Frame:
           </Text>
-          {" " + goal.timeframe+"\n"}
+          {" " + moment(goal.timeframe.toString()).format('ll') +"\n"}
           <Text style={{fontWeight:"bold",color: "#064F9C"}}>
-            Achieved: 
+            Achieved:
           </Text>
           {" " + goal.achieved+"\n"}
           <Text style={{fontWeight:"bold",color: "#064F9C"}}>
-            Total: 
+            Total:
           </Text>
           {" " + goal.total+"\n"}
         </Text>
