@@ -14,7 +14,8 @@ import {
 } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator }from 'react-navigation';
 import Root from './Root';
-import { PrimaryButton } from '../components/Buttons'
+import { PrimaryButton } from '../components/Buttons';
+
 
 
 
@@ -48,7 +49,10 @@ class Settings extends Component{
         let res = await response.text();
 
         if (response.status >= 200 && response.status < 300) {
-          this.props.navigation.navigate('Settings')
+          this.props.navigation.navigate('Profile')
+          AlertIOS.alert(
+            "Bank Account Created Successfully"
+          )
         } else {
           let errors = res;
           throw errors;
@@ -70,7 +74,7 @@ class Settings extends Component{
   }
 
     onUpdatePressed(){
-      this.props.navigation.navigate('Profile');
+      this.props.navigation.navigate('Update');
     }
 
     onLogoutPressed(){
