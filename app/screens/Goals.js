@@ -67,8 +67,8 @@ class Goals extends Component {
   render() {
     return (
       <View>
-        
-        {this.state.array == 0  ? <Text style={style.text2}>No goals for this user</Text>: <FlatList
+
+        {this.state.array == 0  ? <Text style={styles.subHeading}>No goals for this user</Text>: <FlatList
           style={{backgroundColor: colors.background}}
           data={this.state.goals}
           renderItem={({item})=>
@@ -80,7 +80,7 @@ class Goals extends Component {
         <TouchableHighlight onPress={this.refresh.bind(this)} style={this.state.pressStatus2? styles.pressedButton : styles.button}
             onHideUnderlay={this._onHideUnderlay2.bind(this)}
             onShowUnderlay={this._onShowUnderlay2.bind(this)}>
-          <Text style={style.text}>
+          <Text style={styles.primaryButtonText}>
             Refresh
           </Text>
         </TouchableHighlight>
