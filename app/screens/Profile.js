@@ -18,6 +18,7 @@ class Profile extends Component{
       }
       this.onSettingsPressed = this.onSettingsPressed.bind(this);
       this.search = this.search.bind(this)
+      this.addExpense = this.addExpense.bind(this)
     }
 
     componentWillMount(){
