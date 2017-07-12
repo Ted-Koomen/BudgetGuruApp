@@ -46,6 +46,7 @@ class Profile extends Component{
     }
 
     async search(num) {
+      this.setState({amount:num})
     try {
       let response = await fetch("http://localhost:3000/calculate/"+num);
       let res = await response.text();
