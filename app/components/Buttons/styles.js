@@ -10,11 +10,7 @@ export default StyleSheet.create({
     marginBottom: 20,
     marginTop: 10,
   },
-   subcontainer:{
-    marginTop:10,
-    borderRadius: 10
-
-  },
+  
   primaryButton:{
     height: 50,
     justifyContent: 'center',
@@ -27,11 +23,9 @@ export default StyleSheet.create({
     width: 300
   },
   primaryButtonText:{
-    paddingVertical: 15,
-    paddingHorizontal: 40,
     color: '#fff',
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 18,
+    
   },
   button: {
   height: 50,
@@ -48,7 +42,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+   
   
     // paddingTop: 80
   },
