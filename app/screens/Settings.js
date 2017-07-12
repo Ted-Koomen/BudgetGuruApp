@@ -87,22 +87,9 @@ class Settings extends Component{
     render(){
         return(
           <View style={styles.container}>
-            <View >
+            
 
-            <TouchableHighlight onPress={this.onUpdatePressed.bind(this)} style={styles.button}>
-              <Text style={styles.buttonText}>
-                Update Profile
-              </Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight onPress={this.onLogoutPressed.bind(this)} style={styles.button}>
-              <Text style={styles.buttonText}>
-                Logout
-              </Text>
-            </TouchableHighlight>
-          </View>
-
-          <View style={styles.subContainer}>
+          <View>
             <TextInput
               placeholder="Bank Name"
               returnKeyLabel = {"next"}
@@ -111,14 +98,14 @@ class Settings extends Component{
             />
 
             <TextInput
-              placeholder="checking or savings"
+              placeholder="Checking or savings"
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({account:text})}
               style={styles.inputField}
             />
 
             <TextInput
-              placeholder="current total balance"
+              placeholder="Current total balance"
               keyboardType="numeric"
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({balance:text})}
@@ -128,8 +115,23 @@ class Settings extends Component{
               onPress={()=> this.handleSubmit()}
               label="Save"
             />
-          </View>
+          
 
+          
+
+            <TouchableHighlight onPress={this.onUpdatePressed.bind(this)} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Update Profile
+              </Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight onPress={this.onLogoutPressed.bind(this)} style={styles.logoutButton}>
+              <Text style={styles.buttonText}>
+                Logout
+              </Text>
+            </TouchableHighlight>
+            </View>
+          
         </View>
         );
     }
@@ -164,7 +166,17 @@ button: {
     width: 300,
     alignSelf: 'center'
   },
-   buttonText:{
+logoutButton:{
+  height: 50,
+    backgroundColor: '#ef042b',
+    alignItems: 'center',
+    marginTop: 10,
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: 300,
+    alignSelf: 'center'
+},
+  buttonText:{
     color:'#FFF',
     alignSelf:'center',
     fontSize: 18,
@@ -183,12 +195,13 @@ button: {
     alignSelf: 'center',
     height: 50,
     marginTop: 10,
+    alignItems: 'center',
     padding: 4,
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#48bbec',
-    width: 200,
-    right: 10
+    justifyContent: 'center',
+    width: 300,
   },
   subContainer: {
     marginTop: 100

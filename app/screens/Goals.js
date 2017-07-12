@@ -80,7 +80,7 @@ class Goals extends Component {
         <TouchableHighlight onPress={this.refresh.bind(this)} style={this.state.pressStatus2? styles.pressedButton : styles.button}
             onHideUnderlay={this._onHideUnderlay2.bind(this)}
             onShowUnderlay={this._onShowUnderlay2.bind(this)}>
-          <Text style={styles.buttonText}>
+          <Text style={style.text}>
             Refresh
           </Text>
         </TouchableHighlight>
@@ -92,11 +92,11 @@ class Goals extends Component {
 
 const style = StyleSheet.create({
   text:{
-    color:'#1D2B59',
+    color:'#FFF',
+    fontSize: 18,
     alignItems:'center',
     alignSelf:'center',
     justifyContent:'center',
-    fontWeight:'bold'
   },
   text2:{
     color:'#2E3033',
@@ -104,7 +104,8 @@ const style = StyleSheet.create({
     alignItems:'center',
     alignSelf:'center',
     justifyContent:'center',
-    paddingBottom:20
+    paddingBottom:20,
+    paddingTop: 20
   },
   subcontainer:{
     backgroundColor: '#F5FCFF',

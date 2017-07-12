@@ -41,7 +41,7 @@ class Budgets extends Component {
     return (
       <View>
         {this.state.array == 0  ? <Text style={style.text2}>No budgets for this user</Text>: <FlatList
-          style={{backgroundColor: colors.background}}
+          style={{backgroundColor: colors.background}} 
           data={this.state.budgets}
           renderItem={({item})=>
           <BudgetList itemName={item.budget_name} onPress={() => this.handleRowPress(item)}/>
@@ -72,12 +72,8 @@ const style = StyleSheet.create({
     alignItems:'center',
     alignSelf:'center',
     justifyContent:'center',
-    paddingBottom:20
-  },
-  subcontainer:{
-    marginTop:10,
-    borderRadius: 10
-
+    paddingBottom:20,
+    paddingTop: 20
   },
 })
 

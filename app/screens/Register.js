@@ -185,12 +185,13 @@ const styles = StyleSheet.create({
     width: 300
   },
   buttonText: {
-    fontSize: 22,
+    fontSize: 18,
     color: '#FFF',
     alignSelf: 'center'
   },
   heading: {
     fontSize: 30,
+    color: "#F3C152",
   },
   error: {
     color: 'red',
