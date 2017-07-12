@@ -10,11 +10,9 @@ const Header = ({picture, name}) =>{
         source={{uri: picture.large}}
         style={styles.image}
       /> */}
+
       <Text style={styles.name}>
-        {capitalizeFirstLetter(name)},
-      </Text>
-      <Text style={styles.name}>
-        Here are your bills.
+        Here is your bill.
       </Text>
     </View>
   )
