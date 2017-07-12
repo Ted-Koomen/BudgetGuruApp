@@ -139,7 +139,6 @@ class Register extends Component {
             </Text>
           </TouchableHighlight>
 
-          {/*<ActivityIndicatorIOS animating={this.state.showProgress} size="large" style={styles.loader} />*/}
       </View>
       )
     }
@@ -148,7 +147,7 @@ class Register extends Component {
   const Errors = (props) => {
   return (
     <View>
-      {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
+      {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error.charAt(0).toUpperCase()+ error.slice(1).replace(/[_-]/g, " ")} </Text>)}
     </View>
   );
 }
