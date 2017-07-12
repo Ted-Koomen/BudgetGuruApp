@@ -43,7 +43,7 @@ class NewBill extends Component{
                                 bill_name: this.state.bill_name,
                                 amount: this.state.amount,
                                 due_date: this.state.due_date,
-                                status: this.state.status
+                                status: this.state.status.toLowerCase()
                               })
                             });
 
@@ -88,7 +88,7 @@ class NewBill extends Component{
                 onChangeText={(text) => this.setState({amount:text})}
               />
               <TextInput
-                placeholder="Status: paid/not paid"
+                placeholder="Status: Paid/Not Paid/Past Due/Due Today"
                 returnKeyLabel = {"next"}
                 onChangeText={(text) => this.setState({status:text})}
               />
