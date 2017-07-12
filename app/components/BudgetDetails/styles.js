@@ -61,7 +61,6 @@ export default StyleSheet.create({
   },
   container: {
     paddingTop: 10,
-    alignItems: 'center',
+    alignItems: 'center'
   }
-
 });

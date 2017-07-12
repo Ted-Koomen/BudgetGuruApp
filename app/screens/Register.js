@@ -101,23 +101,23 @@ class Register extends Component {
       return (
         <View style={styles.container}>
           <Text style={styles.heading}>
-            Register User
+            Let's Get Started!
           </Text>
           <Errors errors={this.state.errors}/>
           <TextInput
             onChangeText={ (text)=> this.setState({first_name: text}) }
             style={styles.input} placeholder="First Name"
-            autoCorrect='false'>
+            autoCorrect= {false}>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({last_name: text}) }
             style={styles.input} placeholder="Last Name"
-            autoCorrect='false'>
+            autoCorrect= {false}>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({email: text}) }
             style={styles.input} placeholder="Email"
-            autoCorrect='false'
+            autoCorrect= {false}
             autoCapitalize='none'>
           </TextInput>
           <TextInput
@@ -125,7 +125,7 @@ class Register extends Component {
             style={styles.input}
             placeholder="Password"
             secureTextEntry={true}
-            autoCorrect='false'>
+            autoCorrect= {false}>
           </TextInput>
           <TextInput
             onChangeText={ (text)=> this.setState({balance_floor: text}) }
@@ -179,7 +179,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
     alignItems: 'center',
-    
     borderRadius:10,
     width: 300
   },
@@ -199,7 +198,6 @@ const styles = StyleSheet.create({
   pressedButton:{
     height: 50,
     backgroundColor: '#29593c',
-    
     alignItems: 'center',
     marginTop: 10,
     justifyContent: 'center',

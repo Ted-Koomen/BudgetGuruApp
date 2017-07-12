@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList,TouchableHighlight } from 'react-native';
+import { View, Text, FlatList,TouchableHighlight, StyleSheet } from 'react-native';
 import {bills} from  '../config/data';
 import colors from '../config/colors';
 import { ListItem } from '../components/ListItem';
@@ -29,7 +29,6 @@ class Bills extends Component {
   }
 
   handleRowPress = (item) => {
-    //clicking on a bill in the bill index will route to bill show through details
     this.props.navigation.navigate('Details', item)
   };
 
@@ -94,5 +93,15 @@ class Bills extends Component {
     );
   }
 }
+
+const style = StyleSheet.create({
+ welcome:{
+    alignItems:'center',
+    justifyContent:'center',
+    alignSelf:'center',
+    fontSize:16,
+  }
+})
+
 
 export default Bills
