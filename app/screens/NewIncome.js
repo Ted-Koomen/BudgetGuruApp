@@ -86,7 +86,7 @@ class NewIncome extends Component{
               onChangeText={(text) => this.setState({post_tax_amount:text})}
             />
             <TextInput
-              placeholder="true of false"
+              placeholder="Fixed Income? (True or False)"
               returnKeyLabel = {"next"}
               onChangeText={(text) => this.setState({fixed:text})}
             />
