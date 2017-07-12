@@ -22,7 +22,7 @@ class BudgetDetails extends Component{
      }
 
      handleDelete = () => {
-       fetch("http://localhost:3000/budgets", {
+       fetch("https://budgetguru.herokuapp.com/budgets", {
          method: "DELETE",
          headers: {
            'Content-Type': 'application/json'

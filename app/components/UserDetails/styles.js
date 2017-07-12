@@ -17,7 +17,7 @@ export default StyleSheet.create({
   name:{
     fontSize: 22,
     marginTop: 10,
-    color: colors.primaryText
+    color: "#F3C152"
   },
 
   actionContainer:{
@@ -58,6 +58,12 @@ export default StyleSheet.create({
   },
   infoContainer:{
     paddingVertical: 15,
+  },
+  welcome:{
+    alignItems:'center',
+    justifyContent:'center',
+    alignSelf:'center',
+    fontSize:16,
   }
 
 });

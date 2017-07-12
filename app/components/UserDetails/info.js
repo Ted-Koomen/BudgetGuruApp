@@ -14,9 +14,18 @@ class AllBills extends Component{
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          {"$"+bill.amount+"\n"}
-          {"Due the "+ bill.due_date + "of every month"+ "\n"}
-          {"Status: " + bill.status+"\n"}
+          <Text style={{fontWeight: "bold", color:"#064F9C"}}>
+          Total: 
+          </Text>
+          {" "+"$"+bill.amount+"\n"}
+           <Text style={{fontWeight: "bold", color:"#064F9C"}}>
+          Due:
+          </Text>
+          {" "+bill.due_date + " of every month."+ "\n"}
+           <Text style={{fontWeight: "bold", color:"#064F9C"}}>
+          Status:
+          </Text>
+          {" "+bill.status.charAt(0).toUpperCase() + bill.status.slice(1)+"."+"\n"}
         </Text>
       </View>
     );
